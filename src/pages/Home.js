@@ -251,7 +251,7 @@ window.addEventListener('scroll', () => {
 
             <section id="projets" className="sec-box">
                 <h2>Mes projets</h2>
-                <Project url="">TEST</Project>
+                <Project url="TITRE">PROJET 2 OC</Project>
                 <p>PROJETS PROJETS PROJETS</p>
             </section>
         </>
