@@ -1,0 +1,32 @@
+/* pages */
+@import './app.css';
+@import './home.css';
+/* components */
+@import './header.css';
+@import './separateur.css';
+/* adds */
+@import url('//fonts/Lobster-Regular.ttf');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* html {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+    color: white;
+} */
+
+/* body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+} */

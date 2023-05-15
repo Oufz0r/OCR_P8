@@ -1,0 +1,202 @@
+#home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../public/images/background4.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+nav {
+    user-select: none;
+    z-index: 100;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#reseaux {
+    z-index: 101;
+    position: fixed;
+    /* top: 15%; */
+    top: 65%;
+    left: 0px;
+}
+
+#reseaux div {
+    position: relative;
+    width: 75px;
+    height: 55px;
+    margin: 5px 0;
+    left: -20px;
+    transition: 0.3s;
+}
+
+#reseaux div:hover {
+    left: 0;
+}
+
+nav span {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    font-size: 20px;
+    /* top: 15px; */
+}
+
+/* About */
+nav span:nth-of-type(1) {
+    transform: rotate(90deg);
+    left: -10px;
+}
+
+/* Projets */
+nav span:nth-of-type(2) {
+    top: 15px;
+}
+
+/* Curriculum vitae */
+nav span:nth-of-type(3) {
+    transform: rotate(-90deg);
+    right: -55px;
+}
+
+/* Scroll */
+nav span:nth-of-type(4) {
+    top: 96%;
+}
+
+nav span a {
+    text-decoration: none;
+    color: white;
+}
+
+#logoCentral {
+    position: absolute;
+    top: auto;
+    left: auto;
+    font-family: 'Lobster', cursive;
+    font-size: 200px;
+    /* font-weight: 400; */
+    position: fixed;
+    cursor: default;
+    user-select: none;
+}
+
+#backTop {
+    z-index: 9999;
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    cursor: pointer;
+}
+
+#backTop img {
+    width: 32px;
+    filter: invert(100%);
+}
+
+
+section h2 {
+    font-size: 40px;
+    padding: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.sec-box {
+    color: #212121;
+    position: relative;
+    width: 100%;
+    /* height: fit-content; */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.separateur {
+    background-color: #212121;
+    font-family: 'Lobster', cursive;
+    /* font-size: 30px; */
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* height: 100px; */
+    height: 50vh;
+}
+
+/* MES COMPETENCES */
+#competences {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(50px, auto);
+}
+
+#competences div {
+    width: 400px;
+    height: 30px;
+    background: rgb(218, 218, 218);
+}
+
+#competences div div {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding-left: 5px;
+    width: 0%;
+}
+
+#html div {background: rgba(25, 192, 214, 0.5);}
+#css div {background: rgba(154, 25, 214, 0.5);}
+#javascript div {background: rgba(201, 214, 25, 0.5);}
+#react div {background: rgba(25, 38, 214, 0.5);}
+#nodejs div {background: rgba(214, 148, 25, 0.5);}
+#mongodb div {background: rgba(63, 214, 25, 0.5);}
+#php div {background: rgba(25, 214, 151, 0.5);}
+#sql div {background: rgba(214, 25, 25, 0.5);}
+
+
+/* Classes utiles */
+.mrg-top10 {margin-top: 10px;}
+.mrg-top25 {margin-top: 25px;}
+.mrg-top50 {margin-top: 50px;}
+.mrg-top100 {margin-top: 100px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1400px){
+
+}
