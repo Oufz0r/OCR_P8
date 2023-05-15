@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Separateur from '../components/separateur';
+import Project from '../components/project';
 
 export default function Home(props) {
     useEffect(() => {
@@ -30,7 +31,7 @@ export default function Home(props) {
                         if (window.innerWidth < 1000) {
                             logoCentral.style.fontSize = "150px";
                         } else {
-                            logoCentral.style.fontSize = "300px"; 
+                            logoCentral.style.fontSize = "300px";
                         }
                         setTimeout(() => {
                             logoCentral.style.transition = "0s";
@@ -250,6 +251,7 @@ window.addEventListener('scroll', () => {
 
             <section id="projets" className="sec-box">
                 <h2>Mes projets</h2>
+                <Project url="">POP</Project>
                 <p>PROJETS PROJETS PROJETS</p>
             </section>
         </>
