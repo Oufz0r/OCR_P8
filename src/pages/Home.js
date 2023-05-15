@@ -30,7 +30,7 @@ export default function Home(props) {
                         if (window.innerWidth < 1000) {
                             logoCentral.style.fontSize = "150px";
                         } else {
-                            logoCentral.style.fontSize = "300px";
+                            logoCentral.style.fontSize = "300px"; 
                         }
                         setTimeout(() => {
                             logoCentral.style.transition = "0s";
