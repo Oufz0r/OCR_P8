@@ -134,7 +134,7 @@ function skillGrow() {
     const allSkills = document.querySelectorAll('#competences > div');
     for(let n=0; n < allSkills.length; n++)
     {
-        console.log(allSkills[n]);
+        // console.log(allSkills[n]);
         const div = allSkills[n].querySelector('div');
         const skill = div.getAttribute('data-skill');
         div.style.width = "0%";
@@ -165,7 +165,7 @@ window.addEventListener('scroll', () => {
     // PROJETS
     const projets = document.querySelector('#projets');
     const projetsPosition = projets.getBoundingClientRect();
-    console.log("TOP:" + projetsPosition.top + " / BOTTOM: " + projetsPosition.bottom + " / INNER: " + window.innerHeight);
+    // console.log("TOP:" + projetsPosition.top + " / BOTTOM: " + projetsPosition.bottom + " / INNER: " + window.innerHeight);
     if (projetsPosition.top <= window.innerHeight * 0 && projetsPosition.bottom >= window.innerHeight * 0) {
         logoCatch.style.color = "#212121";
     }
@@ -251,8 +251,11 @@ window.addEventListener('scroll', () => {
 
             <section id="projets" className="sec-box">
                 <h2>Mes projets</h2>
-                <Project url="TITRE">PROJET 2 OC</Project>
-                <p>PROJETS PROJETS PROJETS</p>
+                <div className="project-Box">
+                    <Project titre="Booki" bground="" url="/" className="project-card">Booki</Project>
+                    <Project titre="Booki" bground="" url="/" className="project-card">Booki</Project>
+                    <Project titre="Booki" bground="" url="/" className="project-card">Booki</Project>
+                </div>
             </section>
         </>
     )

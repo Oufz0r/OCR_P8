@@ -1,0 +1,39 @@
+.project {
+    width: 400px;
+    height: 500px;
+    background-color: #9c9086;
+    border-radius: 5px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.project div:first-of-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #212121;
+    width: 100%;
+    height: 80px;
+    /* padding: 15px 0px; */
+    color: #9c9086;
+    font-size: 36px;
+}
+
+.project a {
+    text-decoration: none;
+    color: #9c9086;
+}
+
+.project a:hover {
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.project p {
+    position: absolute;
+    bottom: 20px;
+}
