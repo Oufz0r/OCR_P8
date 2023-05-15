@@ -6,11 +6,11 @@
 @import './css/separateur.css';
 @import './css/project.css';
 /* adds */
-/* @import '//fonts/Lobster-Regular.ttf'; */
-@font-face {
+/* @import url('//fonts/Lobster-Regular.ttf'); */
+/* @font-face {
   font-family: 'Lobster';
-  src: url('fonts/Lobster-Regular.ttf');
-}
+  src: url('/fonts/Lobster-Regular.ttf');
+} */
 
 * {
     box-sizing: border-box;

@@ -211,7 +211,7 @@ window.addEventListener('scroll', () => {
                 </div>
             </section>
 
-            <div id="backTop"><img src="images/up-arrow.png" alt="flèche de retour en haut de page" /></div>
+            <div id="backTop"><img src="/images/up-arrow.png" alt="flèche de retour en haut de page" /></div>
 
             <section id="apropos" className="sec-box">
                 <h2>À propos</h2>
