@@ -3,7 +3,7 @@
 import './App.css';
 // PAGES
 import Home from './pages/Home';
-import Lost from './pages/Lost';
+// import Lost from './pages/Lost';
 // COMPONENTS
 import Header from './components/header';
 
