@@ -23,6 +23,11 @@
     src: url('../fonts/Roboto-Regular.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Cerebri';
+    src: url('../fonts/Cerebri-Sans-Regular.ttf') format('truetype');
+}
+
 /* @font-face {
     font-family: 'Lobster';
     src: url('/fonts/Lobster-Regular.ttf');

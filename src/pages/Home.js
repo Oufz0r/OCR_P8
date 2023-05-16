@@ -48,7 +48,7 @@ export default function Home(props) {
                             count = 0;
                         }
                     }, 100);
-                }, 800);
+                }, 600);
             }, 2000);
 
         // animation au lancement de la page
@@ -219,9 +219,9 @@ window.addEventListener('scroll', () => {
         <>
             <section id="home">
                 <nav>
-                    <span>À propos</span>
-                    <span>Mes projets</span>
-                    <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">Curriculum Vitae</a></span>
+                    <span>À PROPOS</span>
+                    <span>MES PROJETS</span>
+                    <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">CURRICULUM VITÆ</a></span>
                 </nav>
 
                 <div id="logoCentral">damien pernin</div>
@@ -239,7 +239,7 @@ window.addEventListener('scroll', () => {
             <section id="apropos" className="sec-box">
                 <h2>À propos</h2>
 
-                <p className="p-large">Je m'appelle Damien Pernin, rêveur et créateur dans l'âme depuis <span id="monAge"></span>ans maintenant. J'aime transformer des maquettes en code pour laisser mon empreinte dans ce monde. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie dans le développement viendra embellir le tout.</p>
+                <p className="p-large">Je m'appelle Damien Pernin, rêveur et créateur dans l'âme depuis <span id="monAge"></span>ans maintenant. J'aime transformer des maquettes en code pour laisser mon empreinte dans ce monde. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
 
                 <p className="p-large">Étudier des langages, découvrir des nouveautés et l'évolution du monde informatique, voilà ce qui me passionne. Je mettrais à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
 
