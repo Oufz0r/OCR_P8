@@ -183,14 +183,14 @@ window.addEventListener('scroll', () => {
         }
     }
     if (aProposPosition.top <= window.innerHeight * 0 && aProposPosition.bottom >= window.innerHeight * 0) {
-        logoCatch.style.color = "#212121";
+        logoCatch.style.color = "#2f435e";
     }
     // PROJETS
     const projets = document.querySelector('#projets');
     const projetsPosition = projets.getBoundingClientRect();
     // console.log("TOP:" + projetsPosition.top + " / BOTTOM: " + projetsPosition.bottom + " / INNER: " + window.innerHeight);
     if (projetsPosition.top <= window.innerHeight * 0 && projetsPosition.bottom >= window.innerHeight * 0) {
-        logoCatch.style.color = "#212121";
+        logoCatch.style.color = "#2f435e";
     }
     // Logo hors section
     const home = document.querySelector('#home');

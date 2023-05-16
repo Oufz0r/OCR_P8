@@ -9,14 +9,14 @@
     align-items: center;
     overflow: hidden;
     position: relative;
-    box-shadow: 5px 5px 12px #212121;
+    box-shadow: 5px 5px 12px #2f435e;
 }
 
 .project .project-link div {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #212121;
+    background-color: #2f435e;
     color: white;
     width: 100%;
     height: 80px;
@@ -25,7 +25,7 @@
 }
 
 .project .project-link:hover div {
-    color: #212121;
+    color: #2f435e;
     background-color: white;
 }
 
@@ -44,7 +44,7 @@
     width: 100%;
     height: 0;
     /* background-color: rgba(158, 151, 145, 0.884); */
-    background-color: #212121da;
+    background-color: #2f435eda;
     overflow: hidden;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .project:hover .project-link div {
-    color: #212121;
+    color: #2f435e;
     background-color: white;
 }
 

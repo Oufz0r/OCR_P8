@@ -1,5 +1,6 @@
 .separateur {
-    background-color: #212121;
+    /* background-color: #212121; */
+    background-color: #2f435e;
     font-family: 'Lobster', cursive;
     /* font-size: 30px; */
     font-size: 100px;
@@ -10,4 +11,5 @@
     /* height: 100px; */
     height: 50vh;
     color: white;
+    user-select: none;
 }
