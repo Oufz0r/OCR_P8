@@ -182,6 +182,7 @@ window.addEventListener('scroll', () => {
             skillStatus = 1;
         }
     }
+    // console.log("TOP:" + aProposPosition.top + " / BOTTOM: " + aProposPosition.bottom + " / INNER: " + window.innerHeight);
     if (aProposPosition.top <= window.innerHeight * 0 && aProposPosition.bottom >= window.innerHeight * 0) {
         logoCatch.style.color = "#2f435e";
     }
@@ -239,7 +240,7 @@ window.addEventListener('scroll', () => {
             <section id="apropos" className="sec-box">
                 <h2>À propos</h2>
 
-                <p className="p-large">Je m'appelle Damien Pernin, rêveur et créateur dans l'âme depuis <span id="monAge"></span>ans maintenant. J'aime transformer des maquettes en code pour laisser mon empreinte dans ce monde. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
+                <p className="p-large">Je m'appelle Damien Pernin, rêveur et créateur dans l'âme depuis <span id="monAge"></span>ans. J'aime transformer des maquettes en code pour laisser mon empreinte dans ce monde. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
 
                 <p className="p-large">Étudier des langages, découvrir des nouveautés et l'évolution du monde informatique, voilà ce qui me passionne. Je mettrais à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
 
