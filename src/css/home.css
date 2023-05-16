@@ -7,22 +7,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../../public/images/background4.webp");
-    background-repeat: no-repeat;
+    /* background-image: url("../../public/images/backgroundCyb.webp"); */
+    /* background-image: url("../../public/images/background2.jpg"); */
+    /* background-image: url("../../public/images/background4.webp"); */
+    /* background-image: url("../../public/images/backgroundBO.webp"); */
+    /* background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center; */
     color: white;
+    background-color: #212121;
 }
 
 nav {
+    font-family: Lobster;
     user-select: none;
     z-index: 100;
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
+    top: 20px;
+    right: 50px;
+}
+
+nav span, a {
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+nav span:hover, a:hover {
+    /* color: #FB038E; */
+    color: white;
+    text-shadow: 0px 0px 20px white;
+}
+
+nav *:not(:last-child) {
+    margin-right: 50px;
 }
 
 #reseaux {
@@ -46,32 +69,43 @@ nav {
     left: 0;
 }
 
-nav span {
+
+/* nav span {
     position: fixed;
     display: flex;
     justify-content: center;
     font-family: 'Courier New', Courier, monospace;
     cursor: pointer;
     font-size: 20px;
-    /* top: 15px; */
-}
+} */
 
 /* About */
-nav span:nth-of-type(1) {
+/* nav span:nth-of-type(1) {
     transform: rotate(90deg);
     left: -10px;
-}
+} */
 
 /* Projets */
-nav span:nth-of-type(2) {
+/* nav span:nth-of-type(2) {
     top: 15px;
-}
+} */
 
 /* Curriculum vitae */
-nav span:nth-of-type(3) {
+/* nav span:nth-of-type(3) {
     transform: rotate(-90deg);
     right: -55px;
-}
+} */
+
+/* about */
+/* nav span:nth-of-type(1) {} */
+
+/* projets */
+/* nav span:nth-of-type(2) {} */
+
+/* curriculum vitae */
+/* nav span:nth-of-type(3) {} */
+
+
 
 /* Scroll */
 nav span:nth-of-type(4) {
@@ -115,6 +149,7 @@ section h2 {
     padding: 50px;
     width: 100%;
     text-align: center;
+    font-family: Roboto;
 }
 
 .sec-box {
@@ -122,7 +157,7 @@ section h2 {
     position: relative;
     width: 100%;
     /* height: fit-content; */
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -163,17 +198,26 @@ section h2 {
     height: 30px;
     padding-left: 5px;
     width: 0%;
+    color: white;
 }
 
-#html div {background: rgba(25, 192, 214, 0.5);}
+/* #html div {background: rgba(25, 192, 214, 0.5);}
 #css div {background: rgba(154, 25, 214, 0.5);}
 #javascript div {background: rgba(201, 214, 25, 0.5);}
 #react div {background: rgba(25, 38, 214, 0.5);}
 #nodejs div {background: rgba(214, 148, 25, 0.5);}
 #mongodb div {background: rgba(63, 214, 25, 0.5);}
 #php div {background: rgba(25, 214, 151, 0.5);}
-#sql div {background: rgba(214, 25, 25, 0.5);}
+#sql div {background: rgba(214, 25, 25, 0.5);} */
 
+#html div {background: #212121;}
+#css div {background: #212121;}
+#javascript div {background: #212121;}
+#react div {background: #212121;}
+#nodejs div {background: #212121;}
+#mongodb div {background: #212121;}
+#php div {background: #212121;}
+#sql div {background: #212121;}
 
 /* Classes utiles */
 .mrg-top10 {margin-top: 10px;}
@@ -181,14 +225,31 @@ section h2 {
 .mrg-top50 {margin-top: 50px;}
 .mrg-top100 {margin-top: 100px;}
 
+.p-large {
+    width: 43%;
+    text-align: justify;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-family: Roboto;
+}
 
 
 
-.project-Box {
+
+/* .project-Box {
     width: 70%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
+} */
+
+.project-Box {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    grid-gap: 50px;
 }
 
 
@@ -202,5 +263,10 @@ section h2 {
 
 
 @media only screen and (max-width: 1400px){
+
+    .project-Box {
+        display: flex;
+        flex-direction: column;
+    }
 
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Separateur from '../components/separateur';
 import Project from '../components/project';
+import Tag from '../components/tag';
 
 export default function Home(props) {
     useEffect(() => {
@@ -8,15 +9,50 @@ export default function Home(props) {
         const logoCatch = document.querySelector("header span");
         const logoCentral = document.querySelector("#logoCentral");
         const backTop = document.querySelector("#backTop");
-        let scrollWord = document.querySelector("#scrollWord");
-        
+        logoCentral.style.fontSize = "80px";
+
 
         // Vérifier si les éléments sont définis avant d'accéder à leurs propriétés
-        if (logoCatch && logoCentral && backTop && scrollWord) {
+        if (logoCatch && logoCentral && backTop) {
+
+
+            setTimeout(() => {
+                const logoName = logoCentral.textContent;
+                const fullName = logoName.split(' ');
+                let prenom = fullName[0];
+                let nom = fullName[1];
+                // console.log(prenom + nom);
+                let count = 0;
+                const intervalNom = setInterval(() => {
+                    if (count < nom.length - 1) {
+                        let newNom = nom.substring(0, nom.length - count - 1);
+                        logoCentral.textContent = `${prenom} ${newNom}`;
+                        count++;
+                    } else {
+                        nom = nom.substring(0, nom.length - count);
+                        logoCentral.textContent = `${prenom}${nom}`;
+                        clearInterval(intervalNom);
+                    }
+                }, 100);
+                
+                setTimeout(() => {
+                    count = 0;
+                    const intervalPrenom = setInterval(() => {
+                        if (count < prenom.length - 1) {
+                            let newPrenom = prenom.substring(0, prenom.length - count - 1);
+                            logoCentral.textContent = `${newPrenom}${nom}`;
+                            count++;
+                        } else {
+                            clearInterval(intervalPrenom);
+                            logoRoll();
+                            count = 0;
+                        }
+                    }, 100);
+                }, 800);
+            }, 2000);
 
         // animation au lancement de la page
         function logoRoll() {
-            logoCentral.style.fontSize = "50px";
             setTimeout(() => {
                 logoCentral.style.transition = "0.5s";
                 logoCentral.style.transform = "rotate(360deg)";
@@ -41,31 +77,18 @@ export default function Home(props) {
             }, 500);
         }
         
-        let scrollPlayStatus = 0;
-        
-        function bumpScroll() {
-            let bumping = setInterval(() => {
-                if(scrollPlayStatus === 0) {
-                    scrollWord.style.transition = "0.3s";
-                    scrollWord.style.top = "96.5%";
-                    scrollPlayStatus = 1;
-                } else {
-                    scrollWord.style.transition = "0.3s";
-                    scrollWord.style.top = "96%";
-                    scrollPlayStatus = 0;
-                }
-            }, 200);
-            setTimeout(() => {
-                clearInterval(bumping);
-            }, 800);
-        };
-        
-        setInterval(() => {
-            bumpScroll();
-        }, 4000);
-        
-        logoRoll();
-        
+        // logoRoll();
+
+
+
+        for(let n=0; n < spans.length; n++) {
+            spans[n].addEventListener("click", (e) => {
+                // function animation avant l'autoscroll
+                
+            });
+        }
+
+
         
         spans[0].addEventListener("click", () => {
             const aPropos = document.querySelector("#apropos");
@@ -86,7 +109,7 @@ export default function Home(props) {
                 // On fait apparaitre la flèche back to top
                 backTop.style.display = "inline";
                 backTop.style.filter = "invert(80%)";
-                spans[3].style.display = 'none';
+                // spans[3].style.display = 'none';
                 let valueOpa = 1-((window.scrollY)/400);
                 spans[0].style.opacity = `${valueOpa}`;
                 spans[1].style.opacity = `${valueOpa}`;
@@ -99,7 +122,7 @@ export default function Home(props) {
             } else {
               // L'utilisateur est en haut de la page
                 backTop.style.display = "none";
-                spans[3].style.display = 'inline';
+                // spans[3].style.display = 'inline';
                 spans[0].style.opacity = "1";
                 spans[1].style.opacity = "1";
                 spans[2].style.opacity = "1";
@@ -197,12 +220,12 @@ window.addEventListener('scroll', () => {
             <section id="home">
                 <nav>
                     <span>À propos</span>
-                    <span>Projets</span>
+                    <span>Mes projets</span>
                     <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">Curriculum Vitae</a></span>
-                    <span id="scrollWord">Scroll</span>
                 </nav>
 
-                <div id="logoCentral">dp</div>
+                <div id="logoCentral">damien pernin</div>
+                {/* <div id="logoCentral">dp</div> */}
 
                 <div id="reseaux">
                     <div><a href="/"><img src="images/github.png" alt="github" /></a></div>
@@ -215,7 +238,11 @@ window.addEventListener('scroll', () => {
 
             <section id="apropos" className="sec-box">
                 <h2>À propos</h2>
-                <p>Je m'appelle Damien Pernin, <span id="monAge"></span>ans ...</p>
+
+                <p className="p-large">Je m'appelle Damien Pernin, rêveur et créateur dans l'âme depuis <span id="monAge"></span>ans maintenant. J'aime transformer des maquettes en code pour laisser mon empreinte dans ce monde. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie dans le développement viendra embellir le tout.</p>
+
+                <p className="p-large">Étudier des langages, découvrir des nouveautés et l'évolution du monde informatique, voilà ce qui me passionne. Je mettrais à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
+
                 <div className="mrg-top100">
                     <h3>Mes compétences</h3>
                     <div id="competences" className="mrg-top25">
@@ -252,9 +279,29 @@ window.addEventListener('scroll', () => {
             <section id="projets" className="sec-box">
                 <h2>Mes projets</h2>
                 <div className="project-Box">
-                    <Project titre="Booki" bground="" url="/" className="project-card">Booki</Project>
-                    <Project titre="Booki" bground="" url="/" className="project-card">Booki</Project>
-                    <Project titre="Booki" bground="" url="/" className="project-card">Booki</Project>
+                    <Project titre="Booki" bground="/images/screen-booki.png" url="https://oufz0r.github.io/OCR_P2/" className="project-card">
+                        <p className="bg-white txt-dark">Intégration d'un site web statique et responsive en HTML/CSS à partir d'une maquette Figma pour un projet de formation OpenClassrooms.</p>
+                        <div className="tag-box">
+                            <Tag>HTML</Tag>
+                            <Tag>CSS</Tag>
+                        </div>
+                    </Project>
+                    <Project titre="Sophie Bluel" bground="/images/screen-sbluel.png" url="https://github.com/Oufz0r/OCR_P3" className="project-card">
+                        <p className="bg-white">Développement du Front pour le site de la Photographe Sophie Bluel, et mise en lien avec le backend via une API. (Connexion, ajout et suppression de projets via une modale).</p>
+                        <div className="tag-box">
+                            <Tag>HTML</Tag>
+                            <Tag>CSS</Tag>
+                            <Tag>Javascript</Tag>
+                            <Tag>NodeJS</Tag>
+                        </div>
+                    </Project>
+                    <Project titre="Kasa" bground="/images/screen-kasa.png" url="https://github.com/Oufz0r/OCR_P6" className="project-card">
+                    <p className="bg-white">Création du Front d'une application web de location immobilière pour Kasa, avec React à partir d'une maquette Figma. Projet de formation OpenclassRooms.</p>
+                        <div className="tag-box">
+                            <Tag>CSS</Tag>
+                            <Tag>React</Tag>
+                        </div>
+                    </Project>
                 </div>
             </section>
         </>

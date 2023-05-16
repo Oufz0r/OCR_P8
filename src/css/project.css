@@ -9,30 +9,94 @@
     align-items: center;
     overflow: hidden;
     position: relative;
+    box-shadow: 5px 5px 12px #212121;
 }
 
-.project div:first-of-type {
+.project .project-link div {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #212121;
+    color: white;
     width: 100%;
     height: 80px;
-    color: #9c9086;
     font-size: 36px;
+    /* font-family: 'Overpass'; */
+}
+
+.project .project-link:hover div {
+    color: #212121;
+    background-color: white;
+}
+
+.project .bground {
+    width: 100%;
+    height: 420px;
+    background-position: center;
+    background-size: cover;
+}
+
+.inner-desc {
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    width: 100%;
+    height: 0;
+    /* background-color: rgba(158, 151, 145, 0.884); */
+    background-color: #212121da;
+    overflow: hidden;
+}
+
+.inner-desc p {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 20px;
+    padding: 10px;
+    /* color: #212121; */
+    /* background-color: #fff; */
+    text-align: justify;
+}
+
+.inner-desc .tag-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.inner-desc .tag-box > *:not(:last-child) {
+    margin-right: 20px;
+}
+
+.inner-desc img {
+    margin: 20px;
+    transform: rotate(-45deg);
+    filter: invert(100%);
+    width: 32px;
+}
+
+.project:hover .bground .inner-desc {
+    width: 100%;
+    height: 100%;
+}
+
+.project:hover .project-link div {
+    color: #212121;
+    background-color: white;
 }
 
 .project a {
     text-decoration: none;
-    color: #9c9086;
+    color: white;
+    font-family: Lobster;
+    width: 100%;
 }
 
-.project a:hover {
-    font-weight: 600;
-    font-size: 40px;
-}
-
-.project p {
+/* .project p {
     position: absolute;
     bottom: 20px;
-}
+} */

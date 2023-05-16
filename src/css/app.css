@@ -1,11 +1,32 @@
 /* pages */
-@import './app.css';
+/* @import './css/app.css'; */
 @import './home.css';
 /* components */
 @import './header.css';
 @import './separateur.css';
+@import './project.css';
+@import './tag.css';
 /* adds */
-@import url('//fonts/Lobster-Regular.ttf');
+/* @import url('//fonts/Lobster-Regular.ttf'); */
+@font-face {
+    font-family: 'Lobster';
+    src: url('../fonts/Lobster-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Overpass';
+    src: url('../fonts/Overpass-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+/* @font-face {
+    font-family: 'Lobster';
+    src: url('/fonts/Lobster-Regular.ttf');
+} */
 
 * {
     box-sizing: border-box;
@@ -13,20 +34,18 @@
     padding: 0;
 }
 
-/* html {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
+.bg-white {
     background-color: white;
-    color: white;
-} */
+}
 
-/* body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-} */
+.txt-white {
+    color: white;
+}
+
+.bg-dark {
+    background-color: #212121;
+}
+
+.txt-dark {
+    color: #212121;
+}
