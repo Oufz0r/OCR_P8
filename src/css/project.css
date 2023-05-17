@@ -57,6 +57,7 @@
     /* color: #212121; */
     /* background-color: #fff; */
     text-align: justify;
+    font-family: 'Roboto';
 }
 
 .inner-desc .tag-box {
@@ -74,7 +75,7 @@
 
 .inner-desc img {
     margin: 20px;
-    transform: rotate(-45deg);
+    /* transform: rotate(-45deg); */
     filter: invert(100%);
     width: 32px;
 }

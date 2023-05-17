@@ -229,9 +229,9 @@ window.addEventListener('scroll', () => {
                 {/* <div id="logoCentral">dp</div> */}
 
                 <div id="reseaux">
-                    <div><a href="/"><img src="images/github.png" alt="github" /></a></div>
-                    <div><a href="/"><img src="images/linkedin.png" alt="linkedin" /></a></div>
-                    <div><a href="/"><img src="images/instagram.png" alt="instagram" /></a></div>
+                    <div><a href="https://github.com/Oufz0r"><img src="images/github.png" alt="github" /></a></div>
+                    <div><a href="https://www.linkedin.com/in/damien-pernin-723274169/"><img src="images/linkedin.png" alt="linkedin" /></a></div>
+                    <div><a href="https://www.instagram.com/s0oap_/"><img src="images/instagram.png" alt="instagram" /></a></div>
                 </div>
             </section>
 

@@ -17,6 +17,9 @@
     /* color: #ca3b8c; */
     color: #ececec;
     background-color: #2f435e;
+    /* background: rgb(255,255,255); */
+/* background: linear-gradient(180deg, rgba(47,67,94,1) 50%, rgb(255, 255, 255) 100%); */
+/* background: linear-gradient(140deg, rgba(47,67,94,1) 60%, rgb(109, 128, 151) 100%); */
 }
 
 nav {
@@ -167,7 +170,7 @@ section h2 {
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Roboto';
 }
 
 .separateur {
@@ -194,7 +197,7 @@ section h2 {
 #competences div {
     width: 400px;
     height: 30px;
-    background: rgb(218, 218, 218);
+    background: rgb(235, 235, 235);
 }
 
 #competences div div {
@@ -203,18 +206,18 @@ section h2 {
     height: 30px;
     padding-left: 5px;
     width: 0%;
-    color: white;
-    /* color: #212121; */
+    /* color: white; */
+    color: #212121;
 }
 
-/* #html div {background: rgba(25, 192, 214, 0.5);}
-#css div {background: rgba(154, 25, 214, 0.5);}
-#javascript div {background: rgba(201, 214, 25, 0.5);}
-#react div {background: rgba(25, 38, 214, 0.5);}
-#nodejs div {background: rgba(214, 148, 25, 0.5);}
-#mongodb div {background: rgba(63, 214, 25, 0.5);}
+#html div {background: rgba(109, 202, 214, 0.644);}
+#css div {background: rgba(192, 141, 216, 0.659);}
+#javascript div {background: rgba(220, 226, 131, 0.651);}
+#react div {background: rgba(130, 136, 221, 0.623);}
+#nodejs div {background: rgba(224, 191, 130, 0.658);}
+#mongodb div {background: rgba(159, 224, 143, 0.664);}
 #php div {background: rgba(25, 214, 151, 0.5);}
-#sql div {background: rgba(214, 25, 25, 0.5);} */
+#sql div {background: rgba(214, 25, 25, 0.5);}
 
 /* #html div {background: #212121;}
 #css div {background: #212121;}
@@ -225,14 +228,14 @@ section h2 {
 #php div {background: #212121;}
 #sql div {background: #212121;} */
 
-#html div {background: #2f435e;}
+/* #html div {background: #2f435e;}
 #css div {background: #708297;}
 #javascript div {background: #708297;}
 #react div {background: #2f435e;}
 #nodejs div {background: #2f435e;}
 #mongodb div {background: #708297;}
 #php div {background: #708297;}
-#sql div {background: #2f435e;}
+#sql div {background: #2f435e;} */
 
 /* Classes utiles */
 .mrg-top10 {margin-top: 10px;}
