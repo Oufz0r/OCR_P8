@@ -296,7 +296,7 @@ window.addEventListener('scroll', () => {
                             <Tag>NodeJS</Tag>
                         </div>
                     </Project>
-                    <Project titre="Kasa" bground="/images/screen-kasa.png" url="https://github.com/Oufz0r/OCR_P6" className="project-card">
+                    <Project titre="Kasa" bground="/images/screen-kasa.png" url="https://dreamy-rugelach-7e710f.netlify.app/" className="project-card">
                     <p className="bg-white">Création du Front d'une application web de location immobilière pour Kasa, avec React à partir d'une maquette Figma. Projet de formation OpenclassRooms.</p>
                         <div className="tag-box">
                             <Tag>CSS</Tag>
