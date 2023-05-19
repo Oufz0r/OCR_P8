@@ -20,13 +20,12 @@ export default function Home(props) {
         // Vérifier si les éléments sont définis avant d'accéder à leurs propriétés
         if (logoCatch && logoCentral && backTop) {
 
-
+            // Animation du prénom qui devient le logo
             setTimeout(() => {
                 const logoName = logoCentral.textContent;
                 const fullName = logoName.split(' ');
                 let prenom = fullName[0];
                 let nom = fullName[1];
-                // console.log(prenom + nom);
                 let count = 0;
                 const intervalNom = setInterval(() => {
                     if (count < nom.length - 1) {
@@ -87,12 +86,11 @@ export default function Home(props) {
 
 
 
-        for(let n=0; n < spans.length; n++) {
-            spans[n].addEventListener("click", (e) => {
-                // function animation avant l'autoscroll
-                
-            });
-        }
+        // for(let n=0; n < spans.length; n++) {
+        //     spans[n].addEventListener("click", (e) => {
+        //         // function animation avant l'autoscroll
+        //     });
+        // }
 
 
         
@@ -201,7 +199,7 @@ window.addEventListener('scroll', () => {
     // A PROPOS
     const aPropos = document.querySelector('#apropos');
     const aProposPosition = aPropos.getBoundingClientRect();
-    if (aProposPosition.top <= window.innerHeight * 0.1 && aProposPosition.bottom >= window.innerHeight * 0.1) {
+    if (aProposPosition.top <= window.innerHeight * 0.2 && aProposPosition.bottom >= window.innerHeight * 0.2) {
         if(skillStatus === 0) {
             skillGrow();
             skillStatus = 1;
@@ -215,8 +213,14 @@ window.addEventListener('scroll', () => {
     const projets = document.querySelector('#projets');
     const projetsPosition = projets.getBoundingClientRect();
     // console.log("TOP:" + projetsPosition.top + " / BOTTOM: " + projetsPosition.bottom + " / INNER: " + window.innerHeight);
-    if (projetsPosition.top <= window.innerHeight * 0 && projetsPosition.bottom >= window.innerHeight * 0) {
+    if (projetsPosition.top <= window.innerHeight * 0.4 && projetsPosition.bottom >= window.innerHeight * 0.4) {
         // logoCatch.style.color = "#2f435e";
+        setTimeout(() => {
+            const projectCard = document.querySelectorAll(".project");
+            for(let n=0; n < projectCard.length; n++) {
+                projectCard[n].style.width = "400px";
+            }
+        }, 250);
     }
     // Logo hors section
     const home = document.querySelector('#home');

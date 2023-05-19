@@ -1,5 +1,7 @@
 .project {
-    width: 400px;
+    /* width: 400px; */
+    transition: 0.5s;
+    width: 0px;
     height: 500px;
     background-color: #9c9086;
     border-radius: 5px;
