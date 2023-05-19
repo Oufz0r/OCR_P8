@@ -76,8 +76,20 @@
 .inner-desc img {
     margin: 20px;
     /* transform: rotate(-45deg); */
+    /* filter: invert(100%); */
+    width: 24px;
+}
+
+.invert {
     filter: invert(100%);
-    width: 32px;
+}
+
+.hidden {
+    display: none;
+}
+
+.inner-desc .github-logo {
+    width: 50px;
 }
 
 .project:hover .bground .inner-desc {

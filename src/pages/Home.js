@@ -185,6 +185,7 @@ window.addEventListener('scroll', () => {
     // console.log("TOP:" + aProposPosition.top + " / BOTTOM: " + aProposPosition.bottom + " / INNER: " + window.innerHeight);
     if (aProposPosition.top <= window.innerHeight * 0 && aProposPosition.bottom >= window.innerHeight * 0) {
         logoCatch.style.color = "#2f435e";
+        logoCatch.style.fontWeight = "bold";
     }
     // PROJETS
     const projets = document.querySelector('#projets');
@@ -192,6 +193,7 @@ window.addEventListener('scroll', () => {
     // console.log("TOP:" + projetsPosition.top + " / BOTTOM: " + projetsPosition.bottom + " / INNER: " + window.innerHeight);
     if (projetsPosition.top <= window.innerHeight * 0 && projetsPosition.bottom >= window.innerHeight * 0) {
         logoCatch.style.color = "#2f435e";
+        logoCatch.style.fontWeight = "bold";
     }
     // Logo hors section
     const home = document.querySelector('#home');
@@ -280,14 +282,14 @@ window.addEventListener('scroll', () => {
             <section id="projets" className="sec-box">
                 <h2>Mes projets</h2>
                 <div className="project-Box">
-                    <Project titre="Booki" bground="/images/screen-booki.png" url="https://oufz0r.github.io/OCR_P2/" className="project-card">
+                    <Project titre="Booki" bground="/images/screen-booki.png" url="https://oufz0r.github.io/OCR_P2/" ghlink="https://github.com/Oufz0r/OCR_P2" className="project-card">
                         <p className="bg-white txt-dark">Intégration d'un site web statique et responsive en HTML/CSS à partir d'une maquette Figma pour un projet de formation OpenClassrooms.</p>
                         <div className="tag-box">
                             <Tag>HTML</Tag>
                             <Tag>CSS</Tag>
                         </div>
                     </Project>
-                    <Project titre="Sophie Bluel" bground="/images/screen-sbluel.png" url="https://github.com/Oufz0r/OCR_P3" className="project-card">
+                    <Project titre="Sophie Bluel" bground="/images/screen-sbluel.png" url="" ghlink="https://github.com/Oufz0r/OCR_P3" className="project-card">
                         <p className="bg-white">Développement du Front pour le site de la Photographe Sophie Bluel, et mise en lien avec le backend via une API. (Connexion, ajout et suppression de projets via une modale).</p>
                         <div className="tag-box">
                             <Tag>HTML</Tag>
@@ -296,7 +298,7 @@ window.addEventListener('scroll', () => {
                             <Tag>NodeJS</Tag>
                         </div>
                     </Project>
-                    <Project titre="Kasa" bground="/images/screen-kasa.png" url="https://dreamy-rugelach-7e710f.netlify.app/" className="project-card">
+                    <Project titre="Kasa" bground="/images/screen-kasa.png" url="https://dreamy-rugelach-7e710f.netlify.app/" ghlink="https://github.com/Oufz0r/OCR_P6" className="project-card">
                     <p className="bg-white">Création du Front d'une application web de location immobilière pour Kasa, avec React à partir d'une maquette Figma. Projet de formation OpenclassRooms.</p>
                         <div className="tag-box">
                             <Tag>CSS</Tag>

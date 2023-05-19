@@ -132,6 +132,7 @@ nav span:nth-of-type(4) {
     font-family: 'Lobster', cursive;
     /* font-size: 200px; */
     /* font-weight: 400; */
+    font-weight: bold;
     position: fixed;
     cursor: default;
     user-select: none;
