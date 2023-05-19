@@ -6,10 +6,15 @@ import Tag from '../components/tag';
 export default function Home(props) {
     useEffect(() => {
         let spans = document.querySelectorAll("nav span");
-        const logoCatch = document.querySelector("header span");
+        const logoCatch = document.querySelector("header h1 span");
+        const logoH1 = document.querySelector("header h1");
         const logoCentral = document.querySelector("#logoCentral");
         const backTop = document.querySelector("#backTop");
         logoCentral.style.fontSize = "80px";
+
+        const header = document.querySelector("header");
+        const nav = document.querySelector("nav");
+        const navLinks = document.querySelectorAll("nav span, nav a");
 
 
         // Vérifier si les éléments sont définis avant d'accéder à leurs propriétés
@@ -56,6 +61,7 @@ export default function Home(props) {
             setTimeout(() => {
                 logoCentral.style.transition = "0.5s";
                 logoCentral.style.transform = "rotate(360deg)";
+                logoCentral.style.fontWeight = "bold";
                 setTimeout(() => {
                     if (window.innerWidth < 1000) {
                         logoCentral.style.fontSize = "250px";
@@ -111,21 +117,40 @@ export default function Home(props) {
                 backTop.style.filter = "invert(80%)";
                 // spans[3].style.display = 'none';
                 let valueOpa = 1-((window.scrollY)/400);
-                spans[0].style.opacity = `${valueOpa}`;
-                spans[1].style.opacity = `${valueOpa}`;
-                spans[2].style.opacity = `${valueOpa}`;
+                // spans[0].style.opacity = `${valueOpa}`;
+                // spans[1].style.opacity = `${valueOpa}`;
+                // spans[2].style.opacity = `${valueOpa}`;
                 logoCentral.style.opacity = `${valueOpa}`;
                 for(let n=0; n < spans.length; n++) {
-                    if(spans[n].style.opacity < 0.2){spans[n].style.display = 'none';}
-                    if(spans[n].style.opacity >= 0.2){spans[n].style.display = 'inline';}
+                    // if(spans[n].style.opacity < 0.2){spans[n].style.display = 'none';}
+                    // if(spans[n].style.opacity >= 0.2){spans[n].style.display = 'inline';}
+                }
+
+                // On Scroll et on garde le header visible ===================================================== <
+                if(this.window.scrollY > 850 && window.innerWidth > 1200) {
+                    nav.style.top = "35px";
+                    header.style.backgroundColor = "white";
+                    // header.style.boxShadow = "0px 5px 15px #212121";
+                    logoCatch.style.color = "#2f435e";
+                    logoH1.style.top = "5px";
+                    for(let i=0; i<navLinks.length; i++)
+                    {navLinks[i].style.color = "#2f435e";}
+                } else {
+                    nav.style.top = "60px";
+                    header.style.backgroundColor = "";
+                    // header.style.boxShadow = "none";
+                    logoCatch.style.color = "white";
+                    logoH1.style.top = "15px";
+                    for(let i=0; i<navLinks.length; i++)
+                    {navLinks[i].style.color = "white";}
                 }
             } else {
               // L'utilisateur est en haut de la page
                 backTop.style.display = "none";
                 // spans[3].style.display = 'inline';
-                spans[0].style.opacity = "1";
-                spans[1].style.opacity = "1";
-                spans[2].style.opacity = "1";
+                // spans[0].style.opacity = "1";
+                // spans[1].style.opacity = "1";
+                // spans[2].style.opacity = "1";
                 logoCentral.style.opacity = "1";
             }
         });
@@ -176,7 +201,7 @@ window.addEventListener('scroll', () => {
     // A PROPOS
     const aPropos = document.querySelector('#apropos');
     const aProposPosition = aPropos.getBoundingClientRect();
-    if (aProposPosition.top <= window.innerHeight * 0.5 && aProposPosition.bottom >= window.innerHeight * 0.5) {
+    if (aProposPosition.top <= window.innerHeight * 0.1 && aProposPosition.bottom >= window.innerHeight * 0.1) {
         if(skillStatus === 0) {
             skillGrow();
             skillStatus = 1;
@@ -184,29 +209,27 @@ window.addEventListener('scroll', () => {
     }
     // console.log("TOP:" + aProposPosition.top + " / BOTTOM: " + aProposPosition.bottom + " / INNER: " + window.innerHeight);
     if (aProposPosition.top <= window.innerHeight * 0 && aProposPosition.bottom >= window.innerHeight * 0) {
-        logoCatch.style.color = "#2f435e";
-        logoCatch.style.fontWeight = "bold";
+        // logoCatch.style.color = "#2f435e";
     }
     // PROJETS
     const projets = document.querySelector('#projets');
     const projetsPosition = projets.getBoundingClientRect();
     // console.log("TOP:" + projetsPosition.top + " / BOTTOM: " + projetsPosition.bottom + " / INNER: " + window.innerHeight);
     if (projetsPosition.top <= window.innerHeight * 0 && projetsPosition.bottom >= window.innerHeight * 0) {
-        logoCatch.style.color = "#2f435e";
-        logoCatch.style.fontWeight = "bold";
+        // logoCatch.style.color = "#2f435e";
     }
     // Logo hors section
     const home = document.querySelector('#home');
     const homePosition = home.getBoundingClientRect();
     if (homePosition.top < window.innerHeight * 0 && homePosition.bottom > window.innerHeight * 0) {
-        logoCatch.style.color = "white";
+        // logoCatch.style.color = "white";
     }
     // Les séparateurs
     const separateurs = document.querySelectorAll('.separateur');
     for(let n=0; n < separateurs.length; n++) {
         const separateurPosition = separateurs[n].getBoundingClientRect();
         if (separateurPosition.top < window.innerHeight * 0 && separateurPosition.bottom > window.innerHeight * 0) {
-            logoCatch.style.color = "white";
+            // logoCatch.style.color = "white";
         }
     }
 });
@@ -221,12 +244,6 @@ window.addEventListener('scroll', () => {
     return (
         <>
             <section id="home">
-                <nav>
-                    <span>À PROPOS</span>
-                    <span>MES PROJETS</span>
-                    <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">CURRICULUM VITÆ</a></span>
-                </nav>
-
                 <div id="logoCentral">damien pernin</div>
                 {/* <div id="logoCentral">dp</div> */}
 
@@ -253,19 +270,19 @@ window.addEventListener('scroll', () => {
                             <div data-skill="100">html</div>
                         </div>
                         <div id="css">
-                            <div data-skill="90">css</div>
+                            <div data-skill="95">css</div>
                         </div>
                         <div id="javascript">
-                            <div data-skill="60">javascript</div>
+                            <div data-skill="85">javascript</div>
                         </div>
                         <div id="react">
-                            <div data-skill="55">react</div>
+                            <div data-skill="70">react</div>
                         </div>
                         <div id="nodejs">
-                            <div data-skill="50">nodejs</div>
+                            <div data-skill="65">nodejs</div>
                         </div>
                         <div id="mongodb">
-                            <div data-skill="50">mongodb</div>
+                            <div data-skill="60">mongodb</div>
                         </div>
                         {/* <div id="php">
                             <div data-skill="30">php</div>

@@ -80,16 +80,42 @@
     width: 24px;
 }
 
+.descLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.project .descLinks a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
 .invert {
     filter: invert(100%);
+}
+
+.invert:hover {
+    filter: invert(10%);
 }
 
 .hidden {
     display: none;
 }
 
+.project .descLinks .hidden {
+    display: none;
+}
+
 .inner-desc .github-logo {
-    width: 50px;
+    width: 60px;
+}
+
+.inner-desc .github-logo:hover {
+    filter: invert(90%);
 }
 
 .project:hover .bground .inner-desc {
