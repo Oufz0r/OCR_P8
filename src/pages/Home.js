@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Separateur from '../components/separateur';
 import Project from '../components/project';
 import Tag from '../components/tag';
