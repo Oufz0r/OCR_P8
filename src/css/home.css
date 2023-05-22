@@ -23,6 +23,13 @@
 /* background: linear-gradient(140deg, rgba(47,67,94,1) 60%, rgb(109, 128, 151) 100%); */
 }
 
+.homeBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
 #reseaux {
@@ -130,7 +137,7 @@ section h2 {
 .sec-box {
     color: #2f435e;
     position: relative;
-    width: 100%;
+    width: 60%;
     /* height: fit-content; */
     min-height: 100vh;
     display: flex;
@@ -139,6 +146,10 @@ section h2 {
     align-items: center;
     font-family: 'Roboto';
     padding-top: 100px;
+}
+
+.secInnerBox {
+    width: 90%;
 }
 
 .separateur {
@@ -162,30 +173,14 @@ section h2 {
     grid-auto-rows: minmax(50px, auto);
 }
 
-#competences div {
-    width: 400px;
-    height: 30px;
-    background: rgb(235, 235, 235);
-}
-
-#competences div div {
-    display: flex;
-    align-items: center;
-    height: 30px;
-    padding-left: 5px;
-    width: 0%;
-    /* color: white; */
-    color: #212121;
-}
-
-#html div {background: rgba(109, 202, 214, 0.644);}
+/* #html div {background: rgba(109, 202, 214, 0.644);}
 #css div {background: rgba(192, 141, 216, 0.659);}
 #javascript div {background: rgba(220, 226, 131, 0.651);}
 #react div {background: rgba(130, 136, 221, 0.623);}
 #nodejs div {background: rgba(224, 191, 130, 0.658);}
 #mongodb div {background: rgba(159, 224, 143, 0.664);}
 #php div {background: rgba(25, 214, 151, 0.5);}
-#sql div {background: rgba(214, 25, 25, 0.5);}
+#sql div {background: rgba(214, 25, 25, 0.5);} */
 
 /* #html div {background: #212121;}
 #css div {background: #212121;}
@@ -211,8 +206,22 @@ section h2 {
 .mrg-top50 {margin-top: 50px;}
 .mrg-top100 {margin-top: 100px;}
 
+.mrg-bot10 {margin-bottom: 10px;}
+.mrg-bot25 {margin-bottom: 25px;}
+.mrg-bot50 {margin-bottom: 50px;}
+.mrg-bot100 {margin-bottom: 100px;}
+
+.w60 {width:60%;}
+.w50 {width:50%;}
+.w60 {width:60%;}
+.w70 {width:70%;}
+.w80 {width:80%;}
+.w90 {width:90%;}
+.w100 {width:100%;}
+
 .p-large {
-    width: 43%;
+    /* width: 43%; */
+    /* width: 100%; */
     text-align: justify;
     margin-bottom: 20px;
     font-size: 18px;

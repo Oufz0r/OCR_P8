@@ -56,18 +56,18 @@ nav span, nav span a {
     /* color: #ca3b8c; */
     color: #ececec;
     text-transform: uppercase;
-    font-weight: 400;
+    /* font-weight: bold; */
     letter-spacing: 2px;
 }
 
 nav span a {
     text-decoration: none;
     /* color: #ca3b8c; */
-    color: #ececec;
+    /* color: #ececec; */
 }
 
 nav span div {
-    transition: 0.3s;
+    transition: 0.2s;
     position: absolute;
     /* top: 45%; */
     top: 90%;
@@ -77,9 +77,13 @@ nav span div {
     background-color: #ececec;
 }
 
-nav span:hover div {
+nav span .active {
     left: 0%;
 }
+
+/* nav span:hover div {
+    left: 0%;
+} */
 
 /* nav *:not(:last-child) {
     margin-right: 50px;

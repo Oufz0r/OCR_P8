@@ -1,11 +1,15 @@
 /* pages */
-/* @import './css/app.css'; */
 @import './home.css';
+@import './lost.css';
 /* components */
 @import './header.css';
 @import './separateur.css';
 @import './project.css';
 @import './tag.css';
+@import './timeline.css';
+@import './skillbar.css';
+@import './contactForm.css';
+@import './modale.css';
 /* adds */
 /* @import url('//fonts/Lobster-Regular.ttf'); */
 @font-face {

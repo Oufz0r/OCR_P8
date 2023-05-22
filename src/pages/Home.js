@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Separateur from '../components/separateur';
 import Project from '../components/project';
 import Tag from '../components/tag';
+import Header from '../components/header';
+import Timeline from '../components/timeline';
+import Skillbar from '../components/skillbar';
+import ContactForm from '../components/contactForm';
+// import Modale from '../components/modale';
+// import { Form } from 'react-router-dom';
+import data from '../projets.json';
 
 export default function Home(props) {
+        // Utilisation d'un useEffect pour s'assurer que la page est chargée avant que JS ne récupére les éléments
     useEffect(() => {
         let spans = document.querySelectorAll("nav span");
         const logoCatch = document.querySelector("header h1 span");
@@ -93,10 +101,18 @@ export default function Home(props) {
         // }
 
 
-        
+        // liens vers les sections
         spans[0].addEventListener("click", () => {
             const aPropos = document.querySelector("#apropos");
             aPropos.scrollIntoView({ behavior: "smooth" });
+            // ajout du underline static
+            // for(let n=0; n < spans.length; n++) {
+            //     let underDiv = spans[n].querySelector("div");
+            //     underDiv.removeAttribute('class', '');
+            // }
+            // const activeSpan = 0;
+            // let underDiv = spans[activeSpan].querySelector("div");
+            // underDiv.setAttribute('class', 'active');
         });
         
         spans[1].addEventListener("click", () => {
@@ -105,7 +121,31 @@ export default function Home(props) {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const scrollTarget = projetsPosition.top + scrollTop + 1;
             window.scrollTo({ top: scrollTarget, behavior: "smooth" });
+            // ajout du underline static
+            // for(let n=0; n < spans.length; n++) {
+            //     let underDiv = spans[n].querySelector("div");
+            //     underDiv.removeAttribute('class', '');
+            // }
+            // const activeSpan = 1;
+            // let underDiv = spans[activeSpan].querySelector("div");
+            // underDiv.setAttribute('class', 'active');
         });
+
+        spans[2].addEventListener("click", () => {
+            const contact = document.querySelector("#contact");
+            contact.scrollIntoView({ behavior: "smooth" });
+            // ajout du underline static
+            // for(let n=0; n < spans.length; n++) {
+            //     let underDiv = spans[n].querySelector("div");
+            //     underDiv.removeAttribute('class', '');
+            // }
+            // const activeSpan = 2;
+            // let underDiv = spans[activeSpan].querySelector("div");
+            // underDiv.setAttribute('class', 'active');
+        });
+
+
+
 
         window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
@@ -134,21 +174,21 @@ export default function Home(props) {
                     for(let i=0; i<navLinks.length; i++)
                     {navLinks[i].style.color = "#2f435e";}
                 } else {
+                    for(let n=0; n < spans.length; n++) {
+                        let underDiv = spans[n].querySelector("div");
+                        underDiv.removeAttribute('class', '');
+                    }
                     nav.style.top = "60px";
                     header.style.backgroundColor = "";
                     // header.style.boxShadow = "none";
                     logoCatch.style.color = "white";
                     logoH1.style.top = "15px";
                     for(let i=0; i<navLinks.length; i++)
-                    {navLinks[i].style.color = "white";}
+                    {navLinks[i].style.color = "white";} 
                 }
             } else {
               // L'utilisateur est en haut de la page
                 backTop.style.display = "none";
-                // spans[3].style.display = 'inline';
-                // spans[0].style.opacity = "1";
-                // spans[1].style.opacity = "1";
-                // spans[2].style.opacity = "1";
                 logoCentral.style.opacity = "1";
             }
         });
@@ -159,6 +199,11 @@ export default function Home(props) {
                 behavior: "smooth"
             };
             window.scrollTo(scrollToOptions);
+            // remove du underline static
+            for(let n=0; n < spans.length; n++) {
+                let underDiv = spans[n].querySelector("div");
+                underDiv.removeAttribute('class', '');
+            }
         });
 
         logoCatch.addEventListener("click", () => {
@@ -167,6 +212,11 @@ export default function Home(props) {
                 behavior: "smooth"
             };
             window.scrollTo(scrollToOptions);
+            // remove du underline static
+            for(let n=0; n < spans.length; n++) {
+                let underDiv = spans[n].querySelector("div");
+                underDiv.removeAttribute('class', '');
+            }
         });
         
         
@@ -193,7 +243,7 @@ function skillGrow() {
 
 
 
-// Animation lorsqu'on arrive sur À propos
+// Animation lorsqu'on arrive sur les différentes Sections
 let skillStatus = 0;
 window.addEventListener('scroll', () => {
     // A PROPOS
@@ -204,6 +254,14 @@ window.addEventListener('scroll', () => {
             skillGrow();
             skillStatus = 1;
         }
+        // ajout du underline static
+        for(let n=0; n < spans.length; n++) {
+            let underDiv = spans[n].querySelector("div");
+            underDiv.removeAttribute('class', '');
+        }
+        const activeSpan = 0;
+        let underDiv = spans[activeSpan].querySelector("div");
+        underDiv.setAttribute('class', 'active');
     }
     // console.log("TOP:" + aProposPosition.top + " / BOTTOM: " + aProposPosition.bottom + " / INNER: " + window.innerHeight);
     if (aProposPosition.top <= window.innerHeight * 0 && aProposPosition.bottom >= window.innerHeight * 0) {
@@ -221,6 +279,29 @@ window.addEventListener('scroll', () => {
                 projectCard[n].style.width = "400px";
             }
         }, 250);
+        // ajout du underline static
+        for(let n=0; n < spans.length; n++) {
+            let underDiv = spans[n].querySelector("div");
+            underDiv.removeAttribute('class', '');
+        }
+        const activeSpan = 1;
+        let underDiv = spans[activeSpan].querySelector("div");
+        underDiv.setAttribute('class', 'active');
+    }
+    // CONTACT
+    const contact = document.querySelector('#contact');
+    const contactPosition = contact.getBoundingClientRect();
+    // console.log("TOP:" + contactPosition.top + " / BOTTOM: " + contactPosition.bottom + " / INNER: " + window.innerHeight);
+    if (contactPosition.top <= window.innerHeight * 0.4 && contactPosition.bottom >= window.innerHeight * 0.4) {
+        // logoCatch.style.color = "#2f435e";
+        // ajout du underline static
+        for(let n=0; n < spans.length; n++) {
+            let underDiv = spans[n].querySelector("div");
+            underDiv.removeAttribute('class', '');
+        }
+        const activeSpan = 2;
+        let underDiv = spans[activeSpan].querySelector("div");
+        underDiv.setAttribute('class', 'active');
     }
     // Logo hors section
     const home = document.querySelector('#home');
@@ -241,14 +322,29 @@ window.addEventListener('scroll', () => {
         
     }, []);
 
-    
 
+    const projects = data.map((project, index) => {
+        const tags = project.tags.map((tag, tagIndex) => (
+            <Tag key={tagIndex}>{tag}</Tag>
+        ));
+        return (
+            <Project key={index} titre={project.titre} bground={`/images/${project.images[0]}`} url={project.url} ghlink={project.github} className="project-card" longdesc={project.longdesc}>
+                <p className="bg-white txt-dark small-desc">{project.smalldesc}</p>
+                <div className="tag-box">
+                    { tags }
+                </div>
+            </Project>
+        );
+    });
 
 
     return (
         <>
+        <Header />
+        <div className="homeBox">
             <section id="home">
                 <div id="logoCentral">damien pernin</div>
+                {/* {console.log(data)} */}
                 {/* <div id="logoCentral">dp</div> */}
 
                 <div id="reseaux">
@@ -260,40 +356,36 @@ window.addEventListener('scroll', () => {
 
             <div id="backTop"><img src="/images/up-arrow.png" alt="flèche de retour en haut de page" /></div>
 
-            <section id="apropos" className="sec-box">
+            <section id="apropos" className="sec-box mrg-bot100">
                 <h2>À propos</h2>
 
-                <p className="p-large">Je m'appelle Damien Pernin, rêveur et créateur dans l'âme depuis <span id="monAge"></span>ans. J'aime transformer des maquettes en code pour laisser mon empreinte dans ce monde. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
+                <p className="p-large w70">Je m'appelle Damien Pernin, créateur dans l'âme depuis <span id="monAge"></span>ans. J'aime transformer des maquettes en code pour laisser mon empreinte dans ce monde. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
 
-                <p className="p-large">Étudier des langages, découvrir des nouveautés et l'évolution du monde informatique, voilà ce qui me passionne. Je mettrais à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
+                <p className="p-large w70">Étudier des langages, découvrir des nouveautés et l'évolution du monde informatique, voilà ce qui me passionne. Je mettrai à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
 
-                <div className="mrg-top100">
+                <div className="w70 mrg-top100">
                     <h3>Mes compétences</h3>
                     <div id="competences" className="mrg-top25">
-                        <div id="html">
-                            <div data-skill="100">html</div>
-                        </div>
-                        <div id="css">
-                            <div data-skill="95">css</div>
-                        </div>
-                        <div id="javascript">
-                            <div data-skill="85">javascript</div>
-                        </div>
-                        <div id="react">
-                            <div data-skill="70">react</div>
-                        </div>
-                        <div id="nodejs">
-                            <div data-skill="65">nodejs</div>
-                        </div>
-                        <div id="mongodb">
-                            <div data-skill="60">mongodb</div>
-                        </div>
+                        <Skillbar name="html" color="A" skill="100" />
+                        <Skillbar name="css" color="B" skill="95" />
+                        <Skillbar name="javascript" color="C" skill="85" />
+                        <Skillbar name="react" color="D" skill="70" />
+                        <Skillbar name="nodejs" color="E" skill="65" />
+                        <Skillbar name="mongodb" color="F" skill="60" />
+                        <Skillbar name="vscode" color="G" skill="100" />
+                        <Skillbar name="photoshop" color="H" skill="70" />
                         {/* <div id="php">
                             <div data-skill="30">php</div>
                         </div>
                         <div id="sql">
                             <div data-skill="20">sql</div>
                         </div> */}
+                    </div>
+                </div>
+                <div className="w70 mrg-top100 mrg-bot100">
+                    <h3>Mon parcours</h3>
+                    <div id="parcours" className="mrg-top25">
+                        <Timeline />
                     </div>
                 </div>
             </section>
@@ -303,31 +395,21 @@ window.addEventListener('scroll', () => {
             <section id="projets" className="sec-box">
                 <h2>Mes projets</h2>
                 <div className="project-Box">
-                    <Project titre="Booki" bground="/images/screen-booki.png" url="https://oufz0r.github.io/OCR_P2/" ghlink="https://github.com/Oufz0r/OCR_P2" className="project-card">
-                        <p className="bg-white txt-dark">Intégration d'un site web statique et responsive en HTML/CSS à partir d'une maquette Figma pour un projet de formation OpenClassrooms.</p>
-                        <div className="tag-box">
-                            <Tag>HTML</Tag>
-                            <Tag>CSS</Tag>
-                        </div>
-                    </Project>
-                    <Project titre="Sophie Bluel" bground="/images/screen-sbluel.png" url="" ghlink="https://github.com/Oufz0r/OCR_P3" className="project-card">
-                        <p className="bg-white">Développement du Front pour le site de la Photographe Sophie Bluel, et mise en lien avec le backend via une API. (Connexion, ajout et suppression de projets via une modale).</p>
-                        <div className="tag-box">
-                            <Tag>HTML</Tag>
-                            <Tag>CSS</Tag>
-                            <Tag>Javascript</Tag>
-                            <Tag>NodeJS</Tag>
-                        </div>
-                    </Project>
-                    <Project titre="Kasa" bground="/images/screen-kasa.png" url="https://dreamy-rugelach-7e710f.netlify.app/" ghlink="https://github.com/Oufz0r/OCR_P6" className="project-card">
-                    <p className="bg-white">Création du Front d'une application web de location immobilière pour Kasa, avec React à partir d'une maquette Figma. Projet de formation OpenclassRooms.</p>
-                        <div className="tag-box">
-                            <Tag>CSS</Tag>
-                            <Tag>React</Tag>
-                        </div>
-                    </Project>
+                    { projects }
                 </div>
             </section>
+
+            <Separateur />
+
+            <section id="contact" className="sec-box">
+                <h2>Me contacter</h2>
+                <div className="contact-Box">
+                    <ContactForm />
+                </div>
+            </section>
+
+            </div>
         </>
     )
+    // });
 }

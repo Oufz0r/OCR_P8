@@ -1,4 +1,5 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
+import Modale from '../components/modale';
 
 export default function Project(props) {
     
@@ -9,7 +10,7 @@ export default function Project(props) {
     return (
         <>
                 <div className="project">
-                    <a href={ props.url } className="project-link" target="_blank" rel="noopener noreferrer">
+                    <a href={ props.url !== "" ? props.url : props.ghlink } className="project-link" target="_blank" rel="noopener noreferrer">
                         <div>
                             { props.titre }
                         </div>
@@ -20,6 +21,7 @@ export default function Project(props) {
                             <div className="descLinks">
                                 <a href={ props.url } target="_blank" rel="noopener noreferrer" className={props.url !== "" ? "" : "hidden"}><img src="images/external-link.png" alt="link icon" className="invert" /></a>
                                 <a href={ props.ghlink } target="_blank" rel="noopener noreferrer" className={props.ghlink !== "" ? "" : "hidden"}><img src="images/GitHub_Logo_White.png" className="github-logo" alt="github icon" /></a>
+                                <span><Modale bground={props.bground} titre={props.titre} url={props.url} ghlink={props.ghlink} longdesc={props.longdesc} childs={props.children} /></span>
                             </div>
                             { props.children }
                         </div>

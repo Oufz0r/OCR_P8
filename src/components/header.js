@@ -21,7 +21,8 @@ export default function Header() {
                 <nav>
                     <span>à propos<div /></span>
                     <span>mes projets<div /></span>
-                    <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">curriculum vitæ</a><div /></span>
+                    <span>contact<div /></span>
+                    {/* <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">curriculum vitæ</a><div /></span> */}
                 </nav>
             </header>
         )

@@ -1,0 +1,38 @@
+#competences > div {
+    /* width: 350px; */
+    width: 100%;
+    height: 30px;
+    /* background: rgb(235, 235, 235); */
+    background: rgb(241, 241, 241);
+    /* border-left: 1px solid #2f435e; */
+    /* border-right: 1px solid #2f435e; */
+}
+
+#competences div div {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding-left: 5px;
+    width: 0%;
+    /* color: white; */
+    color: #212121;
+    flex-wrap: nowrap;
+}
+
+/* #html div {background: rgba(109, 202, 214, 0.644);}
+#css div {background: rgba(192, 141, 216, 0.659);}
+#javascript div {background: rgba(220, 226, 131, 0.651);}
+#react div {background: rgba(130, 136, 221, 0.623);}
+#nodejs div {background: rgba(224, 191, 130, 0.658);}
+#mongodb div {background: rgba(159, 224, 143, 0.664);}
+#php div {background: rgba(25, 214, 151, 0.5);}
+#sql div {background: rgba(214, 25, 25, 0.5);} */
+
+#competences .colorA div {background: rgba(172, 229, 236, 0.644);}
+#competences .colorB div {background: rgba(214, 174, 233, 0.659);}
+#competences .colorC div {background: rgba(227, 231, 172, 0.651);}
+#competences .colorD div {background: rgba(154, 159, 218, 0.623);}
+#competences .colorE div {background: rgba(226, 205, 165, 0.658);}
+#competences .colorF div {background: rgba(171, 224, 157, 0.664);}
+#competences .colorG div {background: rgba(164, 243, 217, 0.616);}
+#competences .colorH div {background: rgb(248, 188, 188);}
