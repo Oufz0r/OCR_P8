@@ -63,6 +63,7 @@
     text-align: justify;
     font-family: 'Roboto';
     color: #2f435e;
+    border-radius: 5px;
 }
 
 .inner-desc .tag-box {
