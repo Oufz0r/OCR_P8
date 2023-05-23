@@ -2,7 +2,7 @@
     {
         "id": "1",
         "titre": "Booki",
-        "images": ["screen-booki.png", "screen-sbluel.png"],
+        "images": ["screen-booki.png"],
         "url": "https://oufz0r.github.io/OCR_P2/",
         "github": "https://github.com/Oufz0r/OCR_P2",
         "longdesc": "<h4>Problème(s) rencontré(s)</h4>\n<p><b>A</b> - Adapter les images au cadres peu importe leur format (vertical ou horizontal).</p>\n<p><b>B</b> - Gérer la largeur des éléments enfants sur tous les formats d'écrans.</p>\n<h4>Comment je l'ai(les ai) surmonté(s)</h4>\n<p><b>A</b> - Je me suis tourné vers une classe spécifique pour les images verticales.</p>\n<p><b>B</b> - L'étude des différentes unités m'a permis de gérer ce souci.</p>\n<h4>Compétence(s) gagnée(s)</h4>\n<p><img src='images/arrow.png' alt='une flèche' /> Compréhension et utilisation de Figma</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Gestion des media queries</p>",
@@ -22,7 +22,7 @@
     {
         "id": "3",
         "titre": "Kasa",
-        "images": ["screen-kasa.png"],
+        "images": ["screen-kasa.png", "screen-kasa2.jpg", "screen-kasa3.jpg"],
         "url": "https://dreamy-rugelach-7e710f.netlify.app/",
         "github": "https://github.com/Oufz0r/OCR_P6",
         "longdesc": "<h4>Problème(s) rencontré(s)</h4>\n<p><b>A</b> - Récupérer le bon logement via l'URL.</p>\n<h4>Comment je l'ai(les ai) surmonté(s)</h4>\n<p><b>A</b> - L'utilisation d'un paramètre :id dans ma route.</p>\n<h4>Compétence(s) gagnée(s)</h4>\n<p><img src='images/arrow.png' alt='une flèche' /> Utilisation de React</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Utilisation de useState et useEffect</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Utilisation des composants et des props</p>",

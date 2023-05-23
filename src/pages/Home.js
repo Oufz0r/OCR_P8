@@ -39,7 +39,7 @@ export default function Home(props) {
                 logoCentral.style.transition = "0.3s";
                 logoCentral.textContent = '';
                 for(let i=0; i < fullName.length; i++) {
-                    console.log(fullName[i]);
+                    // console.log(fullName[i]);
                     // newFullName =+ `<span>${fullName[i]}</span>`;
                     let letterBox = document.createElement("span");
                         letterBox.textContent = fullName[i];
@@ -325,7 +325,7 @@ window.addEventListener('scroll', () => {
             <Tag key={tagIndex}>{tag}</Tag>
         ));
         return (
-            <Project key={index} titre={project.titre} bground={`/images/${project.images[0]}`} url={project.url} ghlink={project.github} className="project-card" longdesc={project.longdesc}>
+            <Project key={index} ident={project.id} titre={project.titre} bground={`/images/${project.images[0]}`} url={project.url} ghlink={project.github} className="project-card" longdesc={project.longdesc}>
                 <p className="bg-white txt-dark small-desc">{project.smalldesc}</p>
                 <div className="tag-box">
                     { tags }

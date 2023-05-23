@@ -1,13 +1,32 @@
 import React, { useState, useEffect } from 'react';
 
+import data from '../projets.json';
+
+
 export default function Modale(props) {
     const [isOpen, setIsOpen] = useState(false);
+
+    // ================================================ MAP PROJETS JSON ===============================================
+    const imgList = data.filter(project => project.id === props.ident)
+    .flatMap(project => project.images);
+    const nbImgFromList = imgList.length;
+    let index = 0;
 
     useEffect(() => {
         if (isOpen) {
         // Bloquer le défilement de l'arrière-plan lorsque la modale est ouverte
         document.body.style.overflow = 'hidden';
         document.addEventListener('keydown', handleKeyDown); // Bloquer la navigation par onglets
+
+        const imageClick = document.querySelector('.imageClick');
+        imageClick.addEventListener('click', (e) => {
+            index = index+1;
+            if(index >= nbImgFromList){
+                index = 0;
+            }
+            imageClick.setAttribute('src', `/images/${imgList[index]}`);
+            // console.log('clicked');
+    });
         } else {
         // Rétablir le défilement de l'arrière-plan lorsque la modale est fermée
         document.body.style.overflow = 'auto';
@@ -40,6 +59,7 @@ export default function Modale(props) {
         }
     };
 
+
     return (
         <div>
         <button className="modalBtn" onClick={openModal}>Voir plus <img src="images/arrow.png" alt="une flèche" /></button>
@@ -51,7 +71,8 @@ export default function Modale(props) {
                 <h2>{ props.titre.toLowerCase() }</h2>
                 <div className="modal-inner-box">
                     <div className="modal-img">
-                        <img src={props.bground} alt="screen du projet" />
+                        {/* <img src={props.bground} alt="screen du projet" /> */}
+                        <img src={`/images/${imgList[0]}`} alt="screen du projet" className="imageClick" />
                         <div>
                             <a href={ props.url } target="_blank" rel="noopener noreferrer" className={props.url !== "" ? "" : "hidden"}><img src="images/external-link.png" alt="link icon" /></a>
                             <a href={ props.ghlink } target="_blank" rel="noopener noreferrer" className={props.ghlink !== "" ? "" : "hidden"}><img src="images/GitHub_Logo_White.png" className="invert" alt="github icon" /></a>
