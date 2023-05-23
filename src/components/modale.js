@@ -10,9 +10,9 @@ export default function Modale(props) {
     const imgList = data.filter(project => project.id === props.ident)
     .flatMap(project => project.images);
     const nbImgFromList = imgList.length;
-    let index = 0;
 
     useEffect(() => {
+        let index = 0;
         if (isOpen) {
         // Bloquer le défilement de l'arrière-plan lorsque la modale est ouverte
         document.body.style.overflow = 'hidden';
@@ -38,7 +38,7 @@ export default function Modale(props) {
         document.body.style.overflow = 'auto';
         document.removeEventListener('keydown', handleKeyDown);
         };
-    }, [isOpen]);
+    }, [isOpen, imgList, nbImgFromList]);
 
     const openModal = () => {
         setIsOpen(true);
