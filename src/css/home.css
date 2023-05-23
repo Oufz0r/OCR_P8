@@ -7,20 +7,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-image: url("../../public/images/backgroundCyb.webp"); */
-    /* background-image: url("../../public/images/background2.jpg"); */
-    /* background-image: url("../../public/images/background4.webp"); */
-    /* background-image: url("../../public/images/backgroundBO.webp"); */
+    color: white;
+    background-color: #2f435e;
+}
+
+#homeBackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../public/images/backgroundCode.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    /* color: #ca3b8c; */
-    /* color: #ececec; */
-    color: white;
-    background-color: #2f435e;
-    /* background: rgb(255,255,255); */
-/* background: linear-gradient(180deg, rgba(47,67,94,1) 50%, rgb(255, 255, 255) 100%); */
-/* background: linear-gradient(140deg, rgba(47,67,94,1) 60%, rgb(109, 128, 151) 100%); */
+}
+
+#homeFilter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #2f435ede;
 }
 
 .homeBox {
@@ -35,7 +40,6 @@
 #reseaux {
     z-index: 101;
     position: fixed;
-    /* top: 15%; */
     top: 65%;
     left: 0px;
 }
@@ -53,61 +57,35 @@
     left: 0;
 }
 
-
-/* nav span {
-    position: fixed;
+#logoCentral {
     display: flex;
     justify-content: center;
-    font-family: 'Courier New', Courier, monospace;
-    cursor: pointer;
-    font-size: 20px;
-} */
-
-/* About */
-/* nav span:nth-of-type(1) {
-    transform: rotate(90deg);
-    left: -10px;
-} */
-
-/* Projets */
-/* nav span:nth-of-type(2) {
-    top: 15px;
-} */
-
-/* Curriculum vitae */
-/* nav span:nth-of-type(3) {
-    transform: rotate(-90deg);
-    right: -55px;
-} */
-
-/* about */
-/* nav span:nth-of-type(1) {} */
-
-/* projets */
-/* nav span:nth-of-type(2) {} */
-
-/* curriculum vitae */
-/* nav span:nth-of-type(3) {} */
-
-
-
-/* Scroll */
-/* nav span:nth-of-type(4) {
-    top: 96%;
-} */
-
-#logoCentral {
+    align-items: center;
+    /* width: 25%; */
     position: absolute;
     top: auto;
     left: auto;
     font-family: 'Lobster', cursive;
-    /* font-size: 200px; */
-    /* font-weight: 400; */
-    /* font-weight: bold; */
     position: fixed;
     cursor: default;
     user-select: none;
+    /* font-size: 80px; */
+    font-size: 4em;
 }
+
+#home .logoCentralEnd {
+    font-size: 4em;
+    font-family: 'Cerebri';
+}
+
+/* .logoReady {
+    background-image: url("../../public/images/logotext.jpg");
+    background-position: right center;
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
 
 #backTop {
     z-index: 9999;
@@ -173,33 +151,6 @@ section h2 {
     grid-auto-rows: minmax(50px, auto);
 }
 
-/* #html div {background: rgba(109, 202, 214, 0.644);}
-#css div {background: rgba(192, 141, 216, 0.659);}
-#javascript div {background: rgba(220, 226, 131, 0.651);}
-#react div {background: rgba(130, 136, 221, 0.623);}
-#nodejs div {background: rgba(224, 191, 130, 0.658);}
-#mongodb div {background: rgba(159, 224, 143, 0.664);}
-#php div {background: rgba(25, 214, 151, 0.5);}
-#sql div {background: rgba(214, 25, 25, 0.5);} */
-
-/* #html div {background: #212121;}
-#css div {background: #212121;}
-#javascript div {background: #212121;}
-#react div {background: #212121;}
-#nodejs div {background: #212121;}
-#mongodb div {background: #212121;}
-#php div {background: #212121;}
-#sql div {background: #212121;} */
-
-/* #html div {background: #2f435e;}
-#css div {background: #708297;}
-#javascript div {background: #708297;}
-#react div {background: #2f435e;}
-#nodejs div {background: #2f435e;}
-#mongodb div {background: #708297;}
-#php div {background: #708297;}
-#sql div {background: #2f435e;} */
-
 /* Classes utiles */
 .mrg-top10 {margin-top: 10px;}
 .mrg-top25 {margin-top: 25px;}
@@ -231,13 +182,6 @@ section h2 {
 
 
 
-/* .project-Box {
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-} */
 
 .project-Box {
     width: fit-content;
@@ -257,11 +201,57 @@ section h2 {
 
 
 
-@media only screen and (max-width: 1400px){
+@media only screen and (max-width: 1360px){
+    #home #logoCentral {
+        font-size: 3em;
+    }
+
+    #home #logoCentral.logoCentralEnd {
+        font-size: 1.2em;
+        font-family: 'Cerebri';
+    }
+
+    #reseaux {
+        display: none;
+    }
+
+    section h2 {
+        padding: 80px 0 50px 0;
+        font-size: 30px;
+    }
 
     .project-Box {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
+
+    .sec-box {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    #competences {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 0px;
+    }
+
+    #backTop {
+        bottom: 25px;
+        right: 25px;
+        cursor: pointer;
+        background-color: black;
+        padding: 10px 12px;
+        border-radius: 25%;
+    }
+    
+    #backTop img {
+        width: 24px;
+        filter: invert(100%);
+    }
+
+    .w50, .w60, .w70, .w80, .w90, .w100 {width:90%;}
 
 }

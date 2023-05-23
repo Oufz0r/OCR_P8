@@ -47,10 +47,16 @@ export default function Modale(props) {
         {isOpen && (
             <div className="modal" tabIndex="-1" role="dialog" aria-modal="true" onKeyDown={handleKeyDown}>
             <div className="modal-content">
+                {/* Contenu de la modale */}
                 <h2>{ props.titre.toLowerCase() }</h2>
-                {/* <p>Contenu de la modale</p> */}
                 <div className="modal-inner-box">
-                    <div className="modal-img"><img src={props.bground} alt="screen du projet" /></div>
+                    <div className="modal-img">
+                        <img src={props.bground} alt="screen du projet" />
+                        <div>
+                            <a href={ props.url } target="_blank" rel="noopener noreferrer" className={props.url !== "" ? "" : "hidden"}><img src="images/external-link.png" alt="link icon" /></a>
+                            <a href={ props.ghlink } target="_blank" rel="noopener noreferrer" className={props.ghlink !== "" ? "" : "hidden"}><img src="images/GitHub_Logo_White.png" className="invert" alt="github icon" /></a>
+                        </div>
+                    </div>
                     <div className="modal-right">
                         <div className="modal-desc-tags">{props.childs}</div>
                         <div className="modal-longdesc" dangerouslySetInnerHTML={{ __html: props.longdesc }}></div>

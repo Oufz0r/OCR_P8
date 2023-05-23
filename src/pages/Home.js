@@ -15,21 +15,57 @@ export default function Home(props) {
     useEffect(() => {
         let spans = document.querySelectorAll("nav span");
         const logoCatch = document.querySelector("header h1 span");
-        const logoH1 = document.querySelector("header h1");
         const logoCentral = document.querySelector("#logoCentral");
         const backTop = document.querySelector("#backTop");
-        logoCentral.style.fontSize = "80px";
-
-        const header = document.querySelector("header");
-        const nav = document.querySelector("nav");
-        const navLinks = document.querySelectorAll("nav span, nav a");
+        
+        // const logoH1 = document.querySelector("header h1");
+        // const header = document.querySelector("header");
+        // const nav = document.querySelector("nav");
+        // const navLinks = document.querySelectorAll("nav span, nav a");
 
 
         // Vérifier si les éléments sont définis avant d'accéder à leurs propriétés
         if (logoCatch && logoCentral && backTop) {
 
-            // Animation du prénom qui devient le logo
+
+            // Animation du prénom+nom qui tombe lettre par lettre
+            logoCentral.textContent = "damien pernin";
+            let timeLoop = 10;
+            logoCentral.style.opacity = "0";
             setTimeout(() => {
+                logoCentral.style.opacity = "1";
+                const logoName = logoCentral.textContent;
+                let fullName = logoName.split('');
+                logoCentral.style.transition = "0.3s";
+                logoCentral.textContent = '';
+                for(let i=0; i < fullName.length; i++) {
+                    console.log(fullName[i]);
+                    // newFullName =+ `<span>${fullName[i]}</span>`;
+                    let letterBox = document.createElement("span");
+                        letterBox.textContent = fullName[i];
+                        letterBox.style.margin = "0px";
+                        letterBox.style.opacity = "0";
+                        letterBox.style.position = "relative";
+                        letterBox.style.transition = "1s";
+                        letterBox.style.top = "-150px";
+                        setTimeout(() => {
+                            letterBox.style.top = "30px";
+                            letterBox.style.opacity = "1";
+                            setTimeout(() => {
+                                letterBox.style.top = "0px";
+                            }, 1000);
+                        }, timeLoop);
+                        timeLoop = timeLoop+100;
+                        if(fullName[i] === " ") {
+                            letterBox.style.width = "20px";
+                        }
+                    logoCentral.appendChild(letterBox);
+                }
+            }, 500);
+
+            // Animation du prénom+nom qui devient le logo
+            setTimeout(() => {
+                // clearTimeout(logoAnim);
                 const logoName = logoCentral.textContent;
                 const fullName = logoName.split(' ');
                 let prenom = fullName[0];
@@ -45,7 +81,7 @@ export default function Home(props) {
                         logoCentral.textContent = `${prenom}${nom}`;
                         clearInterval(intervalNom);
                     }
-                }, 100);
+                }, 80);
                 
                 setTimeout(() => {
                     count = 0;
@@ -59,9 +95,9 @@ export default function Home(props) {
                             logoRoll();
                             count = 0;
                         }
-                    }, 100);
-                }, 600);
-            }, 2000);
+                    }, 80);
+                }, 480);
+            }, 4500);
 
         // animation au lancement de la page
         function logoRoll() {
@@ -83,36 +119,34 @@ export default function Home(props) {
                             logoCentral.style.fontSize = "300px";
                         }
                         setTimeout(() => {
-                            logoCentral.style.transition = "0s";
-                        }, 500);
+                            logoCentral.style.fontSize = "0px";
+                            // logoCentral.setAttribute("class", "logoReady");
+                            setTimeout(() => {
+                                logoCentral.innerHTML = "Damien PERNIN<br>DÉVELOPPEUR FRONT-END dans le 54";
+                                logoCentral.style.fontSize = "";
+                                logoCentral.setAttribute('class', 'logoCentralEnd');
+                                // logoCentral.innerHTML = "< DÉVELOPPEUR FRONT-END dans le 54 />";
+                                // logoCentral.style.fontSize = "48px";
+                                // logoCentral.style.fontFamily = "Cerebri";
+                                // logoCentral.style.display = "none";
+                                // faire pop un texte Développeur front-end avec ma photo
+                                setTimeout(() => {
+                                    logoCentral.style.transition = "0s";
+                                }, 1000);
+                            }, 1000);
+                        }, 1000);
                     }, 500);
                 }, 500);
             }, 500);
         }
         
-        // logoRoll();
 
-
-
-        // for(let n=0; n < spans.length; n++) {
-        //     spans[n].addEventListener("click", (e) => {
-        //         // function animation avant l'autoscroll
-        //     });
-        // }
 
 
         // liens vers les sections
         spans[0].addEventListener("click", () => {
             const aPropos = document.querySelector("#apropos");
             aPropos.scrollIntoView({ behavior: "smooth" });
-            // ajout du underline static
-            // for(let n=0; n < spans.length; n++) {
-            //     let underDiv = spans[n].querySelector("div");
-            //     underDiv.removeAttribute('class', '');
-            // }
-            // const activeSpan = 0;
-            // let underDiv = spans[activeSpan].querySelector("div");
-            // underDiv.setAttribute('class', 'active');
         });
         
         spans[1].addEventListener("click", () => {
@@ -121,27 +155,11 @@ export default function Home(props) {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const scrollTarget = projetsPosition.top + scrollTop + 1;
             window.scrollTo({ top: scrollTarget, behavior: "smooth" });
-            // ajout du underline static
-            // for(let n=0; n < spans.length; n++) {
-            //     let underDiv = spans[n].querySelector("div");
-            //     underDiv.removeAttribute('class', '');
-            // }
-            // const activeSpan = 1;
-            // let underDiv = spans[activeSpan].querySelector("div");
-            // underDiv.setAttribute('class', 'active');
         });
 
         spans[2].addEventListener("click", () => {
             const contact = document.querySelector("#contact");
             contact.scrollIntoView({ behavior: "smooth" });
-            // ajout du underline static
-            // for(let n=0; n < spans.length; n++) {
-            //     let underDiv = spans[n].querySelector("div");
-            //     underDiv.removeAttribute('class', '');
-            // }
-            // const activeSpan = 2;
-            // let underDiv = spans[activeSpan].querySelector("div");
-            // underDiv.setAttribute('class', 'active');
         });
 
 
@@ -153,39 +171,8 @@ export default function Home(props) {
                 // On fait apparaitre la flèche back to top
                 backTop.style.display = "inline";
                 backTop.style.filter = "invert(80%)";
-                // spans[3].style.display = 'none';
                 let valueOpa = 1-((window.scrollY)/400);
-                // spans[0].style.opacity = `${valueOpa}`;
-                // spans[1].style.opacity = `${valueOpa}`;
-                // spans[2].style.opacity = `${valueOpa}`;
-                logoCentral.style.opacity = `${valueOpa}`;
-                for(let n=0; n < spans.length; n++) {
-                    // if(spans[n].style.opacity < 0.2){spans[n].style.display = 'none';}
-                    // if(spans[n].style.opacity >= 0.2){spans[n].style.display = 'inline';}
-                }
-
-                // On Scroll et on garde le header visible ===================================================== <
-                if(this.window.scrollY > 850 && window.innerWidth > 1200) {
-                    nav.style.top = "35px";
-                    header.style.backgroundColor = "white";
-                    // header.style.boxShadow = "0px 5px 15px #212121";
-                    logoCatch.style.color = "#2f435e";
-                    logoH1.style.top = "5px";
-                    for(let i=0; i<navLinks.length; i++)
-                    {navLinks[i].style.color = "#2f435e";}
-                } else {
-                    for(let n=0; n < spans.length; n++) {
-                        let underDiv = spans[n].querySelector("div");
-                        underDiv.removeAttribute('class', '');
-                    }
-                    nav.style.top = "60px";
-                    header.style.backgroundColor = "";
-                    // header.style.boxShadow = "none";
-                    logoCatch.style.color = "white";
-                    logoH1.style.top = "15px";
-                    for(let i=0; i<navLinks.length; i++)
-                    {navLinks[i].style.color = "white";} 
-                }
+                logoCentral.style.opacity = `${valueOpa}`;                
             } else {
               // L'utilisateur est en haut de la page
                 backTop.style.display = "none";
@@ -275,10 +262,16 @@ window.addEventListener('scroll', () => {
         // logoCatch.style.color = "#2f435e";
         setTimeout(() => {
             const projectCard = document.querySelectorAll(".project");
+            let timeLoopCard = 100;
             for(let n=0; n < projectCard.length; n++) {
-                projectCard[n].style.width = "400px";
+                setTimeout(() => {
+                    // projectCard[n].style.height = "500px";
+                    projectCard[n].style.opacity = "1";
+                    // projectCard[n].style.width = "400px";
+                }, timeLoopCard);
+                timeLoopCard = timeLoopCard + 200;
             }
-        }, 250);
+        }, 10);
         // ajout du underline static
         for(let n=0; n < spans.length; n++) {
             let underDiv = spans[n].querySelector("div");
@@ -323,6 +316,10 @@ window.addEventListener('scroll', () => {
     }, []);
 
 
+
+
+// ================================================ MAP PROJETS JSON ===============================================
+
     const projects = data.map((project, index) => {
         const tags = project.tags.map((tag, tagIndex) => (
             <Tag key={tagIndex}>{tag}</Tag>
@@ -338,11 +335,16 @@ window.addEventListener('scroll', () => {
     });
 
 
+
+
+
     return (
         <>
         <Header />
         <div className="homeBox">
             <section id="home">
+                <div id="homeBackground"></div>
+                <div id="homeFilter"></div>
                 <div id="logoCentral">damien pernin</div>
                 {/* {console.log(data)} */}
                 {/* <div id="logoCentral">dp</div> */}
@@ -367,13 +369,14 @@ window.addEventListener('scroll', () => {
                     <h3>Mes compétences</h3>
                     <div id="competences" className="mrg-top25">
                         <Skillbar name="html" color="A" skill="100" />
-                        <Skillbar name="css" color="B" skill="95" />
-                        <Skillbar name="javascript" color="C" skill="85" />
+                        <Skillbar name="css" color="B" skill="100" />
+                        <Skillbar name="javascript" color="C" skill="90" />
                         <Skillbar name="react" color="D" skill="70" />
                         <Skillbar name="nodejs" color="E" skill="65" />
                         <Skillbar name="mongodb" color="F" skill="60" />
-                        <Skillbar name="vscode" color="G" skill="100" />
-                        <Skillbar name="photoshop" color="H" skill="70" />
+                        <Skillbar name="mysql" color="G" skill="70" />
+                        <Skillbar name="vscode" color="H" skill="90" />
+                        {/* <Skillbar name="photoshop" color="H" skill="70" /> */}
                         {/* <div id="php">
                             <div data-skill="30">php</div>
                         </div>

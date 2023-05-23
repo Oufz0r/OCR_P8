@@ -1,5 +1,4 @@
 header {
-    position: relative;
     z-index: 110;
     font-family: 'Lobster', cursive;
     font-size: 24px;
@@ -10,8 +9,11 @@ header {
     /* left: 15px; */
     height: 80px;
     /* background-color: #212121; */
-    /* box-shadow: 0px 10px 20px 15px #212121; */
     /* box-shadow: 0px 30px 20px white; */
+}
+
+.headerActive {
+    box-shadow: 0px 0px 5px 0px #2121211c;
 }
 
 header span {
@@ -74,7 +76,8 @@ nav span div {
     left: -150%;
     height: 3px;
     width: 100%;
-    background-color: #ececec;
+    /* background-color: #ececec; */
+    background-color: #2f435e;
 }
 
 nav span .active {
@@ -103,4 +106,58 @@ nav *:not(:last-of-type) {
 
 nav span:nth-of-type(4) {
     top: 96%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen AND (max-width: 1360px) {
+    header {
+        /* margin-top: 50px; */
+        font-size: 18px;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header h1 {
+        position: relative;
+        left: auto;
+        top: 0;
+        margin-bottom: 20px;
+    }
+
+    nav {
+        position: relative;
+        right: auto;
+        width: 100%;
+        top: 0;
+        height: fit-content;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
+
+    header nav span {
+        margin: 0;
+    }
+
+    nav *:not(:last-of-type) {
+        margin-right: 0;
+    }
+    
 }

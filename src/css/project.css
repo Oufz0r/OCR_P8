@@ -1,8 +1,9 @@
 .project {
     /* width: 400px; */
     transition: 0.5s;
-    width: 0px;
+    width: 400px;
     height: 500px;
+    opacity: 0;
     background-color: #9c9086;
     border-radius: 5px;
     padding: 0px;
@@ -64,6 +65,7 @@
     font-family: 'Roboto';
     color: #2f435e;
     border-radius: 5px;
+    font-family: 'Cerebri';
 }
 
 .inner-desc .tag-box {
@@ -72,7 +74,9 @@
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
-    margin: 20px;
+    /* margin: 20px; */
+    /* // marge entre deux lignes <----------------- */
+    padding: 20px;
 }
 
 .inner-desc .tag-box > *:not(:last-child) {
@@ -148,3 +152,19 @@
     position: absolute;
     bottom: 20px;
 } */
+
+
+
+
+
+
+
+
+
+
+@media screen AND (max-width: 1300px) {
+    .project {
+        width: 90%;
+
+    }
+}
