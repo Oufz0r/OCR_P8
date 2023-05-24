@@ -18,7 +18,7 @@ const ContactForm = () => {
         
         try {
             // Envoi des données du formulaire au script PHP
-            const response = await fetch('../contact.php', {
+            const response = await fetch('contact.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
