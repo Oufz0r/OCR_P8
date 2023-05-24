@@ -7,23 +7,31 @@ const ContactForm = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
     
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
         
-        // Validation des données
-        if (!name || !email || !message) {
-            setError('Veuillez remplir tous les champs du formulaire.');
-            return;
-        } else if (name && email && message) {
-            // Succès de l'envoi de l'e-mail
-            setSuccess(true);
-            setError('');
-            // Réinitialisez les champs du formulaire après l'envoi
-            setName('');
-            setEmail('');
-            setMessage('');
-        }
-    };
+        const myForm = event.target;
+        const formData = new FormData(myForm);
+        
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+            .then(() => {
+                // Succès de l'envoi de l'e-mail
+                setSuccess(true);
+                setError('');
+                // Réinitialisez les champs du formulaire après l'envoi
+                setName('');
+                setEmail('');
+                setMessage('');
+            })
+            .catch(() => {
+                setSuccess(false);
+                setError('Votre message n\'a pu être envoyé.');
+            });
+        };
     
     return (
         <form name="contact" action="" data-netlify="true" onSubmit={handleSubmit}>
