@@ -26,7 +26,7 @@ const ContactForm = () => {
     };
     
     return (
-        <form action="" data-netlify="true" onSubmit={handleSubmit}>
+        <form name="contact" action="" data-netlify="true" onSubmit={handleSubmit}>
             {error && <p className="error-message">{error}</p>}
             {success && <p className="success-message">Le message a été envoyé avec succès !</p>}
             <div>
