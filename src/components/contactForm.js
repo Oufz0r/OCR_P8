@@ -1,64 +1,3 @@
-// import React, { useState } from 'react';
-
-// export default function ContactForm() {
-//   const [name, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [message, setMessage] = useState('');
-
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
-//     if (name === 'name') {
-//       setName(value);
-//     } else if (name === 'email') {
-//       setEmail(value);
-//     } else if (name === 'message') {
-//       setMessage(value);
-//     }
-//   };
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-
-//     const myForm = event.target;
-//     const formData = new FormData(myForm);
-
-//     fetch('/', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-//       body: new URLSearchParams(formData).toString(),
-//     })
-//       .then(() => {
-//         // Le formulaire a été soumis avec succès
-//         alert('Message envoyé !');
-//         // Réinitialiser les champs du formulaire
-//         setName('');
-//         setEmail('');
-//         setMessage('');
-//       })
-//       .catch((error) => alert(error));
-//   };
-
-//   return (
-//     <form data-netlify="true" name="contact" method="post" onSubmit={handleSubmit}>
-//       <input type="hidden" name="form-name" value="contact" />
-//       <label>
-//         Nom:
-//         <input name="name" type="text" value={name} onChange={handleChange} required />
-//       </label>
-//       <label>
-//         Email:
-//         <input name="email" type="text" value={email} onChange={handleChange} required />
-//       </label>
-//       <label>
-//         Message:
-//         <textarea name="message" value={message} onChange={handleChange} required></textarea>
-//       </label>
-//       <button type="submit">Envoyer</button>
-//     </form>
-//   );
-// }
-
-
 import React, { useState } from 'react';
 
 const ContactForm = () => {
@@ -79,7 +18,7 @@ const ContactForm = () => {
         
         try {
             // Envoi des données du formulaire au script PHP
-            const response = await fetch('contact.php', {
+            const response = await fetch('./contact.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,38 +49,38 @@ const ContactForm = () => {
     };
     
     return (
-        <form onSubmit={handleSubmit}>
-        {error && <p className="error-message">{error}</p>}
-        {success && <p className="success-message">Le message a été envoyé avec succès !</p>}
-        <div>
-        <label htmlFor="name">Nom :</label><br />
-        <input
-        type="text"
-        id="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        />
-        </div>
-        <div>
-        <label htmlFor="email">Email :</label><br />
-        <input
-        type="email"
-        id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        />
-        </div>
-        <div>
-        <label htmlFor="message">Message :</label><br />
-        <textarea
-        id="message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
-        </div>
-        <center>
-        <button type="submit">Envoyer</button>
-        </center>
+        <form action="./contact.php" method="post" onSubmit={handleSubmit}>
+            {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">Le message a été envoyé avec succès !</p>}
+            <div>
+                <label htmlFor="name">Nom :</label><br />
+                <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </div>
+            <div>
+                <label htmlFor="email">Email :</label><br />
+                <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
+            <div>
+                <label htmlFor="message">Message :</label><br />
+                <textarea
+                    id="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
+            </div>
+            <center>
+                <button type="submit">Envoyer</button>
+            </center>
         </form>
     );
 };
