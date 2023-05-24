@@ -9,7 +9,7 @@ export default function ContactForm() {
     e.preventDefault();
 
     // Envoie des données du formulaire via une requête POST
-    fetch('./contact.php', {
+    fetch('https://damien-pernin.netlify.app/contact.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
