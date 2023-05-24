@@ -9,7 +9,7 @@ export default function ContactForm() {
     e.preventDefault();
 
     // Envoie des données du formulaire via une requête POST
-    fetch('../contact.php', {
+    fetch('./contact.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
