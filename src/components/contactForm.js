@@ -6,7 +6,8 @@ export default function contactForm() {
             <form
                 name="contact portfolio"
                 method="post"
-                data-netlify="true"
+                netlify
+                netlify-honeypot="bot-field"
                 onSubmit="submit"
             >
                 <input type="hidden" name="form-name" value="contact portfolio" />
