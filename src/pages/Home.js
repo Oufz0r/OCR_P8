@@ -230,6 +230,7 @@ function skillGrow() {
 
 
 
+
 // Animation lorsqu'on arrive sur les différentes Sections
 let skillStatus = 0;
 window.addEventListener('scroll', () => {

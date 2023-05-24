@@ -12,8 +12,13 @@ export default function Header() {
 
 
         window.addEventListener('scroll', function() {
+            // A PROPOS
+            const aPropos = document.querySelector('#apropos');
+            const aProposPosition = aPropos.getBoundingClientRect();
+
+
             // On Scroll et on garde le header visible ===================================================== < DESKTOP
-            if(this.window.scrollY > 850 && window.innerWidth > 1360) {
+            if(aProposPosition.top <= window.innerHeight * 0.1 && window.innerWidth > 1360) {
                 nav.style.top = "35px";
                 header.style.backgroundColor = "white";
                 // header.style.boxShadow = "0px 5px 15px #212121";
@@ -21,7 +26,7 @@ export default function Header() {
                 logoH1.style.top = "5px";
                 for(let i=0; i<navLinks.length; i++)
                 {navLinks[i].style.color = "#2f435e";}
-            } else if (this.window.scrollY <= 850 && window.innerWidth > 1360) {
+            } else if (aProposPosition.top > window.innerHeight * 0.1  && window.innerWidth > 1360) {
                 for(let n=0; n < spans.length; n++) {
                     let underDiv = spans[n].querySelector("div");
                     underDiv.removeAttribute('class', '');
@@ -36,7 +41,7 @@ export default function Header() {
             }
 
             // On Scroll et on garde le header visible ===================================================== < MOBILE
-            if(this.window.scrollY > 600 && window.innerWidth <= 1360) {
+            if(aProposPosition.top <= window.innerHeight * 0.2 && window.innerWidth <= 1360) {
                 nav.style.top = "0px";
                 header.style.backgroundColor = "white";
                 // header.style.boxShadow = "0px 5px 15px #212121";
@@ -44,7 +49,7 @@ export default function Header() {
                 // logoH1.style.top = "5px";
                 for(let i=0; i<navLinks.length; i++)
                 {navLinks[i].style.color = "#2f435e";}
-            } else if(this.window.scrollY <= 600 && window.innerWidth <= 1360) {
+            } else if(aProposPosition.top > window.innerHeight * 0.2 && window.innerWidth <= 1360) {
                 for(let n=0; n < spans.length; n++) {
                     let underDiv = spans[n].querySelector("div");
                     underDiv.removeAttribute('class', '');
