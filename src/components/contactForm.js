@@ -29,6 +29,7 @@ const ContactForm = () => {
         <form name="contact" action="" data-netlify="true" onSubmit={handleSubmit}>
             {error && <p className="error-message">{error}</p>}
             {success && <p className="success-message">Le message a été envoyé avec succès !</p>}
+            <input type="hidden" name="form-name" value="contact" />
             <div>
                 <label htmlFor="name">Nom :</label><br />
                 <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
