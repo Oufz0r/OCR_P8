@@ -2,10 +2,10 @@ import React from "react";
 
 export default function Form() {
   return (
-    <form name="contact" method="post">
-      <input type="hidden" name="form-name" value="contact" />
+    <form name="contact-portfolio" method="post">
+      <input type="hidden" name="form-name" value="contact-portfolio" />
       <p>
-        <label htmlFor="name">Name</label> <br />
+        <label htmlFor="name">Nom</label> <br />
         <input type="text" id="name" name="name" required />
       </p>
       <p>
@@ -17,7 +17,7 @@ export default function Form() {
         <textarea id="message" name="message" required></textarea>
       </p>
       <p>
-        <input type="submit" value="Submit message" />
+        <input type="submit" value="Envoyer" />
       </p>
     </form>
   );
