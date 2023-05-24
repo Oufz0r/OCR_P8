@@ -37,11 +37,13 @@ export default function ContactForm() {
 
   return (
     <form name="contact-v1" onSubmit={handleSubmit} netlify="true" netlify-honeypot="bot-field">
+        <input name="form-name" value="contact-v1" hidden />
       <div>
         <label htmlFor="name">Nom :</label><br />
         <input
           type="text"
           id="name"
+          name="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -51,6 +53,7 @@ export default function ContactForm() {
         <input
           type="email"
           id="email"
+          name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -59,6 +62,7 @@ export default function ContactForm() {
         <label htmlFor="message">Message :</label><br />
         <textarea
           id="message"
+          name="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         ></textarea>
