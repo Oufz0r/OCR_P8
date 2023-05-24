@@ -122,7 +122,9 @@ export default function Home(props) {
                             logoCentral.style.fontSize = "0px";
                             // logoCentral.setAttribute("class", "logoReady");
                             setTimeout(() => {
-                                logoCentral.innerHTML = "Damien PERNIN<br>DÉVELOPPEUR FRONT-END dans le 54";
+                                // logoCentral.innerHTML = "Damien PERNIN<br>DÉVELOPPEUR FULL-STACK dans le 54";
+                                // logoCentral.innerHTML = "Damien PERNIN<br>DÉVELOPPEUR FRONT-END dans le 54";
+                                logoCentral.innerHTML = "Damien PERNIN<br>DÉVELOPPEUR WEB dans le 54";
                                 logoCentral.style.fontSize = "";
                                 logoCentral.setAttribute('class', 'logoCentralEnd');
                                 // logoCentral.innerHTML = "< DÉVELOPPEUR FRONT-END dans le 54 />";
@@ -413,6 +415,10 @@ window.addEventListener('scroll', () => {
                     {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgOC7XKAz4E0vqGZmOAKUxp26DM1DF2jc5CFEcc0w0BuBgwg/viewform?embedded=true" width="640" height="689" frameborder="0" marginheight="0" marginwidth="0" title="contact">Chargement…</iframe> */}
                 </div>
             </section>
+
+            <footer>
+                {/* footer avec lien reseaux pour mobile */}
+            </footer>
 
             </div>
         </>

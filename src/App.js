@@ -12,7 +12,6 @@ function App() {
       {/* <Header /> */}
       {/* <Home /> */}
       <Routes>
-          {/* <Route path="/location/:locationId" element={<Location />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Lost />} />
       </Routes>

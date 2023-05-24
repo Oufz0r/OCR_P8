@@ -43,6 +43,7 @@
     position: fixed;
     top: 65%;
     left: 0px;
+    user-select: none;
 }
 
 #reseaux div {
@@ -95,6 +96,9 @@
     bottom: 50px;
     right: 50px;
     cursor: pointer;
+    background-color: black;
+    padding: 7px 10px;
+    border-radius: 50%;
 }
 
 #backTop img {
@@ -126,7 +130,7 @@ section h2 {
     align-items: center;
     font-family: 'Roboto';
     padding-top: 100px;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .secInnerBox {

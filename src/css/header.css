@@ -1,4 +1,5 @@
 header {
+    user-select: none;
     z-index: 110;
     font-family: 'Lobster', cursive;
     font-size: 24px;
@@ -33,7 +34,6 @@ header h1 {
 nav {
     /* font-family: Lobster; */
     font-family: 'Cerebri', Helvetica, Arial, sans-serif;
-    user-select: none;
     z-index: 100;
     position: fixed;
     display: flex;
