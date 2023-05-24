@@ -9,25 +9,19 @@ export default function ContactForm() {
     e.preventDefault();
 
     // Envoie des données du formulaire via une requête POST
-    fetch('https://damien-pernin.netlify.app/contact.php', {
+    fetch('/', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: JSON.stringify({ name, email, message })
+      body: encodeFormData({ name, email, message })
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          // Succès de l'envoi de l'e-mail
-          alert('Votre message a été envoyé avec succès.');
-          setName('');
-          setEmail('');
-          setMessage('');
-        } else {
-          // Erreur lors de l'envoi de l'e-mail
-          alert('Une erreur s\'est produite lors de l\'envoi du message. Veuillez réessayer.');
-        }
+      .then(() => {
+        // Succès de l'envoi de l'e-mail
+        alert('Votre message a été envoyé avec succès.');
+        setName('');
+        setEmail('');
+        setMessage('');
       })
       .catch(error => {
         console.error('Une erreur s\'est produite:', error);
@@ -35,9 +29,14 @@ export default function ContactForm() {
       });
   };
 
+  const encodeFormData = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  };
+
   return (
-    <form name="contact-v1" onSubmit={handleSubmit} netlify="true" netlify-honeypot="bot-field">
-        <input name="form-name" value="contact-v1" hidden />
+    <form name="contact-v1" data-netlify="true" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name">Nom :</label><br />
         <input

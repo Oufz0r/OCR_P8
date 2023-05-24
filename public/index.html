@@ -39,5 +39,33 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <form name="contact-v1" data-netlify="true">
+      <div>
+        <label htmlFor="name">Nom :</label><br />
+        <input
+          type="text"
+          id="name"
+          name="name"
+        />
+      </div>
+      <div>
+        <label htmlFor="email">Email :</label><br />
+        <input
+          type="email"
+          id="email"
+          name="email"
+        />
+      </div>
+      <div>
+        <label htmlFor="message">Message :</label><br />
+        <textarea
+          id="message"
+          name="message"
+        ></textarea>
+      </div>
+      <center>
+        <button type="submit">Envoyer</button>
+      </center>
+    </form>
   </body>
 </html>
