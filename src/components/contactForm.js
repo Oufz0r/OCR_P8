@@ -36,7 +36,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form name="contact-v1" onSubmit={handleSubmit} netlify="true" netlify-honeypot="bot-field">
       <div>
         <label htmlFor="name">Nom :</label><br />
         <input
