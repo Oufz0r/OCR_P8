@@ -1,0 +1,57 @@
+.contact-Box {
+    width: 40%;
+}
+
+form {
+    width: 100%;
+}
+
+form div:not(:first-child) {
+    margin-top: 25px;
+}
+
+form button {
+    margin-top: 25px;
+    width: 150px;
+    height: 30px;
+    font-family: 'Cerebri';
+    font-size: 16px;
+    background-color: #2f435e;
+    color: white;
+    border: none;
+}
+
+form button:hover {
+    background-color: rgb(218, 218, 218);
+    color: #2f435e;
+    border: 1px solid #2f435e;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    font-family: 'Cerebri';
+    padding: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    width: 100%;
+    height: 180px;
+    padding: 5px;
+    font-family: 'Cerebri';
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+@media screen AND (max-width: 1360px) {
+    .contact-Box {
+        width: 90%;
+    }
+}
