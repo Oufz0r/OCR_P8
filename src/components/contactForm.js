@@ -1,22 +1,35 @@
+import React from "react";
 
-
-const ContactForm = () => {
-
-    
-    
+export default function contactForm() {
     return (
-        <form name="contact" netlify>
-        <p>
-            <label>Name <input type="text" name="name" /></label>
-        </p>
-        <p>
-            <label>Email <input type="email" name="email" /></label>
-        </p>
-        <p>
-            <button type="submit">Send</button>
-        </p>
-        </form>
-        );
-    };
-    
-    export default ContactForm;
+        <div>
+            <form
+                name="contact portfolio"
+                method="post"
+                data-netlify="true"
+                onSubmit="submit"
+            >
+                <input type="hidden" name="form-name" value="contact portfolio" />
+
+                <div>
+                    <label htmlFor="nom">Nom
+                        <input id="nom" type="text" name="nom" />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="email">Email
+                        <input id="email" type="email" name="email" />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="message">Message
+                        <textarea id="message" name="message"></textarea>
+                    </label>
+                </div>
+
+                <button type="submit">Envoyer</button>
+
+            </form>
+        </div>
+    )
+}
