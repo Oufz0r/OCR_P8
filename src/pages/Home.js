@@ -230,7 +230,6 @@ function skillGrow() {
 
 
 
-
 // Animation lorsqu'on arrive sur les différentes Sections
 let skillStatus = 0;
 window.addEventListener('scroll', () => {
@@ -368,23 +367,25 @@ window.addEventListener('scroll', () => {
 
                 <div className="w70 mrg-top100">
                     <h3>Mes compétences</h3>
-                    <div id="competences" className="mrg-top25">
-                        <Skillbar name="html" color="A" skill="100" />
-                        <Skillbar name="css" color="B" skill="100" />
-                        <Skillbar name="javascript" color="C" skill="90" />
-                        <Skillbar name="react" color="D" skill="70" />
-                        <Skillbar name="nodejs" color="E" skill="65" />
-                        <Skillbar name="mongodb" color="F" skill="60" />
-                        <Skillbar name="mysql" color="G" skill="70" />
-                        <Skillbar name="vscode" color="H" skill="90" />
-                        {/* <Skillbar name="photoshop" color="H" skill="70" /> */}
-                        {/* <div id="php">
-                            <div data-skill="30">php</div>
+                    <center>
+                        <div id="competences" className="mrg-top25 centrer-row">
+                            <Skillbar name="html" color="A" skill="100" />
+                            <Skillbar name="css" color="B" skill="100" />
+                            <Skillbar name="javascript" color="C" skill="90" />
+                            <Skillbar name="react" color="D" skill="70" />
+                            <Skillbar name="nodejs" color="E" skill="65" />
+                            <Skillbar name="mongodb" color="F" skill="60" />
+                            <Skillbar name="mysql" color="G" skill="70" />
+                            <Skillbar name="vscode" color="H" skill="90" />
+                            {/* <Skillbar name="photoshop" color="H" skill="70" /> */}
+                            {/* <div id="php">
+                                <div data-skill="30">php</div>
+                            </div>
+                            <div id="sql">
+                                <div data-skill="20">sql</div>
+                            </div> */}
                         </div>
-                        <div id="sql">
-                            <div data-skill="20">sql</div>
-                        </div> */}
-                    </div>
+                    </center>
                 </div>
                 <div className="w70 mrg-top100 mrg-bot100">
                     <h3>Mon parcours</h3>

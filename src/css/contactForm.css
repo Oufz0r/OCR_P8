@@ -1,5 +1,9 @@
 .contact-Box {
-    width: 40%;
+    position: relative;
+    width: 100%;
+    right: -100%;
+    transition: 0.5s;
+    opacity: 0;
 }
 
 form {

@@ -6,6 +6,9 @@
     background: rgb(241, 241, 241);
     /* border-left: 1px solid #2f435e; */
     /* border-right: 1px solid #2f435e; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 #competences div div {
@@ -35,4 +38,4 @@
 #competences .colorE div {background: rgba(226, 205, 165, 0.658);}
 #competences .colorF div {background: rgba(171, 224, 157, 0.664);}
 #competences .colorG div {background: rgba(164, 243, 217, 0.616);}
-#competences .colorH div {background: rgb(248, 188, 188);}
+#competences .colorH div {background: rgba(248, 188, 188, 0.61);}
