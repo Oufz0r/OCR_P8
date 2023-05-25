@@ -14,6 +14,29 @@ export default function Modale(props) {
     useEffect(() => {
         let index = 0;
         if (isOpen) {
+            // animation d'ouverture
+            const modal = document.querySelector('.modal');
+            const modalContent = document.querySelector('.modal-content');
+            modal.style.opacity = '0';
+            modalContent.style.opacity = '0';
+            modalContent.style.height = '0px';
+            modalContent.style.overflow = 'hidden';
+            setTimeout(() => {
+                modal.style.transition = '0.3s';
+                modal.style.opacity = '1';
+                setTimeout(() => {
+                    modalContent.style.transition = '0.3s';
+                    modalContent.style.opacity = '1';
+                    if(window.innerWidth > 1360) {
+                        modalContent.style.height = '80%';
+                    } else {
+                        modalContent.style.height = '100%';
+                    }
+                    setTimeout(() => {
+                        modalContent.style.overflow = 'auto';
+                    }, 300);
+                }, 200);
+            }, 10);
         // Bloquer le défilement de l'arrière-plan lorsque la modale est ouverte
         document.body.style.overflow = 'hidden';
         document.addEventListener('keydown', handleKeyDown); // Bloquer la navigation par onglets

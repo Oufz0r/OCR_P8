@@ -16,3 +16,14 @@
     user-select: none;
     margin: 50px 0 0 0;
 }
+
+
+
+
+@media only screen and (max-width: 1360px){
+    .separateur {
+        height: 80px;
+        padding: 15px 0;
+        font-size: 50px;
+    }
+}

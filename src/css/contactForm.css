@@ -1,6 +1,6 @@
 .contact-Box {
     position: relative;
-    width: 100%;
+    width: 20%;
     right: -100%;
     transition: 0.5s;
     opacity: 0;

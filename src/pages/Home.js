@@ -3,6 +3,7 @@ import Separateur from '../components/separateur';
 import Project from '../components/project';
 import Tag from '../components/tag';
 import Header from '../components/header';
+import Footer from '../components/footer';
 import Timeline from '../components/timeline';
 import Skillbar from '../components/skillbar';
 import ContactForm from '../components/contactForm';
@@ -146,23 +147,55 @@ export default function Home(props) {
 
 
         // liens vers les sections
-        spans[0].addEventListener("click", () => {
-            const aPropos = document.querySelector("#apropos");
-            aPropos.scrollIntoView({ behavior: "smooth" });
-        });
-        
-        spans[1].addEventListener("click", () => {
-            const projets = document.querySelector("#projets");
-            const projetsPosition = projets.getBoundingClientRect();
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollTarget = projetsPosition.top + scrollTop + 1;
-            window.scrollTo({ top: scrollTarget, behavior: "smooth" });
-        });
+        let allSpanHomeLinks = document.querySelectorAll('.scrollHome');
+        for(let n=0; n < allSpanHomeLinks.length; n++) {
+            allSpanHomeLinks[n].addEventListener("click", () => {
+                const home = document.querySelector("#home");
+            home.scrollIntoView({ behavior: "smooth" });
+            })
+        }
 
-        spans[2].addEventListener("click", () => {
-            const contact = document.querySelector("#contact");
+        let allSpanAproposLinks = document.querySelectorAll('.scrollApropos');
+        for(let n=0; n < allSpanAproposLinks.length; n++) {
+            allSpanAproposLinks[n].addEventListener("click", () => {
+                const aPropos = document.querySelector("#apropos");
+            aPropos.scrollIntoView({ behavior: "smooth" });
+            })
+        }
+
+        let allSpanProjetsLinks = document.querySelectorAll('.scrollProjets');
+        for(let n=0; n < allSpanProjetsLinks.length; n++) {
+            allSpanProjetsLinks[n].addEventListener("click", () => {
+                const projets = document.querySelector("#projets");
+            projets.scrollIntoView({ behavior: "smooth" });
+            })
+        }
+
+        let allSpanContactLinks = document.querySelectorAll('.scrollContact');
+        for(let n=0; n < allSpanContactLinks.length; n++) {
+            allSpanContactLinks[n].addEventListener("click", () => {
+                const contact = document.querySelector("#contact");
             contact.scrollIntoView({ behavior: "smooth" });
-        });
+            })
+        }
+
+        // spans[0].addEventListener("click", () => {
+        //     const aPropos = document.querySelector("#apropos");
+        //     aPropos.scrollIntoView({ behavior: "smooth" });
+        // });
+        
+        // spans[1].addEventListener("click", () => {
+        //     const projets = document.querySelector("#projets");
+        //     const projetsPosition = projets.getBoundingClientRect();
+        //     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        //     const scrollTarget = projetsPosition.top + scrollTop + 1;
+        //     window.scrollTo({ top: scrollTarget, behavior: "smooth" });
+        // });
+
+        // spans[2].addEventListener("click", () => {
+        //     const contact = document.querySelector("#contact");
+        //     contact.scrollIntoView({ behavior: "smooth" });
+        // });
 
 
 
@@ -363,16 +396,16 @@ window.addEventListener('scroll', () => {
             <section id="apropos" className="sec-box mrg-bot100">
                 <h2>À propos</h2>
 
-                <p className="p-large w70">Je m'appelle Damien Pernin, créateur dans l'âme depuis <span id="monAge"></span>ans. J'aime transformer des maquettes en code pour laisser mon empreinte dans ce monde. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
+                <p className="p-large w70">Je m'appelle Damien Pernin, passionné par le monde numérique depuis <span id="monAge"></span> ans. Ce que j'aime, voir des maquettes et des idées prendre vie sur mes navigateurs, découvrir et acquiérir de nouvelles compétences et créer des petits jeux. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
 
-                <p className="p-large w70">Étudier des langages, découvrir des nouveautés et l'évolution du monde informatique, voilà ce qui me passionne. Je mettrai à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
+                <p className="p-large w70">Étudier des langages, découvrir des nouveautés et voir l'évolution du monde numérique comme la Réalité Virtuelle, voilà ce qui me passionne. Je mettrai à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
 
                 <div className="w70 mrg-top100">
                     <h3>Mes compétences</h3>
                     <center>
                         <div id="competences" className="mrg-top25 centrer-row">
                             <Skillbar name="html" color="A" skill="100" />
-                            <Skillbar name="css" color="B" skill="100" />
+                            <Skillbar name="css" color="B" skill="95" />
                             <Skillbar name="javascript" color="C" skill="90" />
                             <Skillbar name="react" color="D" skill="70" />
                             <Skillbar name="nodejs" color="E" skill="65" />
@@ -416,9 +449,7 @@ window.addEventListener('scroll', () => {
                 </div>
             </section>
 
-            <footer>
-                {/* footer avec lien reseaux pour mobile */}
-            </footer>
+            <Footer />
 
             </div>
         </>

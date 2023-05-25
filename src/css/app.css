@@ -3,6 +3,7 @@
 @import './lost.css';
 /* components */
 @import './header.css';
+@import './footer.css';
 @import './separateur.css';
 @import './project.css';
 @import './tag.css';

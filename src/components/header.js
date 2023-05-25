@@ -97,9 +97,9 @@ export default function Header() {
                     <span>dp</span>
                 </h1>
                 <nav>
-                    <span>à propos<div /></span>
-                    <span>mes projets<div /></span>
-                    <span>contact<div /></span>
+                    <span className="scrollApropos">à propos<div /></span>
+                    <span className="scrollProjets">mes projets<div /></span>
+                    <span className="scrollContact">contact<div /></span>
                     {/* <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">curriculum vitæ</a><div /></span> */}
                 </nav>
             </header>

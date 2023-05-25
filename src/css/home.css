@@ -120,8 +120,8 @@ section h2 {
 .sec-box {
     color: #2f435e;
     position: relative;
-    /* width: 60%; */
-    width: fit-content;
+    width: 90%;
+    /* width: fit-content; */
     /* height: fit-content; */
     min-height: 100vh;
     display: flex;
@@ -152,7 +152,7 @@ section h2 {
 
 /* MES COMPETENCES */
 #competences {
-    width: 70%;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px 30px;
@@ -173,7 +173,7 @@ section h2 {
 .w60 {width:60%;}
 .w50 {width:50%;}
 .w60 {width:60%;}
-.w70 {width:70%;}
+.w70 {width:50%;}
 .w80 {width:80%;}
 .w90 {width:90%;}
 .w100 {width:100%;}
