@@ -17,12 +17,12 @@ export default function Form() {
         <form id="contact-form" name="contact-portfolio" method="post">
         <input type="hidden" name="form-name" value="contact-portfolio" />
         <p>
-            <label htmlFor="name">Nom</label> <br />
-            <input type="text" id="name" name="name" required />
+            {/* <label htmlFor="name">Nom</label> <br /> */}
+            <input type="text" id="name" name="name" placeholder="Nom" required />
         </p>
         <p>
-            <label htmlFor="email">Email</label> <br />
-            <input type="email" id="email" name="email" required />
+            {/* <label htmlFor="email">Email</label> <br /> */}
+            <input type="email" id="email" name="email" placeholder="Email" required />
         </p>
         <p>
             <label htmlFor="message">Message</label> <br />
