@@ -63,6 +63,36 @@ export default function Modale(props) {
         };
     }, [isOpen, imgList, nbImgFromList]);
 
+    useEffect(() => {
+        if (isOpen) {
+            // animation de la main pour indiquer qu'il y a plusieurs images et qu'il faut cliquer dessus pour faire défiler
+            const tapHere = document.querySelector('.tapHere');
+            if(tapHere) {
+                let tapLoop = setInterval(() => {
+                    tapHere.style.right = "20px";
+                    tapHere.style.top = "50%";
+                    setTimeout(() => {
+                        tapHere.style.right = "";
+                        tapHere.style.top = "";
+                        setTimeout(() => {
+                            tapHere.style.right = "20px";
+                            tapHere.style.top = "50%";
+                            setTimeout(() => {
+                                tapHere.style.right = "";
+                                tapHere.style.top = "";
+                            }, 150);
+                        }, 150);
+                    }, 150);
+                }, 1500);
+
+                setTimeout(() => {
+                    clearInterval(tapLoop);
+                    tapHere.style.display = "none";
+                }, 6000);
+            }
+        }
+    }, [isOpen])
+
     const openModal = () => {
         setIsOpen(true);
     };
@@ -96,6 +126,13 @@ export default function Modale(props) {
                     <div className="modal-img">
                         {/* <img src={props.bground} alt="screen du projet" /> */}
                         <img src={`/images/${imgList[0]}`} alt="screen du projet" className="imageClick" />
+
+                        { imgList.length > 1 ? (
+                        <div className="tapHere">
+                            <img src="/images/tap.png" alt="cliquez-ici" />
+                        </div>
+                        ) : "" }
+
                         <div>
                             <a href={ props.url } target="_blank" rel="noopener noreferrer" className={props.url !== "" ? "" : "hidden"}><img src="images/external-link.png" alt="link icon" /></a>
                             <a href={ props.ghlink } target="_blank" rel="noopener noreferrer" className={props.ghlink !== "" ? "" : "hidden"}><img src="images/GitHub_Logo_White.png" className="invert" alt="github icon" /></a>
