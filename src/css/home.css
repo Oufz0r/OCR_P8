@@ -206,9 +206,10 @@ section h2 {
 .project-Box {
     width: fit-content;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     grid-gap: 50px;
+    margin-bottom: 50px;
 }
 
 
