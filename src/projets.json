@@ -12,7 +12,7 @@
     {
         "id": "2",
         "titre": "Sophie Bluel",
-        "images": ["screen-sbluel.png"],
+        "images": ["screen-sbluel1.jpg"],
         "url": "",
         "github": "https://github.com/Oufz0r/OCR_P3",
         "longdesc": "<h4>Problème(s) rencontré(s)</h4>\n<p><b>A</b> - Coder l'intégralité des éléments avec javascript.</p>\n<p><b>B</b> - Récupérer les informations depuis l'API.</p>\n<h4>Comment je l'ai(les ai) surmonté(s)</h4>\n<p><b>A</b> - J'ai séparé les différentes parties du code JS en plusieurs fichiers.</p>\n<p><b>B</b> - L'acquisition des connaissances sur les fetchs.</p>\n<h4>Compétence(s) gagnée(s)</h4>\n<p><img src='images/arrow.png' alt='une flèche' /> Connaissances et utilisation des fetchs</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Javascript</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Communication avec une API</p>",
@@ -22,7 +22,7 @@
     {
         "id": "3",
         "titre": "Kasa",
-        "images": ["screen-kasa.png", "screen-kasa2.jpg", "screen-kasa3.jpg"],
+        "images": ["screen-kasa1.jpg", "screen-kasa2.jpg", "screen-kasa3.jpg"],
         "url": "https://dreamy-rugelach-7e710f.netlify.app/",
         "github": "https://github.com/Oufz0r/OCR_P6",
         "longdesc": "<h4>Problème(s) rencontré(s)</h4>\n<p><b>A</b> - Récupérer le bon logement via l'URL.</p>\n<h4>Comment je l'ai(les ai) surmonté(s)</h4>\n<p><b>A</b> - L'utilisation d'un paramètre :id dans ma route.</p>\n<h4>Compétence(s) gagnée(s)</h4>\n<p><img src='images/arrow.png' alt='une flèche' /> Utilisation de React</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Utilisation de useState et useEffect</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Utilisation des composants et des props</p>",
