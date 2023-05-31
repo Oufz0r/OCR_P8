@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { useEffect, useState } from 'react';
+import dotenv from 'dotenv';
 
 import { getDatabase, ref, onValue, set} from "firebase/database";
 import { initializeApp } from 'firebase/app';
@@ -13,6 +14,8 @@ export default function Backoffice() {
     const [enteredEmail, setEnteredEmail] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+
+    dotenv.config();
 
     const firebaseConfig = {
         apiKey: process.env.REACT_APP_API_KEY,
