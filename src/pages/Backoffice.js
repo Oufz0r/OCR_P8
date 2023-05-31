@@ -13,12 +13,12 @@ import { initializeApp } from 'firebase/app';
 import user from '../user.json';
 import projets from '../projets.json';
 
-dotenv.config();
-
 export default function Backoffice() {
     const [enteredEmail, setEnteredEmail] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+
+    dotenv.config();
 
     const firebaseConfig = {
         apiKey: process.env.REACT_APP_API_KEY,
