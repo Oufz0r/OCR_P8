@@ -2,7 +2,10 @@ import bcrypt from 'bcryptjs';
 import { useEffect, useState } from 'react';
 import dotenv from 'dotenv';
 
-import { getDatabase, ref, onValue, set} from "firebase/database";
+// import { getDatabase, ref, onValue, set} from "firebase/database";
+// eslint-disable-next-line
+import { getDatabase, onValue, ref } from 'firebase/database';
+// eslint-disable-next-line
 import { initializeApp } from 'firebase/app';
 // import firebase from 'firebase/app';
 // import 'firebase/database';
@@ -28,7 +31,14 @@ export default function Backoffice() {
     };
     
     const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
+    const db = getDatabase(app);
+
+    const projectsRef = ref(db, 'projets');
+
+    onValue(projectsRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data); // Afficher les données récupérées de la base de données
+    });
 
 //     const db = getDatabase();
 // const starCountRef = ref(db, '/projets');
