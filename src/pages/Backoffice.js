@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import { useEffect, useState } from 'react';
 
 import { getDatabase, ref, onValue, set} from "firebase/database";
+import { initializeApp } from 'firebase/app';
 // import firebase from 'firebase/app';
 // import 'firebase/database';
 
@@ -23,6 +24,7 @@ export default function Backoffice() {
         appId: process.env.REACT_APP_APP_ID
     };
     
+    const app = initializeApp(firebaseConfig);
     const db = getDatabase();
 
 //     const db = getDatabase();
