@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
 import { useEffect, useState } from 'react';
 
-// import { getDatabase, ref, onValue, set} from "firebase/database";
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { getDatabase, ref, onValue, set} from "firebase/database";
+// import firebase from 'firebase/app';
+// import 'firebase/database';
 
 import user from '../user.json';
 import projets from '../projets.json';
@@ -23,7 +23,7 @@ export default function Backoffice() {
         appId: process.env.REACT_APP_APP_ID
     };
     
-    firebase.initializeApp(firebaseConfig);
+    const db = getDatabase();
 
 //     const db = getDatabase();
 // const starCountRef = ref(db, '/projets');
