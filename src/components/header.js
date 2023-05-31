@@ -13,7 +13,7 @@ export default function Header() {
 
 
         login.addEventListener('click', () => {
-            window.location.href = '/backoffice';
+            window.location.href = '/backoffice/';
         })
 
 

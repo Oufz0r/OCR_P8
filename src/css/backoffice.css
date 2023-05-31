@@ -15,6 +15,17 @@
     margin: 100px 0 50px 0;
 }
 
+#backofficeBox h4 {
+    text-transform: uppercase;
+    font-family: 'Cerebri';
+    margin: 0 0 20px 0;
+}
+
+#backofficeBox h4:hover {
+    color: rgba(80, 88, 133, 0.644);
+    cursor: pointer;
+}
+
 #backofficeBox .addProject {
     font-family: 'Cerebri';
     padding: 5px 10px;
@@ -35,8 +46,45 @@
 
 #backofficeBox .projectList .project {
     opacity: 1;
-    margin: 20px;
-    width: 500px;
+    margin: 10px;
+    width: 800px;
+    height: fit-content;
+    background: #4b6383;
+    transition: 0.2s;
+    padding: 5px;
+    color: white;
+    font-family: 'Cerebri';
+}
+
+#backofficeBox .projectList .project a:hover {
+    background: #2f435eaf;
+    /* color: #648eb1; */
+}
+
+#backofficeBox .projectList .project a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Cerebri';
+    height: 35px;
+}
+
+#backofficeBox .projectList .project input {
+    width: 99%;
+    margin: 5px;
+    border: none;
+}
+
+#backofficeBox .projectList .project textarea {
+    width: 99%;
+    height: 200px;
+    margin: 5px;
+    border: none;
+}
+
+#backofficeBox .projectList .project textarea:first-of-type {
+    height: 100px;
 }
 
 .formDiv {

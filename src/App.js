@@ -15,6 +15,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/backoffice" element={<Backoffice />} />
+          <Route path="/backoffice/:projectId" element={<Backoffice />} />
           <Route path="*" element={<Lost />} />
       </Routes>
     </div>

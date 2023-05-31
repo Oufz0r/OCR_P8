@@ -1,56 +1,57 @@
 import bcrypt from 'bcryptjs';
 import { useEffect, useState } from 'react';
-// import dotenv from 'dotenv';
-
-// import { getDatabase, ref, onValue, set} from "firebase/database";
+import { useParams } from 'react-router-dom';
+import ConnectDB from '../components/connectDB';
 // eslint-disable-next-line
-import { getDatabase, onValue, ref } from 'firebase/database';
+import { getDatabase, onValue, child, ref, get, update} from 'firebase/database';
 // eslint-disable-next-line
 import { initializeApp } from 'firebase/app';
-// import firebase from 'firebase/app';
-// import 'firebase/database';
 
 import user from '../user.json';
-import projets from '../projets.json';
+// import projets from '../projets.json';
 
 export default function Backoffice() {
     const [enteredEmail, setEnteredEmail] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+    const [projets, setProjets] = useState([]);
 
     // dotenv.config();
 
+    function handleDataReceived(data) {
+        setProjets(data);
+    }
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyBVf9X_W9FtFWp7tdRKGg836lz0t-es5Wk",
-        authDomain: "portfolio-19aed.firebaseapp.com",
-        projectId: "portfolio-19aed",
-        storageBucket: "portfolio-19aed.appspot.com",
-        messagingSenderId: "316059264496",
-        appId: "1:316059264496:web:2b66ce411b5127f1d76935",
-        measurementId: "G-GYZ4P4R76D"
-    };
+    const { projectId } = useParams();
+
+    // const firebaseConfig = {
+    //     apiKey: process.env.REACT_APP_API_KEY,
+    //     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    //     databaseURL: process.env.REACT_APP_DATABASE_URL,
+    //     projectId: process.env.REACT_APP_PROJECT_ID,
+    //     storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    //     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    //     appId: process.env.REACT_APP_APP_ID,
+    //     measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+    // };
     
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+    // const app = initializeApp(firebaseConfig);
+    // const db = getDatabase(app);
 
-    const projectsRef = ref(db, 'projets');
+    // const dbRef = ref(db);
+    // get(child(dbRef, `/projets`))
+    // .then((snapshot) => {
+    //     if (snapshot.exists()) {
+    //         // console.log(snapshot.val());
+    //         setProjets(snapshot.val());
+            
+    //     } else {
+    //         console.log("No data available");
+    //     }
+    //     }).catch((error) => {
+    //         console.error(error);
+    // });
 
-    onValue(projectsRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log(data); // Afficher les données récupérées de la base de données
-    });
-
-//     const db = getDatabase();
-// const starCountRef = ref(db, '/projets');
-//     onValue(starCountRef, (snapshot) => {
-//         const data = snapshot.val();
-//         console.log(data);
-//         // updateStarCount(postElement, data);
-//     });
-
-    // firebase.initializeApp(firebaseConfig);
-    // const projectsRef = database.ref('projets');
 
 
     const baseEmail = user.email;
@@ -89,7 +90,9 @@ export default function Backoffice() {
                 setEnteredPassword('');
                 setLoggedIn(false);
                 localStorage.removeItem('loggedIn');
-                alert('Vous êtes déconnecté.');
+                // alert('Vous êtes déconnecté.');
+                setProjets([]);
+                window.history.replaceState({}, document.title, "/backoffice/");
             });
         }
 
@@ -107,7 +110,7 @@ export default function Backoffice() {
                 openDoors();
             }, 500);
         }
-    }, [loggedIn]);
+    }, [loggedIn, projets]);
 
     useEffect(() => {
         const backButton = document.getElementById("backButton");
@@ -115,10 +118,14 @@ export default function Backoffice() {
             backButton.addEventListener("click", (e) => {
                 console.log('lol');
                 e.preventDefault();
-                window.location.href = "/";
+                projectId ? (
+                    window.location.href = "/backoffice/"
+                ) : (
+                    window.location.href = "/"
+                );
             });
         }
-    },[loggedIn])
+    },[loggedIn, projets, projectId])
 
     useEffect (() => {
         const passwordMatches = bcrypt.compareSync(enteredPassword, basePassword);
@@ -141,31 +148,65 @@ export default function Backoffice() {
 
 
 
-    // projectsRef.on('value', (snapshot) => {
-    //     const projectsData = snapshot.val();
-    //     // Faites quelque chose avec les données récupérées, par exemple, mettez-les à jour dans le state de votre composant React
-    // });
+    // mettre à jour le projet dans la base de données
 
 
-    const projects = projets.map((project, index) => {
-        return (
-            JSON.stringify(project, null, 2)
-        );
-    });
 
 
+        if(projets.length !== 0 || !loggedIn)
+        // if(projets.length !== 0)
+        {
     if(loggedIn) {
+        // window.history.replaceState({}, document.title, "/backoffice");
             return (
                 <div id="backofficeBox">
                     <div id="doorUp"></div>
                     <div id="doorDown"></div>
                     {/* { hashedPassword } */}
-                    <h2>Contenu du fichier JSON</h2>
-                    <h3>projets.json</h3>
+                    <h2>Gestion de mes projets</h2>
+                    {
+                        projectId ? (<h4 className="saveButton">Enregistrer les modifications</h4>) : (<h4 className="addButton">Ajouter un projet</h4>)
+                    }
                     {/* <span className="addProject">Ajouter un projet</span> */}
                     <div className="projectList">
-                        <textarea value={ projects }></textarea>
+                        {/* <textarea value={ projects }></textarea> */}
                         {/* <button>Enregistrer les modifications</button> */}
+                        {Array.isArray(projets) ? (
+                            projets.map((project, index) => (
+                                projectId ? (
+                                    projectId === project.id ? (
+                                <div className="project" key={index}>
+                                    <h3><a href={`./${project.id}`}>{project.titre}</a></h3>
+                                    <form formid={index}>
+                                        Titre
+                                        <input type="text" name="titre" defaultValue={project.titre} />
+                                        Url
+                                        <input type="text" name="url" defaultValue={project.url} />
+                                        Github
+                                        <input type="text" name="github" defaultValue={project.github} />
+                                        Tags
+                                        <input type="text" name="tags" defaultValue={project.tags} />
+                                        Images
+                                        <input type="text" name="images" defaultValue={project.images} />
+                                        Small desc
+                                        <textarea type="text" name="smalldesc" defaultValue={project.smalldesc}></textarea>
+                                        Long desc
+                                        <textarea type="text" name="longdesc" defaultValue={project.longdesc}></textarea>
+                                        {/* {project.images.map((image, index) => (
+                                            <input type="text" name={`image${index}`} />
+                                        ))} */}
+                                    </form>
+                                </div>
+                                    ) : ''
+                                ) : (
+                                    <div className="project" key={index}>
+                                    <a href={`./${project.id}`}><h3>{project.titre}</h3></a>
+                                </div>
+                                )
+                            ))
+                            ) : (
+                            <p>Aucun projet trouvé.</p>
+                        )}
                     </div>
                     <button id="decoButton">Logout</button>
                     <button id="backButton">Retour</button>
@@ -177,7 +218,7 @@ export default function Backoffice() {
             <div id="loginBox">
                 <button id="backButton">Retour</button>
                 <h1>Connexion</h1>
-                <form id="loginForm">
+                <form method="POST" id="loginForm">
                     <input id="emailInput" type="email" name="email" placeholder='Email' required />
                     <input id="passwordInput" type="password" name="password" placeholder='Mot de passe' required />
                     <button id="loginButton">Se connecter</button>
@@ -186,4 +227,9 @@ export default function Backoffice() {
             // alert("Mauvaise combinaison email / mot de passe");
             )
     }
+}
+
+return (
+    <ConnectDB onDataReceived={handleDataReceived} />
+);
 }
