@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "dotenv-webpack": "^8.0.1",
     "react-app-rewired": "^2.2.1"
   }
 }
