@@ -9,6 +9,12 @@ export default function Header() {
         const header = document.querySelector("header");
         const nav = document.querySelector("nav");
         const navLinks = document.querySelectorAll("nav span, nav a");
+        const login = document.querySelector(".login");
+
+
+        login.addEventListener('click', () => {
+            window.location.href = '/backoffice';
+        })
 
 
         window.addEventListener('scroll', function() {
@@ -18,18 +24,20 @@ export default function Header() {
 
 
             // On Scroll et on garde le header visible ===================================================== < DESKTOP
-            if(aProposPosition.top <= window.innerHeight * 0.1 && window.innerWidth > 1360) {
+            if(aProposPosition.top <= window.innerHeight * 0.1 && window.innerWidth > 1000) {
                 nav.style.top = "35px";
                 header.style.backgroundColor = "white";
                 // header.style.boxShadow = "0px 5px 15px #212121";
                 logoCatch.style.color = "#2f435e";
                 logoH1.style.top = "5px";
                 for(let i=0; i<navLinks.length; i++)
-                {navLinks[i].style.color = "#2f435e";}
-            } else if (aProposPosition.top > window.innerHeight * 0.1  && window.innerWidth > 1360) {
+                {navLinks[i].style.color = "#2f435e";
+                navLinks[3].style.filter = "invert(80%)";}
+            } else if (aProposPosition.top > window.innerHeight * 0.1  && window.innerWidth > 1000) {
                 for(let n=0; n < spans.length; n++) {
                     let underDiv = spans[n].querySelector("div");
                     underDiv.removeAttribute('class', '');
+                    navLinks[3].style.filter = "invert(0%)";
                 }
                 nav.style.top = "60px";
                 header.style.backgroundColor = "";
@@ -41,18 +49,20 @@ export default function Header() {
             }
 
             // On Scroll et on garde le header visible ===================================================== < MOBILE
-            if(aProposPosition.top <= window.innerHeight * 0.2 && window.innerWidth <= 1360) {
+            if(aProposPosition.top <= window.innerHeight * 0.2 && window.innerWidth <= 1000) {
                 nav.style.top = "0px";
                 header.style.backgroundColor = "white";
                 // header.style.boxShadow = "0px 5px 15px #212121";
                 logoCatch.style.color = "#2f435e";
                 // logoH1.style.top = "5px";
                 for(let i=0; i<navLinks.length; i++)
-                {navLinks[i].style.color = "#2f435e";}
-            } else if(aProposPosition.top > window.innerHeight * 0.2 && window.innerWidth <= 1360) {
+                {navLinks[i].style.color = "#2f435e";
+                navLinks[3].style.filter = "invert(80%)";}
+            } else if(aProposPosition.top > window.innerHeight * 0.2 && window.innerWidth <= 1000) {
                 for(let n=0; n < spans.length; n++) {
                     let underDiv = spans[n].querySelector("div");
                     underDiv.removeAttribute('class', '');
+                    navLinks[3].style.filter = "invert(0%)";
                 }
                 // nav.style.top = "60px";
                 header.style.backgroundColor = "";
@@ -65,24 +75,24 @@ export default function Header() {
 
             // DESKTOP
             const navUnderline = document.querySelectorAll("nav span div");
-            if(window.scrollY > 850 && window.innerWidth > 1360) {
+            if(window.scrollY > 850 && window.innerWidth > 1000) {
                 for(let i=0; i<navUnderline.length; i++) {
                     navUnderline[i].style.backgroundColor = "#2f435e";
                     header.setAttribute('class', 'headerActive');
                 }
-            } else if(window.scrollY <= 850 && window.innerWidth > 1360) {
+            } else if(window.scrollY <= 850 && window.innerWidth > 1000) {
                 for(let i=0; i<navUnderline.length; i++) {
                     navUnderline[i].style.backgroundColor = "#ececec";
                     header.removeAttribute('class', 'headerActive');
                 }
             }
             // MOBILE
-            if(window.scrollY > 600 && window.innerWidth <= 1360) {
+            if(window.scrollY > 600 && window.innerWidth <= 1000) {
                 for(let i=0; i<navUnderline.length; i++) {
                     navUnderline[i].style.backgroundColor = "#2f435e";
                     header.setAttribute('class', 'headerActive');
                 }
-            } else if(window.scrollY <= 600 && window.innerWidth <= 1360) {
+            } else if(window.scrollY <= 600 && window.innerWidth <= 1000) {
                 for(let i=0; i<navUnderline.length; i++) {
                     navUnderline[i].style.backgroundColor = "#ececec";
                     header.removeAttribute('class', 'headerActive');
@@ -100,6 +110,7 @@ export default function Header() {
                     <span className="scrollApropos">à propos<div /></span>
                     <span className="scrollProjets">mes projets<div /></span>
                     <span className="scrollContact">contact<div /></span>
+                    <span className="login"><img src="/images/user.png" alt="user icon" /><div /></span>
                     {/* <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">curriculum vitæ</a><div /></span> */}
                 </nav>
             </header>

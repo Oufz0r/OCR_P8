@@ -1,0 +1,34 @@
+{
+    "projets" : {
+        "Booki" : {
+            "id": "1",
+            "titre": "Booki",
+            "images": ["screen-booki1.jpg", "screen-booki2.jpg"],
+            "url": "https://oufz0r.github.io/OCR_P2/",
+            "github": "https://github.com/Oufz0r/OCR_P2",
+            "longdesc": "<h4>Problème(s) rencontré(s)</h4>\n<p><b>A</b> - Adapter les images au cadres peu importe leur format (vertical ou horizontal).</p>\n<p><b>B</b> - Gérer la largeur des éléments enfants sur tous les formats d'écrans.</p>\n<h4>Comment je l'ai(les ai) surmonté(s)</h4>\n<p><b>A</b> - Je me suis tourné vers une classe spécifique pour les images verticales.</p>\n<p><b>B</b> - L'étude des différentes unités et box-sizing m'ont permis de gérer ce souci.</p>\n<h4>Compétence(s) gagnée(s)</h4>\n<p><img src='images/arrow.png' alt='une flèche' /> Compréhension et utilisation de Figma</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Gestion des media queries</p>",
+            "smalldesc": "Intégration d'un site web statique et responsive en HTML/CSS à partir d'une maquette Figma pour un projet de formation OpenClassrooms.",
+            "tags": ["HTML", "CSS"]
+        },
+        "Sophie Bluel" : {
+            "id": "2",
+            "titre": "Sophie Bluel",
+            "images": ["screen-sbluel1.jpg"],
+            "url": "",
+            "github": "https://github.com/Oufz0r/OCR_P3",
+            "longdesc": "<h4>Problème(s) rencontré(s)</h4>\n<p><b>A</b> - Coder l'intégralité des éléments avec javascript.</p>\n<p><b>B</b> - Récupérer les informations depuis l'API.</p>\n<h4>Comment je l'ai(les ai) surmonté(s)</h4>\n<p><b>A</b> - J'ai séparé les différentes parties du code JS en plusieurs fichiers.</p>\n<p><b>B</b> - L'acquisition des connaissances sur les fetchs.</p>\n<h4>Compétence(s) gagnée(s)</h4>\n<p><img src='images/arrow.png' alt='une flèche' /> Connaissances et utilisation des fetchs</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Javascript</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Communication avec une API</p>",
+            "smalldesc": "Dynamisation du front via javascript pour le site de la Photographe Sophie Bluel, et mise en lien avec le backend via une API. (Connexion, ajout et suppression de projets via une modale).",
+            "tags": ["HTML", "CSS", "Javascript", "NodeJS"]
+        },
+        "Kasa" : {
+            "id": "3",
+            "titre": "Kasa",
+            "images": ["screen-kasa1.jpg", "screen-kasa2.jpg", "screen-kasa3.jpg"],
+            "url": "https://dreamy-rugelach-7e710f.netlify.app/",
+            "github": "https://github.com/Oufz0r/OCR_P6",
+            "longdesc": "<h4>Problème(s) rencontré(s)</h4>\n<p><b>A</b> - Récupérer le bon logement via l'URL.</p>\n<h4>Comment je l'ai(les ai) surmonté(s)</h4>\n<p><b>A</b> - L'utilisation d'un paramètre :id sur ma route.</p>\n<h4>Compétence(s) gagnée(s)</h4>\n<p><img src='images/arrow.png' alt='une flèche' /> Utilisation de React</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Utilisation de useState et useEffect</p>\n<p><img src='images/arrow.png' alt='une flèche' /> Utilisation des composants et des props</p>",
+            "smalldesc": "Création du front d'une application web de location immobilière pour Kasa, avec React à partir d'une maquette Figma. Projet de formation OpenClassrooms.",
+            "tags": ["HTML", "CSS", "React"]
+        }
+    }
+}

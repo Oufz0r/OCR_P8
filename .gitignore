@@ -17,6 +17,10 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env
+transfert.js
+auth.json
+portfolio-19aed-firebase-adminsdk-ufatz-88f0cd3be1.json
 
 npm-debug.log*
 yarn-debug.log*

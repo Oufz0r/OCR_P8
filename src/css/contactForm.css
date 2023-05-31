@@ -1,9 +1,10 @@
 .contact-Box {
     position: relative;
-    width: 20%;
+    width: 500px;
     right: -100%;
     transition: 0.5s;
     opacity: 0;
+    margin-bottom: 50px;
 }
 
 form {
@@ -44,6 +45,8 @@ input {
     font-family: 'Cerebri';
     padding: 5px;
     font-size: 14px;
+    border: solid 1px #2f435e5b;
+    border-radius: 3px;
 }
 
 textarea {
@@ -52,6 +55,12 @@ textarea {
     padding: 5px;
     font-family: 'Cerebri';
     font-size: 14px;
+    border: solid 1px #2f435e5b;
+    border-radius: 3px;
+}
+
+form *:focus {
+    outline: none;
 }
 
 
@@ -60,7 +69,19 @@ textarea {
 
 
 
-@media screen AND (max-width: 1360px) {
+
+
+
+
+@media screen AND (min-width: 1000px) AND (max-width: 1370px) {
+    .contact-Box {
+        width: 40%;
+    }
+}
+
+
+
+@media screen AND (max-width: 1000px) {
     .contact-Box {
         width: 90%;
     }

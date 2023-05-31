@@ -27,7 +27,7 @@ export default function Modale(props) {
                 setTimeout(() => {
                     modalContent.style.transition = '0.3s';
                     modalContent.style.opacity = '1';
-                    if(window.innerWidth > 1360) {
+                    if(window.innerWidth > 1370) {
                         modalContent.style.height = '80%';
                     } else {
                         modalContent.style.height = '100%';

@@ -1,0 +1,181 @@
+#backofficeBox {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    user-select: all;
+}
+
+#backofficeBox h2 {
+    text-transform: uppercase;
+    font-family: 'Cerebri';
+    font-size: 2.2em;
+    margin: 100px 0 50px 0;
+}
+
+#backofficeBox .addProject {
+    font-family: 'Cerebri';
+    padding: 5px 10px;
+}
+
+#backofficeBox .addProject:hover {
+    color: #2f435e91;
+    cursor: pointer;
+}
+
+#backofficeBox .projectList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* flex-wrap: wrap; */
+}
+
+#backofficeBox .projectList .project {
+    opacity: 1;
+    margin: 20px;
+    width: 500px;
+}
+
+.formDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 600px;
+    overflow-y: auto;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.formModifyProject {
+    display: flex;
+    flex-direction: column;
+}
+
+.formModifyProject h3 {
+    margin: 10px 0 0 5px;
+}
+
+/* .formModifyProject input, .formModifyProject textarea {
+    width: 500px;
+} */
+
+.projectList textarea {
+    width: 800px;
+    height: 50vh;
+    margin-bottom: 5px;
+}
+
+.projectList input {
+    width: 300px;
+}
+
+.projectList button {
+    margin: 5px 0;
+    width: 250px;
+    height: 30px;
+    font-family: 'Cerebri';
+    background-color: #2f435e;
+    color: white;
+    border: none;
+}
+
+.projectList button:hover {
+    background-color: #2f435ea9;
+    color: white;
+}
+
+#backofficeBox #doorUp {
+    position: fixed;
+    top: 0vh;
+    width: 100%;
+    height: 50vh;
+    background: #2f435e;
+    z-index: 100;
+    border-bottom: solid 5px grey;
+    transition: 1s;
+}
+
+#backofficeBox #doorDown {
+    position: fixed;
+    bottom: 0vh;
+    width: 100%;
+    height: 50vh;
+    background: #2f435e;
+    z-index: 100;
+    border-top: solid 5px grey;
+    transition: 1s;
+}
+
+#loginBox {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Cerebri';
+}
+
+#decoButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px 10px;
+    font-family: 'Cerebri';
+    background-color: #2f435e;
+    color: white;
+    border: none;
+}
+
+#backButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 5px 10px;
+    font-family: 'Cerebri';
+    background-color: #2f435e;
+    color: white;
+    border: none;
+}
+
+#decoButton:hover, #backButton:hover {
+    background-color: #2f435ea9;
+    color: white;
+}
+
+#loginBox h1 {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+#loginForm {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Cerebri';
+}
+
+#loginForm input {
+    margin: 5px 0;
+    font-family: 'Cerebri';
+}
+
+#loginForm button {
+    margin: 5px 0;
+    width: 50%;
+    height: 30px;
+    font-family: 'Cerebri';
+    background-color: #2f435e;
+    color: white;
+    border: none;
+}
+
+#loginForm button:hover {
+    background-color: #2f435ea9;
+    color: white;
+}

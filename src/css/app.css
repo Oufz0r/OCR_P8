@@ -1,5 +1,6 @@
 /* pages */
 @import './home.css';
+@import './backoffice.css';
 @import './lost.css';
 /* components */
 @import './header.css';

@@ -1,8 +1,8 @@
 .project {
     /* width: 400px; */
     transition: 0.5s;
-    /* width: 500px; */
-    width: 25vw;
+    width: 550px;
+    /* width: 25vw; */
     /* width: 400px; */
     height: 400px;
     /* height: 500px; */
@@ -39,7 +39,7 @@
 .project .bground {
     width: 100%;
     height: 420px;
-    background-position: center;
+    background-position: top;
     background-size: cover;
 }
 
@@ -166,10 +166,11 @@
 
 
 
-@media screen AND (max-width: 1300px) {
+@media screen AND (min-width: 1000px) AND (max-width: 1370px) {
     .project {
         width: 90%;
         height: 350px;
+        margin-bottom: 50px;
     }
 
     .inner-desc .tag-box {
@@ -183,5 +184,14 @@
 
     .inner-desc .tag-box .tag {
         margin-top: 5px;
+    }
+}
+
+
+
+@media screen AND (max-width: 1000px) {
+    /* mobile css */
+    .project {
+        width: 90%;
     }
 }

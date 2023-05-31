@@ -17,16 +17,25 @@ export default function Form() {
         <form id="contact-form" name="contact-portfolio" method="post">
         <input type="hidden" name="form-name" value="contact-portfolio" />
         <p>
-            {/* <label htmlFor="name">Nom</label> <br /> */}
-            <input type="text" id="name" name="name" placeholder="Nom" required />
+            {/* <fieldset> */}
+                {/* <legend>Nom</legend> */}
+                {/* <label htmlFor="name">Nom</label> <br /> */}
+                <input type="text" id="name" name="name" placeholder="Nom" required />
+            {/* </fieldset> */}
         </p>
         <p>
+            {/* <fieldset> */}
+            {/* <legend><label htmlFor="email">Email</label></legend> */}
             {/* <label htmlFor="email">Email</label> <br /> */}
             <input type="email" id="email" name="email" placeholder="Email" required />
+            {/* </fieldset> */}
         </p>
         <p>
-            <label htmlFor="message">Message</label> <br />
-            <textarea id="message" name="message" required></textarea>
+            {/* <fieldset> */}
+            {/* <legend>Message</legend> */}
+            {/* <label htmlFor="message">Message</label> <br /> */}
+            <textarea id="message" name="message" placeholder="Message" required></textarea>
+            {/* </fieldset> */}
         </p>
         <p className="centerIt">
             <input type="submit" value="Envoyer" />

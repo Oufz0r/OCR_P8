@@ -30,6 +30,11 @@ header h1 {
     transition: 0.3s;
 }
 
+.login img{
+    width: 23px;
+    filter: invert(100%);
+}
+
 
 nav {
     /* font-family: Lobster; */
@@ -124,7 +129,7 @@ nav span:nth-of-type(4) {
 
 
 
-@media screen AND (max-width: 1360px) {
+@media screen AND (max-width: 1000px) {
     header {
         /* margin-top: 50px; */
         font-size: 18px;
