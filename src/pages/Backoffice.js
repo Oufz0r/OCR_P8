@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ConnectDB from '../components/connectDB';
 // eslint-disable-next-line
-import { getDatabase, onValue, child, ref, get, update} from 'firebase/database';
+import { getDatabase, onValue, child, ref, get, update, set} from 'firebase/database';
 // eslint-disable-next-line
 import { initializeApp } from 'firebase/app';
 
@@ -149,6 +149,42 @@ export default function Backoffice() {
 
 
     // mettre à jour le projet dans la base de données
+    const majONEProjet = () => {
+        console.log(projectId);
+    
+        const titre = document.getElementById('modTitre').value;
+        const url = document.getElementById('modUrl').value;
+        const github = document.getElementById('modGithub').value;
+        const images = document.getElementById('modImages').value;
+        const tags = document.getElementById('modTags').value;
+        const small = document.getElementById('modSmall').value;
+        const long = document.getElementById('modLong').value;
+    
+        const imagesArray = images.split(',');
+        // Supprime les espaces supplémentaires autour de chaque image
+        const cleanedImagesArray = imagesArray.map(image => image.trim());
+        const tagsArray = tags.split(',');
+        const cleanedTagsArray = tagsArray.map(tag => tag.trim());
+
+        const db = getDatabase();
+        set(ref(db, 'projets/' + (projectId-1)), {
+            titre: titre,
+            id: projectId,
+            url: url,
+            github: github,
+            images: cleanedImagesArray,
+            tags: cleanedTagsArray,
+            smalldesc: small,
+            longdesc: long
+        })
+        .then(() => {
+            console.log('Projet mis à jour !');
+        })
+        .catch((error) => {
+            console.log('Problème de mise à jour', error);
+        });
+    };
+    
 
 
 
@@ -165,7 +201,7 @@ export default function Backoffice() {
                     {/* { hashedPassword } */}
                     <h2>Gestion de mes projets</h2>
                     {
-                        projectId ? (<h4 className="saveButton">Enregistrer les modifications</h4>) : (<h4 className="addButton">Ajouter un projet</h4>)
+                        projectId ? (<h4 className="saveButton" onClick={majONEProjet}>Enregistrer les modifications</h4>) : (<h4 className="addButton">Ajouter un projet</h4>)
                     }
                     {/* <span className="addProject">Ajouter un projet</span> */}
                     <div className="projectList">
@@ -179,19 +215,19 @@ export default function Backoffice() {
                                     <h3><a href={`./${project.id}`}>{project.titre}</a></h3>
                                     <form formid={index}>
                                         Titre
-                                        <input type="text" name="titre" defaultValue={project.titre} />
+                                        <input type="text" name="titre" id="modTitre" defaultValue={project.titre} />
                                         Url
-                                        <input type="text" name="url" defaultValue={project.url} />
+                                        <input type="text" name="url" id="modUrl" defaultValue={project.url} />
                                         Github
-                                        <input type="text" name="github" defaultValue={project.github} />
+                                        <input type="text" name="github" id="modGithub" defaultValue={project.github} />
                                         Tags
-                                        <input type="text" name="tags" defaultValue={project.tags} />
+                                        <input type="text" name="tags" id="modTags" defaultValue={project.tags} />
                                         Images
-                                        <input type="text" name="images" defaultValue={project.images} />
+                                        <input type="text" name="images" id="modImages" defaultValue={project.images} />
                                         Small desc
-                                        <textarea type="text" name="smalldesc" defaultValue={project.smalldesc}></textarea>
+                                        <textarea type="text" name="smalldesc" id="modSmall" defaultValue={project.smalldesc}></textarea>
                                         Long desc
-                                        <textarea type="text" name="longdesc" defaultValue={project.longdesc}></textarea>
+                                        <textarea type="text" name="longdesc" id="modLong" defaultValue={project.longdesc}></textarea>
                                         {/* {project.images.map((image, index) => (
                                             <input type="text" name={`image${index}`} />
                                         ))} */}

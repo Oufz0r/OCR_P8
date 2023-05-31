@@ -25,7 +25,7 @@ export default function Header() {
 
             // On Scroll et on garde le header visible ===================================================== < DESKTOP
             if(aProposPosition.top <= window.innerHeight * 0.1 && window.innerWidth > 1000) {
-                nav.style.top = "35px";
+                nav.style.top = "30px";
                 header.style.backgroundColor = "white";
                 // header.style.boxShadow = "0px 5px 15px #212121";
                 logoCatch.style.color = "#2f435e";

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Separateur from '../components/separateur';
 import Project from '../components/project';
 import Tag from '../components/tag';
@@ -7,11 +7,27 @@ import Footer from '../components/footer';
 import Timeline from '../components/timeline';
 import Skillbar from '../components/skillbar';
 import ContactForm from '../components/contactForm';
+
+import ConnectDB from '../components/connectDB';
+// eslint-disable-next-line
+// import { getDatabase, onValue, child, ref, get, update, set} from 'firebase/database';
+// eslint-disable-next-line
+// import { initializeApp } from 'firebase/app';
 // import Modale from '../components/modale';
 // import { Form } from 'react-router-dom';
-import data from '../projets.json';
+// import data from '../projets.json';
 
 export default function Home(props) {
+    const [projets, setProjets] = useState([]);
+
+    function handleDataReceived(data) {
+        setProjets(data);
+    }
+
+
+
+
+
         // Utilisation d'un useEffect pour s'assurer que la page est chargée avant que JS ne récupére les éléments
     useEffect(() => {
         let spans = document.querySelectorAll("nav span");
@@ -348,111 +364,132 @@ window.addEventListener('scroll', () => {
 });
         }
         
-    }, []);
+    }, [projets]);
 
 
 
 
 // ================================================ MAP PROJETS JSON ===============================================
 
-    const projects = data.map((project, index) => {
-        const tags = project.tags.map((tag, tagIndex) => (
-            <Tag key={tagIndex}>{tag}</Tag>
-        ));
+    // const projects = data.map((project, index) => {
+    //     const tags = project.tags.map((tag, tagIndex) => (
+    //         <Tag key={tagIndex}>{tag}</Tag>
+    //     ));
+    //     return (
+    //         <Project key={index} ident={project.id} titre={project.titre} bground={`/images/${project.images[0]}`} url={project.url} ghlink={project.github} className="project-card" longdesc={project.longdesc}>
+    //             <p className="bg-white txt-dark small-desc">{project.smalldesc}</p>
+    //             <div className="tag-box">
+    //                 { tags }
+    //             </div>
+    //         </Project>
+    //     );
+    // });
+
+
+
+
+
+    if(projets.length !== 0)
+    {
         return (
-            <Project key={index} ident={project.id} titre={project.titre} bground={`/images/${project.images[0]}`} url={project.url} ghlink={project.github} className="project-card" longdesc={project.longdesc}>
-                <p className="bg-white txt-dark small-desc">{project.smalldesc}</p>
-                <div className="tag-box">
-                    { tags }
+            <>
+            <Header />
+            <div className="homeBox">
+                <section id="home">
+                    <div id="homeBackground"></div>
+                    <div id="homeFilter"></div>
+                    <div id="logoCentral">damien pernin</div>
+                    {/* {console.log(data)} */}
+                    {/* <div id="logoCentral">dp</div> */}
+
+                    <div id="reseaux">
+                        <div><a href="https://github.com/Oufz0r"><img src="images/github.png" alt="github" /></a></div>
+                        <div><a href="https://www.linkedin.com/in/damien-pernin-723274169/"><img src="images/linkedin.png" alt="linkedin" /></a></div>
+                        {/* <div><a href="https://www.instagram.com/s0oap_/"><img src="images/instagram.png" alt="instagram" /></a></div> */}
+                    </div>
+                </section>
+
+                <div id="backTop"><img src="/images/up-arrow.png" alt="flèche de retour en haut de page" /></div>
+
+                <section id="apropos" className="sec-box mrg-bot100">
+                    <h2>À propos</h2>
+
+                    <p className="p-large w70">Je m'appelle Damien Pernin, passionné par le monde numérique depuis <span id="monAge"></span> ans. Ce que j'aime, voir des maquettes et des idées prendre vie sur mes navigateurs, découvrir et acquiérir de nouvelles compétences et créer des petits jeux. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
+
+                    <p className="p-large w70">Étudier des langages, découvrir des nouveautés et voir l'évolution du monde numérique comme la Réalité Virtuelle, voilà ce qui me passionne. Je mettrai à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
+
+                    <div className="w70 mrg-top100">
+                        <h3>Mes compétences</h3>
+                        <center>
+                            <div id="competences" className="mrg-top25 centrer-row">
+                                <Skillbar name="html" color="A" skill="100" />
+                                <Skillbar name="css" color="B" skill="95" />
+                                <Skillbar name="javascript" color="C" skill="90" />
+                                <Skillbar name="react" color="D" skill="70" />
+                                <Skillbar name="nodejs" color="E" skill="65" />
+                                <Skillbar name="mongodb" color="F" skill="60" />
+                                <Skillbar name="mysql" color="G" skill="70" />
+                                <Skillbar name="vscode" color="H" skill="90" />
+                                {/* <Skillbar name="photoshop" color="H" skill="70" /> */}
+                                {/* <div id="php">
+                                    <div data-skill="30">php</div>
+                                </div>
+                                <div id="sql">
+                                    <div data-skill="20">sql</div>
+                                </div> */}
+                            </div>
+                        </center>
+                    </div>
+                    <div className="w70 mrg-top100 mrg-bot100">
+                        <h3>Mon parcours</h3>
+                        <div id="parcours" className="mrg-top25">
+                            <Timeline />
+                        </div>
+                    </div>
+                </section>
+
+                <Separateur />
+
+                <section id="projets" className="sec-box">
+                    <h2>Mes projets</h2>
+                    <div className="project-Box">
+                        {/* { projects } */}
+                        {Array.isArray(projets) ? (
+                            projets.map((project, index) => (
+                                <Project key={index} ident={project.id} titre={project.titre} bground={`/images/${project.images[0]}`} url={project.url} ghlink={project.github} className="project-card" longdesc={project.longdesc}>
+                                    <p className="bg-white txt-dark small-desc">{project.smalldesc}</p>
+                                    <div className="tag-box">
+                                        {
+                                            project.tags.map((tag, tagIndex) => (
+                                                <Tag key={tagIndex}>{tag}</Tag>
+                                            ))
+                                        }
+                                    </div>
+                                </Project>
+                            ))
+                        ) : ''}
+                    </div>
+                </section>
+
+                <Separateur />
+
+                <section id="contact" className="sec-box">
+                    <h2>Me contacter</h2>
+                    <div className="contact-Box">
+                        <ContactForm />
+                        {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgOC7XKAz4E0vqGZmOAKUxp26DM1DF2jc5CFEcc0w0BuBgwg/viewform?embedded=true" width="640" height="689" frameborder="0" marginheight="0" marginwidth="0" title="contact">Chargement…</iframe> */}
+                    </div>
+                </section>
+
+                <Footer />
+
                 </div>
-            </Project>
-        );
-    });
-
-
-
-
+            </>
+        )
+    }
 
     return (
-        <>
-        <Header />
-        <div className="homeBox">
-            <section id="home">
-                <div id="homeBackground"></div>
-                <div id="homeFilter"></div>
-                <div id="logoCentral">damien pernin</div>
-                {/* {console.log(data)} */}
-                {/* <div id="logoCentral">dp</div> */}
-
-                <div id="reseaux">
-                    <div><a href="https://github.com/Oufz0r"><img src="images/github.png" alt="github" /></a></div>
-                    <div><a href="https://www.linkedin.com/in/damien-pernin-723274169/"><img src="images/linkedin.png" alt="linkedin" /></a></div>
-                    {/* <div><a href="https://www.instagram.com/s0oap_/"><img src="images/instagram.png" alt="instagram" /></a></div> */}
-                </div>
-            </section>
-
-            <div id="backTop"><img src="/images/up-arrow.png" alt="flèche de retour en haut de page" /></div>
-
-            <section id="apropos" className="sec-box mrg-bot100">
-                <h2>À propos</h2>
-
-                <p className="p-large w70">Je m'appelle Damien Pernin, passionné par le monde numérique depuis <span id="monAge"></span> ans. Ce que j'aime, voir des maquettes et des idées prendre vie sur mes navigateurs, découvrir et acquiérir de nouvelles compétences et créer des petits jeux. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
-
-                <p className="p-large w70">Étudier des langages, découvrir des nouveautés et voir l'évolution du monde numérique comme la Réalité Virtuelle, voilà ce qui me passionne. Je mettrai à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
-
-                <div className="w70 mrg-top100">
-                    <h3>Mes compétences</h3>
-                    <center>
-                        <div id="competences" className="mrg-top25 centrer-row">
-                            <Skillbar name="html" color="A" skill="100" />
-                            <Skillbar name="css" color="B" skill="95" />
-                            <Skillbar name="javascript" color="C" skill="90" />
-                            <Skillbar name="react" color="D" skill="70" />
-                            <Skillbar name="nodejs" color="E" skill="65" />
-                            <Skillbar name="mongodb" color="F" skill="60" />
-                            <Skillbar name="mysql" color="G" skill="70" />
-                            <Skillbar name="vscode" color="H" skill="90" />
-                            {/* <Skillbar name="photoshop" color="H" skill="70" /> */}
-                            {/* <div id="php">
-                                <div data-skill="30">php</div>
-                            </div>
-                            <div id="sql">
-                                <div data-skill="20">sql</div>
-                            </div> */}
-                        </div>
-                    </center>
-                </div>
-                <div className="w70 mrg-top100 mrg-bot100">
-                    <h3>Mon parcours</h3>
-                    <div id="parcours" className="mrg-top25">
-                        <Timeline />
-                    </div>
-                </div>
-            </section>
-
-            <Separateur />
-
-            <section id="projets" className="sec-box">
-                <h2>Mes projets</h2>
-                <div className="project-Box">
-                    { projects }
-                </div>
-            </section>
-
-            <Separateur />
-
-            <section id="contact" className="sec-box">
-                <h2>Me contacter</h2>
-                <div className="contact-Box">
-                    <ContactForm />
-                    {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgOC7XKAz4E0vqGZmOAKUxp26DM1DF2jc5CFEcc0w0BuBgwg/viewform?embedded=true" width="640" height="689" frameborder="0" marginheight="0" marginwidth="0" title="contact">Chargement…</iframe> */}
-                </div>
-            </section>
-
-            <Footer />
-
-            </div>
-        </>
-    )
+        <ConnectDB onDataReceived={handleDataReceived} />
+    );
     // });
 }

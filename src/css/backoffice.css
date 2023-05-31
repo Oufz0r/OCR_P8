@@ -227,3 +227,49 @@
     background-color: #2f435ea9;
     color: white;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen AND (max-width: 1000px) {
+    #backofficeBox h2 {
+        font-size: 1.6em;
+    }
+
+    #backofficeBox .projectList {
+        width: 100%;
+    }
+
+    #backofficeBox .projectList .project {
+        margin: 10px 0;
+        width: 95%;
+        background: #4b6383;
+        transition: 0.2s;
+        padding: 5px;
+        color: white;
+        font-family: 'Cerebri';
+        box-shadow: none;
+    }
+
+    #backofficeBox .projectList .project a {
+        font-size: 13px;
+    }
+
+    #backofficeBox .projectList .project input {
+        font-size: 10px;
+        width: 97%;
+    }
+    
+    #backofficeBox .projectList .project textarea {
+        font-size: 12px;
+        width: 97%;
+    }
+}
