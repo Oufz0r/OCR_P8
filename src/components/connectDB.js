@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 // eslint-disable-next-line
-import { getDatabase, onValue, child, ref, get} from 'firebase/database';
+// import { getDatabase, onValue, child, ref, get} from 'firebase/database';
+import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 // eslint-disable-next-line
 import { initializeApp } from 'firebase/app';
 
@@ -20,24 +21,39 @@ export default function ConnectDB(props) {
     };
     
     const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+    const db = getFirestore(app);
 
-
-    const dbRef = ref(db);
-    useEffect(() => {
-        get(child(dbRef, `/projets`))
-        .then((snapshot) => {
-            if (snapshot.exists()) {
-                // console.log(snapshot.val());
-                setData(snapshot.val());
+    // realtime database
+    // const dbRef = ref(db);
+    // useEffect(() => {
+    //     get(child(dbRef, `/projets`))
+    //     .then((snapshot) => {
+    //         if (snapshot.exists()) {
+    //             // console.log(snapshot.val());
+    //             setData(snapshot.val());
                 
-            } else {
-                console.log("Aucune donnée disponible");
-            }
-            }).catch((error) => {
-                console.error(error);
+    //         } else {
+    //             console.log("Aucune donnée disponible");
+    //         }
+    //         }).catch((error) => {
+    //             console.error(error);
+    //     });
+    // },[dbRef]);
+
+    const projetsRef = collection(db, 'projets');
+    useEffect(() => {
+        const unsubscribe = onSnapshot(projetsRef, (snapshot) => {
+            const projetsData = [];
+            snapshot.forEach((doc) => {
+                projetsData.push(doc.data());
+            });
+            setData(projetsData);
+        }, (error) => {
+            console.error(error);
         });
-    },[dbRef]);
+
+        return () => unsubscribe();
+    }, [projetsRef]);
 
 
 

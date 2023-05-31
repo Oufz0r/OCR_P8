@@ -134,6 +134,7 @@
 .projectList button:hover {
     background-color: #2f435ea9;
     color: white;
+    cursor: pointer;
 }
 
 #backofficeBox #doorUp {
@@ -169,7 +170,7 @@
 }
 
 #decoButton {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     padding: 5px 10px;
@@ -180,7 +181,7 @@
 }
 
 #backButton {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
     padding: 5px 10px;
@@ -193,6 +194,7 @@
 #decoButton:hover, #backButton:hover {
     background-color: #2f435ea9;
     color: white;
+    cursor: pointer;
 }
 
 #loginBox h1 {

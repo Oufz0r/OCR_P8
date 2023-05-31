@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ConnectDB from '../components/connectDB';
 // eslint-disable-next-line
-import { getDatabase, onValue, child, ref, get, update, set} from 'firebase/database';
+import { getFirestore, collection, where, onSnapshot, getDocs, getDoc, updateDoc, setDoc, doc } from 'firebase/firestore';
+// import { getDatabase, onValue, child, ref, get, update, set} from 'firebase/database';
 // eslint-disable-next-line
 import { initializeApp } from 'firebase/app';
 
@@ -15,6 +16,7 @@ export default function Backoffice() {
     const [enteredPassword, setEnteredPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const [projets, setProjets] = useState([]);
+    const [docId, setDocId] = useState([]);
 
     // dotenv.config();
 
@@ -24,19 +26,19 @@ export default function Backoffice() {
 
     const { projectId } = useParams();
 
-    // const firebaseConfig = {
-    //     apiKey: process.env.REACT_APP_API_KEY,
-    //     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    //     databaseURL: process.env.REACT_APP_DATABASE_URL,
-    //     projectId: process.env.REACT_APP_PROJECT_ID,
-    //     storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-    //     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-    //     appId: process.env.REACT_APP_APP_ID,
-    //     measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-    // };
+    const firebaseConfig = {
+        apiKey: process.env.REACT_APP_API_KEY,
+        authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+        databaseURL: process.env.REACT_APP_DATABASE_URL,
+        projectId: process.env.REACT_APP_PROJECT_ID,
+        storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+        messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+        appId: process.env.REACT_APP_APP_ID,
+        measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+    };
     
-    // const app = initializeApp(firebaseConfig);
-    // const db = getDatabase(app);
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
     // const dbRef = ref(db);
     // get(child(dbRef, `/projets`))
@@ -116,7 +118,6 @@ export default function Backoffice() {
         const backButton = document.getElementById("backButton");
         if(backButton) {
             backButton.addEventListener("click", (e) => {
-                console.log('lol');
                 e.preventDefault();
                 projectId ? (
                     window.location.href = "/backoffice/"
@@ -150,8 +151,6 @@ export default function Backoffice() {
 
     // mettre à jour le projet dans la base de données
     const majONEProjet = () => {
-        console.log(projectId);
-    
         const titre = document.getElementById('modTitre').value;
         const url = document.getElementById('modUrl').value;
         const github = document.getElementById('modGithub').value;
@@ -159,15 +158,19 @@ export default function Backoffice() {
         const tags = document.getElementById('modTags').value;
         const small = document.getElementById('modSmall').value;
         const long = document.getElementById('modLong').value;
-    
+        
+        // Split et Supprime les espaces supplémentaires autour de chaque image/tag
         const imagesArray = images.split(',');
-        // Supprime les espaces supplémentaires autour de chaque image
-        const cleanedImagesArray = imagesArray.map(image => image.trim());
+        const cleanedImagesArray = imagesArray.map((image) => image.trim());
         const tagsArray = tags.split(',');
-        const cleanedTagsArray = tagsArray.map(tag => tag.trim());
-
-        const db = getDatabase();
-        set(ref(db, 'projets/' + (projectId-1)), {
+        const cleanedTagsArray = tagsArray.map((tag) => tag.trim());
+        
+        // Remplacer les retours à la ligne par des \n
+        const cleanedLong = long.replace(/\n/g, '');
+        
+        const projetRef = doc(db, 'projets', (docId).toString());
+        
+        updateDoc(projetRef, {
             titre: titre,
             id: projectId,
             url: url,
@@ -175,18 +178,35 @@ export default function Backoffice() {
             images: cleanedImagesArray,
             tags: cleanedTagsArray,
             smalldesc: small,
-            longdesc: long
+            longdesc: cleanedLong,
         })
-        .then(() => {
-            console.log('Projet mis à jour !');
-        })
-        .catch((error) => {
+            .then(() => {
+            alert('Projet mis à jour !');
+            })
+            .catch((error) => {
             console.log('Problème de mise à jour', error);
-        });
-    };
+            alert('Problème de mise à jour');
+            });
+        };
     
 
-
+        useEffect(() => {
+            const collectionRef = collection(db, "projets");
+            
+            getDocs(collectionRef)
+                .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if (data.id === projectId) { // Remplacez "id" par le nom de votre champ d'ID à l'intérieur du document
+                        setDocId(doc.id);
+                        console.log(doc.id);
+                    }
+                });
+                })
+                .catch((error) => {
+                console.log("Error getting documents:", error);
+                });
+        }, [projectId, db]);
 
 
         if(projets.length !== 0 || !loggedIn)
@@ -227,7 +247,7 @@ export default function Backoffice() {
                                         Small desc
                                         <textarea type="text" name="smalldesc" id="modSmall" defaultValue={project.smalldesc}></textarea>
                                         Long desc
-                                        <textarea type="text" name="longdesc" id="modLong" defaultValue={project.longdesc}></textarea>
+                                        <textarea type="text" name="longdesc" id="modLong" defaultValue={project.longdesc.replace(/\\n/g, '\n')}></textarea>
                                         {/* {project.images.map((image, index) => (
                                             <input type="text" name={`image${index}`} />
                                         ))} */}
@@ -236,7 +256,7 @@ export default function Backoffice() {
                                     ) : ''
                                 ) : (
                                     <div className="project" key={index}>
-                                    <a href={`./${project.id}`}><h3>{project.titre}</h3></a>
+                                    <a href={`./${project.id}`}><h3>{project.titre}{docId.id}</h3></a>
                                 </div>
                                 )
                             ))
