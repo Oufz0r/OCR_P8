@@ -1,10 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
 
-import data from '../projets.json';
+// import data from '../projets.json';
 
 
 export default function Modale(props) {
     const [isOpen, setIsOpen] = useState(false);
+    const [data, setData] = useState([]);
+
+
+    const firebaseConfig = {
+        apiKey: process.env.REACT_APP_API_KEY,
+        authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+        databaseURL: process.env.REACT_APP_DATABASE_URL,
+        projectId: process.env.REACT_APP_PROJECT_ID,
+        storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+        messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+        appId: process.env.REACT_APP_APP_ID,
+        measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+
+    const projetsRef = collection(db, 'projets');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        const unsubscribe = onSnapshot(projetsRef, (snapshot) => {
+            const projetsData = [];
+            snapshot.forEach((doc) => {
+                projetsData.push(doc.data());
+            });
+            setData(projetsData);
+        }, (error) => {
+            console.error(error);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+
 
     // ================================================ MAP PROJETS JSON ===============================================
     const imgList = data.filter(project => project.id === props.ident)

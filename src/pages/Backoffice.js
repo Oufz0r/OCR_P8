@@ -7,6 +7,7 @@ import { getFirestore, collection, where, onSnapshot, getDocs, getDoc, updateDoc
 // import { getDatabase, onValue, child, ref, get, update, set} from 'firebase/database';
 // eslint-disable-next-line
 import { initializeApp } from 'firebase/app';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 import user from '../user.json';
 // import projets from '../projets.json';
@@ -50,6 +51,7 @@ export default function Backoffice() {
     
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const storage = getStorage(app);
 
     // const dbRef = ref(db);
     // get(child(dbRef, `/projets`))
@@ -232,7 +234,6 @@ export default function Backoffice() {
         };
 
 
-
         // Récupérer l'id du document dans firestore via l'id du projet
         useEffect(() => {
             const collectionRef = collection(db, "projets");
@@ -254,6 +255,31 @@ export default function Backoffice() {
 
 
 
+
+        const handleImageUpload = async (event) => {
+            const file = event.target.files[0];
+            if(file) {
+                const storageRef = ref(storage, file.name);
+                await uploadBytes(storageRef, file);
+                alert('Image mise en ligne !');
+                
+                // Récupérer l'URL de téléchargement de l'image
+                const imageUrl = await getDownloadURL(storageRef);
+                
+                console.log(imageUrl);
+
+                if(projectId)
+                {
+                    // placer l'URL dans l'input images
+                    const inputImages = document.getElementById('modImages');
+                    inputImages.value += `,${file.name}`;
+                    modifiedContent();
+                    // inputImages.defaultValue += `https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/${file.name}?alt=media`;
+                }
+            }
+        };
+
+
         if(projets.length !== 0 || !loggedStatus)
         // if(projets.length !== 0)
         {
@@ -265,6 +291,8 @@ export default function Backoffice() {
                     <div id="doorDown"></div>
                     {/* { hashedPassword } */}
                     <h2>Gestion de mes projets</h2>
+                    {/* <input type="file" onChange={handleImageUpload} /> */}
+                    {/* <img src="" className="imageHere" alt="uploaded one" /> */}
                     {
                         projectId ? (<h4 className="saveButton hidden" onClick={majONEProjet}>Enregistrer les modifications</h4>) : (<h4 className="addButton">Ajouter un projet</h4>)
                     }
@@ -297,6 +325,8 @@ export default function Backoffice() {
                                             <input type="text" name={`image${index}`} />
                                         ))} */}
                                     </form>
+                                    <label htmlFor="files" className="button">Ajouter un screen</label>
+                                    <input type="file" id="files" style={{ visibility: 'hidden' }} onChange={handleImageUpload} />
                                     <button className="eraseButton" onClick={deleteProjet}>Supprimer le projet</button>
                                 </div>
                                     ) : ''

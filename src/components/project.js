@@ -16,7 +16,7 @@ export default function Project(props) {
                             { props.titre }
                         </div>
                     </a>
-                    <div style={{backgroundImage:`url(${props.bground})`}} className="bground">
+                    <div style={{backgroundImage:`url(https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/${props.bground}?alt=media)`}} className="bground">
                         {/* <p>{ props.children }</p> */}
                         <div className="inner-desc">
                             <div className="descLinks">

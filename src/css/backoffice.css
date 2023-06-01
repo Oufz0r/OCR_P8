@@ -11,8 +11,9 @@
 #backofficeBox h2 {
     text-transform: uppercase;
     font-family: 'Cerebri';
-    font-size: 2.2em;
+    font-size: 1.8em;
     margin: 100px 0 50px 0;
+    color: #2f435e;
 }
 
 #backofficeBox h4 {
@@ -200,6 +201,7 @@
 #loginBox h1 {
     text-transform: uppercase;
     margin-bottom: 30px;
+    color: #2f435e;
 }
 
 #loginForm {
@@ -238,6 +240,10 @@
     display: none;
 }
 
+.button:hover {
+    color: #89abd8;
+    cursor: pointer;
+}
 
 
 

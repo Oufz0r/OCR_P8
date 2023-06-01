@@ -456,7 +456,7 @@ window.addEventListener('scroll', () => {
                         {/* { projects } */}
                         {Array.isArray(projets) ? (
                             projets.map((project, index) => (
-                                <Project key={index} ident={project.id} titre={project.titre} bground={`/images/${project.images[0]}`} url={project.url} ghlink={project.github} className="project-card" longdesc={project.longdesc}>
+                                <Project key={index} ident={project.id} titre={project.titre} bground={`${project.images[0]}`} url={project.url} ghlink={project.github} className="project-card" longdesc={project.longdesc}>
                                     <p className="bg-white txt-dark small-desc">{project.smalldesc}</p>
                                     <div className="tag-box">
                                         {
