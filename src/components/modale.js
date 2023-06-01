@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 
@@ -25,7 +25,7 @@ export default function Modale(props) {
     const db = getFirestore(app);
 
 
-    const projetsRef = collection(db, 'projets');
+    const projetsRef = useMemo(() => collection(db, 'projets'), [db]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         const unsubscribe = onSnapshot(projetsRef, (snapshot) => {
@@ -39,7 +39,7 @@ export default function Modale(props) {
         });
 
         return () => unsubscribe();
-    }, []);
+    }, [projetsRef]);
 
 
 
