@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ConnectDB from '../components/connectDB';
 // eslint-disable-next-line
-import { getFirestore, collection, where, onSnapshot, getDocs, getDoc, updateDoc, setDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, where, onSnapshot, getDocs, getDoc, updateDoc, deleteDoc, setDoc, doc } from 'firebase/firestore';
 // import { getDatabase, onValue, child, ref, get, update, set} from 'firebase/database';
 // eslint-disable-next-line
 import { initializeApp } from 'firebase/app';
@@ -16,12 +16,23 @@ export default function Backoffice() {
     const [enteredPassword, setEnteredPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const [projets, setProjets] = useState([]);
-    const [docId, setDocId] = useState([]);
+    const [docId, setDocId] = useState('');
+    const [eraseStatus, setEraseStatus] = useState(false);
+
+    const loggedStatus = localStorage.getItem('loggedIn');
 
     // dotenv.config();
 
     function handleDataReceived(data) {
         setProjets(data);
+    }
+
+    function modifiedContent() {
+        const saveButton = document.querySelector('.saveButton');
+            let checkClass = saveButton.getAttribute('class');
+            if(checkClass.includes('hidden')) {
+                saveButton.setAttribute('class', 'saveButton');
+            }
     }
 
     const { projectId } = useParams();
@@ -67,21 +78,23 @@ export default function Backoffice() {
             setLoggedIn(true);
         }
 
-        const formGet = document.getElementById("loginForm");
+        if (!loggedIn) {
+            const formGet = document.getElementById("loginForm");
 
-        if(formGet)
-        {
-            formGet.addEventListener("submit", (e) => {
-                e.preventDefault();
-        
-                let email = document.getElementById("emailInput").value;
-                let password = document.getElementById("passwordInput").value;
-        
-                setEnteredEmail(email);
-                setEnteredPassword(password);
-            });
+            if(formGet)
+            {
+                formGet.addEventListener("submit", (e) => {
+                    e.preventDefault();
+            
+                    let email = document.getElementById("emailInput").value;
+                    let password = document.getElementById("passwordInput").value;
+            
+                    setEnteredEmail(email);
+                    setEnteredPassword(password);
+                });
+            }
         }
-    },[]);
+    },[loggedIn]);
 
     useEffect(() => {
         const decoButton = document.getElementById("decoButton");
@@ -94,6 +107,7 @@ export default function Backoffice() {
                 localStorage.removeItem('loggedIn');
                 // alert('Vous êtes déconnecté.');
                 setProjets([]);
+                setDocId('');
                 window.history.replaceState({}, document.title, "/backoffice/");
             });
         }
@@ -102,17 +116,20 @@ export default function Backoffice() {
             const doorUp = document.getElementById("doorUp");
             const doorDown = document.getElementById("doorDown");
     
-            doorUp.style.top = "-50vh";
-            doorDown.style.bottom = "-50vh";
+            if (doorUp && doorDown) {
+                doorUp.style.top = "-50vh";
+                doorDown.style.bottom = "-50vh";
+            }
         }
+
 
         if(loggedIn) {
             // lancement de l'animation
             setTimeout(() => {
                 openDoors();
-            }, 500);
+            }, 100);
         }
-    }, [loggedIn, projets]);
+    }, [loggedIn, projets, projectId]);
 
     useEffect(() => {
         const backButton = document.getElementById("backButton");
@@ -149,6 +166,8 @@ export default function Backoffice() {
 
 
 
+    // ======================================================== C R U D =====================================================
+
     // mettre à jour le projet dans la base de données
     const majONEProjet = () => {
         const titre = document.getElementById('modTitre').value;
@@ -184,12 +203,37 @@ export default function Backoffice() {
             alert('Projet mis à jour !');
             })
             .catch((error) => {
-            console.log('Problème de mise à jour', error);
-            alert('Problème de mise à jour');
+            console.log('Problème de mise à jour : ', error);
+            alert('Problème de mise à jour, consultez la console.');
             });
         };
-    
 
+        // supprimer un projet dans la base de données
+        const deleteProjet = () => {
+            if (!eraseStatus) {
+                let eraseButton = document.querySelector('.eraseButton');
+                eraseButton.textContent = "J'en suis sûr !";
+                eraseButton.style.backgroundColor = "#944a4ae7";
+                setEraseStatus(true);
+            } else if (eraseStatus) {
+                const projetRef = doc(db, 'projets', docId.toString());
+                
+                deleteDoc(projetRef)
+                .then(() => {
+                    alert('Projet supprimé !');
+                    window.location.href = "/backoffice/";
+                })
+                .catch((error) => {
+                    console.log('Problème de suppression : ', error);
+                    alert('Problème de suppression, consultez la console.');
+                });
+                setEraseStatus(false);
+            }
+        };
+
+
+
+        // Récupérer l'id du document dans firestore via l'id du projet
         useEffect(() => {
             const collectionRef = collection(db, "projets");
             
@@ -197,9 +241,9 @@ export default function Backoffice() {
                 .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-                    if (data.id === projectId) { // Remplacez "id" par le nom de votre champ d'ID à l'intérieur du document
+                    if (data.id === projectId) {
                         setDocId(doc.id);
-                        console.log(doc.id);
+                        // console.log(doc.id);
                     }
                 });
                 })
@@ -209,7 +253,8 @@ export default function Backoffice() {
         }, [projectId, db]);
 
 
-        if(projets.length !== 0 || !loggedIn)
+
+        if(projets.length !== 0 || !loggedStatus)
         // if(projets.length !== 0)
         {
     if(loggedIn) {
@@ -221,7 +266,7 @@ export default function Backoffice() {
                     {/* { hashedPassword } */}
                     <h2>Gestion de mes projets</h2>
                     {
-                        projectId ? (<h4 className="saveButton" onClick={majONEProjet}>Enregistrer les modifications</h4>) : (<h4 className="addButton">Ajouter un projet</h4>)
+                        projectId ? (<h4 className="saveButton hidden" onClick={majONEProjet}>Enregistrer les modifications</h4>) : (<h4 className="addButton">Ajouter un projet</h4>)
                     }
                     {/* <span className="addProject">Ajouter un projet</span> */}
                     <div className="projectList">
@@ -235,23 +280,24 @@ export default function Backoffice() {
                                     <h3><a href={`./${project.id}`}>{project.titre}</a></h3>
                                     <form formid={index}>
                                         Titre
-                                        <input type="text" name="titre" id="modTitre" defaultValue={project.titre} />
+                                        <input type="text" name="titre" id="modTitre" defaultValue={project.titre} onChange={modifiedContent} />
                                         Url
-                                        <input type="text" name="url" id="modUrl" defaultValue={project.url} />
+                                        <input type="text" name="url" id="modUrl" defaultValue={project.url} onChange={modifiedContent} />
                                         Github
-                                        <input type="text" name="github" id="modGithub" defaultValue={project.github} />
+                                        <input type="text" name="github" id="modGithub" defaultValue={project.github} onChange={modifiedContent} />
                                         Tags
-                                        <input type="text" name="tags" id="modTags" defaultValue={project.tags} />
+                                        <input type="text" name="tags" id="modTags" defaultValue={project.tags} onChange={modifiedContent} />
                                         Images
-                                        <input type="text" name="images" id="modImages" defaultValue={project.images} />
+                                        <input type="text" name="images" id="modImages" defaultValue={project.images} onChange={modifiedContent} />
                                         Small desc
-                                        <textarea type="text" name="smalldesc" id="modSmall" defaultValue={project.smalldesc}></textarea>
+                                        <textarea type="text" name="smalldesc" id="modSmall" defaultValue={project.smalldesc} onChange={modifiedContent}></textarea>
                                         Long desc
-                                        <textarea type="text" name="longdesc" id="modLong" defaultValue={project.longdesc.replace(/\\n/g, '\n')}></textarea>
+                                        <textarea type="text" name="longdesc" id="modLong" defaultValue={project.longdesc.replace(/\\n/g, '\n')} onChange={modifiedContent}></textarea>
                                         {/* {project.images.map((image, index) => (
                                             <input type="text" name={`image${index}`} />
                                         ))} */}
                                     </form>
+                                    <button className="eraseButton" onClick={deleteProjet}>Supprimer le projet</button>
                                 </div>
                                     ) : ''
                                 ) : (
@@ -268,7 +314,7 @@ export default function Backoffice() {
                     <button id="backButton">Retour</button>
                 </div>
             )
-    } else {
+    } else if (!loggedStatus) {
         return (
             // formulaire de connexion
             <div id="loginBox">

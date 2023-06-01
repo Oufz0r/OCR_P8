@@ -145,7 +145,7 @@
     background: #2f435e;
     z-index: 100;
     border-bottom: solid 5px grey;
-    transition: 1s;
+    transition: 0.5s;
 }
 
 #backofficeBox #doorDown {
@@ -156,7 +156,7 @@
     background: #2f435e;
     z-index: 100;
     border-top: solid 5px grey;
-    transition: 1s;
+    transition: 0.5s;
 }
 
 #loginBox {
@@ -228,6 +228,14 @@
 #loginForm button:hover {
     background-color: #2f435ea9;
     color: white;
+}
+
+.projectList .eraseButton:hover {
+    background-color: #944a4ae7;
+}
+
+.hidden {
+    display: none;
 }
 
 
