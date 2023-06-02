@@ -194,4 +194,8 @@
     .project {
         width: 90%;
     }
+
+    .inner-desc .tag-box .tag {
+        margin-bottom: 5px;
+    }
 }

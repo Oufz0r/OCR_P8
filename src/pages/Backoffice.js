@@ -2,8 +2,10 @@ import bcrypt from 'bcryptjs';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ConnectDB from '../components/connectDB';
+
+import React from 'react';
 // eslint-disable-next-line
-import { getFirestore, collection, where, onSnapshot, getDocs, getDoc, updateDoc, deleteDoc, setDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 // import { getDatabase, onValue, child, ref, get, update, set} from 'firebase/database';
 // eslint-disable-next-line
 import { initializeApp } from 'firebase/app';
@@ -28,13 +30,26 @@ export default function Backoffice() {
         setProjets(data);
     }
 
-    function modifiedContent() {
-        const saveButton = document.querySelector('.saveButton');
-            let checkClass = saveButton.getAttribute('class');
-            if(checkClass.includes('hidden')) {
-                saveButton.setAttribute('class', 'saveButton');
-            }
-    }
+    // function modifiedContent() {
+    //     const saveButton = document.querySelector('.saveButton');
+    //         let checkClass = saveButton.getAttribute('class');
+    //         if(checkClass.includes('hidden')) {
+    //             saveButton.setAttribute('class', 'saveButton');
+    //         }
+    // }
+
+    // // Affichage du contenu de la textarea dans la div .wysiwyg
+    // function longModifiedContent() {
+    //     const showTextarea = document.querySelector('.wysiwyg');
+    //     const theTextarea = document.getElementById('modLong').value;
+    //     showTextarea.innerHTML = theTextarea;
+    //     console.log(theTextarea);
+    //     const saveButton = document.querySelector('.saveButton');
+    //         let checkClass = saveButton.getAttribute('class');
+    //         if(checkClass.includes('hidden')) {
+    //             saveButton.setAttribute('class', 'saveButton');
+    //     }
+    // }
 
     const { projectId } = useParams();
 
@@ -202,11 +217,13 @@ export default function Backoffice() {
             longdesc: cleanedLong,
         })
             .then(() => {
-            alert('Projet mis à jour !');
+                alert('Projet mis à jour !');
+                const saveButton = document.querySelector('.saveButton');
+                saveButton.setAttribute('class', 'saveButton hidden');
             })
             .catch((error) => {
-            console.log('Problème de mise à jour : ', error);
-            alert('Problème de mise à jour, consultez la console.');
+                console.log('Problème de mise à jour : ', error);
+                alert('Problème de mise à jour, consultez la console.');
             });
         };
 
@@ -280,6 +297,214 @@ export default function Backoffice() {
         };
 
 
+
+
+        // GESTION TEXTAREA
+        function modifiedContent() {
+            const saveButton = document.querySelector('.saveButton');
+                let checkClass = saveButton.getAttribute('class');
+                if(checkClass.includes('hidden')) {
+                    saveButton.setAttribute('class', 'saveButton');
+                }
+        }
+
+        // Affichage du contenu de la textarea dans la div .wysiwyg
+        function longModifiedContent() {
+            const showTextarea = document.querySelector('.wysiwyg').innerHTML;
+            const theTextarea = document.getElementById('modLong');
+            theTextarea.value = showTextarea;
+            // showTextarea.innerHTML = theTextarea.value;
+            const saveButton = document.querySelector('.saveButton');
+                let checkClass = saveButton.getAttribute('class');
+                if(checkClass.includes('hidden')) {
+                    saveButton.setAttribute('class', 'saveButton');
+            }
+        }
+
+        function loadHtmlOneTime() {
+        setTimeout(() => {
+            // console.log('loaded');
+            const showTextarea = document.querySelector('.wysiwyg');
+            const theTextarea = document.getElementById('modLong').value;
+            showTextarea.innerHTML = theTextarea;
+        }, 100);
+    }
+
+    function makeBold() {
+        // Récupérer la sélection de texte
+        const selection = window.getSelection();
+        // Vérifier s'il y a une sélection de texte
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+            // Créer une balise <b> pour le texte en gras
+            const boldElement = document.createElement("b");
+            // Appliquer la balise <b> autour de la sélection de texte
+            range.surroundContents(boldElement);
+            // Effacer la sélection de texte après l'application du style
+            selection.removeAllRanges();
+        
+            // Créer un nouveau range après l'élément <b>
+            const newRange = document.createRange();
+            newRange.setStartAfter(boldElement);
+            newRange.collapse(true);
+        
+            // Sélectionner le nouveau range
+            selection.addRange(newRange);
+        
+            // Mettre à jour le textarea
+            const showTextarea = document.querySelector('.wysiwyg').innerHTML;
+            const theTextarea = document.getElementById('modLong');
+            theTextarea.value = showTextarea;
+        }
+    }
+
+    function makeItalic() {
+        // Récupérer la sélection de texte
+        const selection = window.getSelection();
+        // Vérifier s'il y a une sélection de texte
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+            // Créer une balise <b> pour le texte en gras
+            const boldElement = document.createElement("i");
+            // Appliquer la balise <b> autour de la sélection de texte
+            range.surroundContents(boldElement);
+            // Effacer la sélection de texte après l'application du style
+            selection.removeAllRanges();
+        
+            // Créer un nouveau range après l'élément <b>
+            const newRange = document.createRange();
+            newRange.setStartAfter(boldElement);
+            newRange.collapse(true);
+        
+            // Sélectionner le nouveau range
+            selection.addRange(newRange);
+        
+            // Mettre à jour le textarea
+            const showTextarea = document.querySelector('.wysiwyg').innerHTML;
+            const theTextarea = document.getElementById('modLong');
+            theTextarea.value = showTextarea;
+        }
+    }
+
+    function makeUnderline() {
+        // Récupérer la sélection de texte
+        const selection = window.getSelection();
+        // Vérifier s'il y a une sélection de texte
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+            // Créer une balise <b> pour le texte en gras
+            const boldElement = document.createElement("u");
+            // Appliquer la balise <b> autour de la sélection de texte
+            range.surroundContents(boldElement);
+            // Effacer la sélection de texte après l'application du style
+            selection.removeAllRanges();
+        
+            // Créer un nouveau range après l'élément <b>
+            const newRange = document.createRange();
+            newRange.setStartAfter(boldElement);
+            newRange.collapse(true);
+        
+            // Sélectionner le nouveau range
+            selection.addRange(newRange);
+        
+            // Mettre à jour le textarea
+            const showTextarea = document.querySelector('.wysiwyg').innerHTML;
+            const theTextarea = document.getElementById('modLong');
+            theTextarea.value = showTextarea;
+        }
+    }
+
+        function makeParagraph() {
+            // Récupérer la sélection de texte
+            const selection = window.getSelection();
+            // Vérifier s'il y a une sélection de texte
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                // Créer une balise <b> pour le texte en gras
+                const paragraphElement = document.createElement("p");
+                // Appliquer la balise <b> autour de la sélection de texte
+                range.surroundContents(paragraphElement);
+                // Effacer la sélection de texte après l'application du style
+                selection.removeAllRanges();
+
+                // Créer un nouveau range après l'élément
+                const newRange = document.createRange();
+                newRange.setStartAfter(paragraphElement);
+                newRange.collapse(true);
+            
+                // Sélectionner le nouveau range
+                selection.addRange(newRange);
+
+                // mettre à jour le textarea
+                const showTextarea = document.querySelector('.wysiwyg').innerHTML;
+                const theTextarea = document.getElementById('modLong');
+                theTextarea.value = showTextarea;
+            }
+        }
+
+        function makeTitre() {
+            // Récupérer la sélection de texte
+            const selection = window.getSelection();
+            // Vérifier s'il y a une sélection de texte
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                // Créer une balise <b> pour le texte en gras
+                const titreElement = document.createElement("h4");
+                // Appliquer la balise <b> autour de la sélection de texte
+                range.surroundContents(titreElement);
+                // Effacer la sélection de texte après l'application du style
+                selection.removeAllRanges();
+
+                // Créer un nouveau range après l'élément <b>
+                const newRange = document.createRange();
+                newRange.setStartAfter(titreElement);
+                newRange.collapse(true);
+            
+                // Sélectionner le nouveau range
+                selection.addRange(newRange);
+
+                // mettre à jour le textarea
+                const showTextarea = document.querySelector('.wysiwyg').innerHTML;
+                const theTextarea = document.getElementById('modLong');
+                theTextarea.value = showTextarea;
+            }
+        }
+
+        // ajouter une image à l'endroit du curseur texte
+        const insertImage = () => {
+            const img = document.createElement('img');
+            img.src = '/images/arrow.png';
+            img.alt = 'fleche';
+            img.style.transform = "rotate(180deg)";
+            img.style.width = "15px";
+            img.style.height = "17px";
+        
+            const selection = window.getSelection();
+            const range = selection.getRangeAt(0);
+            
+            range.insertNode(img);
+            
+            // Créer un nouveau range après l'image
+            const newRange = document.createRange();
+            newRange.setStartAfter(img);
+            newRange.collapse(true);
+            
+            // Sélectionner le nouveau range
+            selection.removeAllRanges();
+            selection.addRange(newRange);
+            
+            // Mettre à jour le textarea
+            const showTextarea = document.querySelector('.wysiwyg').innerHTML;
+            const theTextarea = document.getElementById('modLong');
+            theTextarea.value = showTextarea;
+            
+            // Définir le focus sur l'élément éditable
+            const wysiwygElement = document.querySelector('.wysiwyg');
+            wysiwygElement.focus();
+        };
+
+
+
         if(projets.length !== 0 || !loggedStatus)
         // if(projets.length !== 0)
         {
@@ -289,6 +514,7 @@ export default function Backoffice() {
                 <div id="backofficeBox">
                     <div id="doorUp"></div>
                     <div id="doorDown"></div>
+                    {docId ? (loadHtmlOneTime()) : ''}
                     {/* { hashedPassword } */}
                     <h2>Gestion de mes projets</h2>
                     {/* <input type="file" onChange={handleImageUpload} /> */}
@@ -319,8 +545,15 @@ export default function Backoffice() {
                                         <input type="text" name="images" id="modImages" defaultValue={project.images} onChange={modifiedContent} />
                                         Small desc
                                         <textarea type="text" name="smalldesc" id="modSmall" defaultValue={project.smalldesc} onChange={modifiedContent}></textarea>
-                                        Long desc
-                                        <textarea type="text" name="longdesc" id="modLong" defaultValue={project.longdesc.replace(/\\n/g, '\n')} onChange={modifiedContent}></textarea>
+                                        Long desc<br />
+                                        <button className="htmlButton" type="button" onClick={makeTitre}>Titre</button>
+                                        <button className="htmlButton" type="button" onClick={makeBold}>Gras</button>
+                                        <button className="htmlButton" type="button" onClick={makeItalic}>Italique</button>
+                                        <button className="htmlButton" type="button" onClick={makeUnderline}>Souligner</button>
+                                        <button className="htmlButton hidden" type="button" onClick={makeParagraph}>Paragraphe</button>
+                                        <button className="htmlButton" type="button" onClick={insertImage}>Flèche</button>
+                                        <textarea type="text" name="longdesc" id="modLong" className="hidden" defaultValue={project.longdesc.replace(/\n/g, '')}></textarea>
+                                        <div className="wysiwyg" contentEditable="true" onInputCapture={longModifiedContent}></div>
                                         {/* {project.images.map((image, index) => (
                                             <input type="text" name={`image${index}`} />
                                         ))} */}

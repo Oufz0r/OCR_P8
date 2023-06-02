@@ -118,6 +118,33 @@
     margin-bottom: 5px;
 }
 
+.wysiwyg {
+    width: 99%;
+    margin: 5px;
+    padding: 5px;
+    height: 250px;
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 3px;;
+    overflow-y: auto;
+    color: black;
+}
+
+#backofficeBox .wysiwyg h4:hover {
+    color: black;
+    cursor: auto;
+}
+
+.projectList .htmlButton {
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+.projectList .htmlButton {
+    margin: 5px 5px 0 5px;
+}
+
 .projectList input {
     width: 300px;
 }
