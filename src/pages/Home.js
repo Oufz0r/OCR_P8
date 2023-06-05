@@ -430,6 +430,8 @@ window.addEventListener('scroll', () => {
                                 <Skillbar name="mongodb" color="F" skill="60" />
                                 <Skillbar name="mysql" color="G" skill="70" />
                                 <Skillbar name="vscode" color="H" skill="90" />
+                                <Skillbar name="firestore" color="B" skill="60" />
+                                <Skillbar name="netlify" color="A" skill="70" />
                                 {/* <Skillbar name="photoshop" color="H" skill="70" /> */}
                                 {/* <div id="php">
                                     <div data-skill="30">php</div>

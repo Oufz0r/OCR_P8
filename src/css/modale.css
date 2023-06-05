@@ -94,6 +94,7 @@
     background-color: white;
     width: 60%;
     height: 80%;
+    padding-bottom: 20px;
 }
 
 .modal-content .modal-img {
@@ -152,7 +153,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding: 0 20px;
     width: 100%;
 }
 
@@ -184,7 +185,7 @@
     margin-top: 20px;
 }
 
-.modal-longdesc p {
+.modal-longdesc p, .modal-longdesc div {
     font-size: 14px;
     margin: 5px;
     padding: 0;
