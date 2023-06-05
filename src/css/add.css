@@ -1,0 +1,79 @@
+.newAdd {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 100px 0;
+    font-family: 'Cerebri';
+}
+
+.newAdd .saveButton {
+    margin-bottom: 50px;
+    font-size: 24px;
+}
+
+.newAdd .saveButton:hover {
+    color: #4b6383;
+    cursor: pointer;
+}
+
+.newAdd .project {
+    /* width: 400px; */
+    transition: 0.5s;
+    width: 800px;
+    /* width: 25vw; */
+    /* width: 400px; */
+    height: fit-content;
+    /* height: 500px; */
+    opacity: 1;
+    background: #4b6383;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 5px 5px 12px #2f435e;
+    color: white;
+}
+
+.newAdd .htmlButton {
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+.newAdd .htmlButton {
+    margin: 5px 5px 0 5px;
+}
+
+.newAdd button {
+    background-color: #2f435e;
+    color: white;
+    border: none;
+}
+
+.newAdd button:hover {
+    background-color: #2f435ea9;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+@media screen AND (max-width: 1700px) {
+    .newAdd .project {
+        width: 95%;
+        height: fit-content;
+        margin-bottom: 0;
+    }
+}

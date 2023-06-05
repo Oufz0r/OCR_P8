@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ConnectDB from '../components/connectDB';
 
+import Lost from './Lost';
+
 import React from 'react';
 // eslint-disable-next-line
 import { getFirestore, collection, getDocs, updateDoc, deleteDoc, doc } from 'firebase/firestore';
@@ -21,6 +23,7 @@ export default function Backoffice() {
     const [projets, setProjets] = useState([]);
     const [docId, setDocId] = useState('');
     const [eraseStatus, setEraseStatus] = useState(false);
+    const [checkProject, setCheckProject] = useState(false);
 
     const loggedStatus = localStorage.getItem('loggedIn');
 
@@ -124,6 +127,7 @@ export default function Backoffice() {
                 localStorage.removeItem('loggedIn');
                 // alert('Vous êtes déconnecté.');
                 setProjets([]);
+                setCheckProject(false);
                 setDocId('');
                 window.history.replaceState({}, document.title, "/backoffice/");
             });
@@ -153,6 +157,8 @@ export default function Backoffice() {
         if(backButton) {
             backButton.addEventListener("click", (e) => {
                 e.preventDefault();
+                setProjets([]);
+                setCheckProject(false);
                 projectId ? (
                     window.location.href = "/backoffice/"
                 ) : (
@@ -261,6 +267,7 @@ export default function Backoffice() {
                     const data = doc.data();
                     if (data.id === projectId) {
                         setDocId(doc.id);
+                        setCheckProject(true);
                         // console.log(doc.id);
                     }
                 });
@@ -268,7 +275,7 @@ export default function Backoffice() {
                 .catch((error) => {
                 console.log("Error getting documents:", error);
                 });
-        }, [projectId, db]);
+        }, [projectId, db, checkProject]);
 
 
 
@@ -297,6 +304,10 @@ export default function Backoffice() {
         };
 
 
+        // Ouverture du form pour ajouter un projet
+        function openAddProject() {
+            window.location.href = "/backoffice/Add";
+        }
 
 
         // GESTION TEXTAREA
@@ -321,6 +332,7 @@ export default function Backoffice() {
             }
         }
 
+        // Une fois un projet sélectionné, on charge le contenu du textarea dans la div de visualisation wysiwyg
         function loadHtmlOneTime() {
         setTimeout(() => {
             // console.log('loaded');
@@ -330,14 +342,15 @@ export default function Backoffice() {
         }, 100);
     }
 
-    function makeBold() {
+    // wrapper la sélection entre des balises ( <b>sélection</b> )
+    function wrapIt(balise) {
         // Récupérer la sélection de texte
         const selection = window.getSelection();
         // Vérifier s'il y a une sélection de texte
         if (selection.rangeCount > 0) {
             const range = selection.getRangeAt(0);
             // Créer une balise <b> pour le texte en gras
-            const boldElement = document.createElement("b");
+            const boldElement = document.createElement(`${balise}`);
             // Appliquer la balise <b> autour de la sélection de texte
             range.surroundContents(boldElement);
             // Effacer la sélection de texte après l'application du style
@@ -355,120 +368,17 @@ export default function Backoffice() {
             const showTextarea = document.querySelector('.wysiwyg').innerHTML;
             const theTextarea = document.getElementById('modLong');
             theTextarea.value = showTextarea;
-        }
-    }
 
-    function makeItalic() {
-        // Récupérer la sélection de texte
-        const selection = window.getSelection();
-        // Vérifier s'il y a une sélection de texte
-        if (selection.rangeCount > 0) {
-            const range = selection.getRangeAt(0);
-            // Créer une balise <b> pour le texte en gras
-            const boldElement = document.createElement("i");
-            // Appliquer la balise <b> autour de la sélection de texte
-            range.surroundContents(boldElement);
-            // Effacer la sélection de texte après l'application du style
-            selection.removeAllRanges();
-        
-            // Créer un nouveau range après l'élément <b>
-            const newRange = document.createRange();
-            newRange.setStartAfter(boldElement);
-            newRange.collapse(true);
-        
-            // Sélectionner le nouveau range
-            selection.addRange(newRange);
-        
-            // Mettre à jour le textarea
-            const showTextarea = document.querySelector('.wysiwyg').innerHTML;
-            const theTextarea = document.getElementById('modLong');
-            theTextarea.value = showTextarea;
-        }
-    }
-
-    function makeUnderline() {
-        // Récupérer la sélection de texte
-        const selection = window.getSelection();
-        // Vérifier s'il y a une sélection de texte
-        if (selection.rangeCount > 0) {
-            const range = selection.getRangeAt(0);
-            // Créer une balise <b> pour le texte en gras
-            const boldElement = document.createElement("u");
-            // Appliquer la balise <b> autour de la sélection de texte
-            range.surroundContents(boldElement);
-            // Effacer la sélection de texte après l'application du style
-            selection.removeAllRanges();
-        
-            // Créer un nouveau range après l'élément <b>
-            const newRange = document.createRange();
-            newRange.setStartAfter(boldElement);
-            newRange.collapse(true);
-        
-            // Sélectionner le nouveau range
-            selection.addRange(newRange);
-        
-            // Mettre à jour le textarea
-            const showTextarea = document.querySelector('.wysiwyg').innerHTML;
-            const theTextarea = document.getElementById('modLong');
-            theTextarea.value = showTextarea;
-        }
-    }
-
-        function makeParagraph() {
-            // Récupérer la sélection de texte
-            const selection = window.getSelection();
-            // Vérifier s'il y a une sélection de texte
-            if (selection.rangeCount > 0) {
-                const range = selection.getRangeAt(0);
-                // Créer une balise <b> pour le texte en gras
-                const paragraphElement = document.createElement("p");
-                // Appliquer la balise <b> autour de la sélection de texte
-                range.surroundContents(paragraphElement);
-                // Effacer la sélection de texte après l'application du style
-                selection.removeAllRanges();
-
-                // Créer un nouveau range après l'élément
-                const newRange = document.createRange();
-                newRange.setStartAfter(paragraphElement);
-                newRange.collapse(true);
-            
-                // Sélectionner le nouveau range
-                selection.addRange(newRange);
-
-                // mettre à jour le textarea
-                const showTextarea = document.querySelector('.wysiwyg').innerHTML;
-                const theTextarea = document.getElementById('modLong');
-                theTextarea.value = showTextarea;
+            // afficher le bouton d'enregistrement après modification
+            const saveButton = document.querySelector('.saveButton');
+                let checkClass = saveButton.getAttribute('class');
+                if(checkClass.includes('hidden')) {
+                    saveButton.setAttribute('class', 'saveButton');
             }
         }
+    }
 
-        function makeTitre() {
-            // Récupérer la sélection de texte
-            const selection = window.getSelection();
-            // Vérifier s'il y a une sélection de texte
-            if (selection.rangeCount > 0) {
-                const range = selection.getRangeAt(0);
-                // Créer une balise <b> pour le texte en gras
-                const titreElement = document.createElement("h4");
-                // Appliquer la balise <b> autour de la sélection de texte
-                range.surroundContents(titreElement);
-                // Effacer la sélection de texte après l'application du style
-                selection.removeAllRanges();
 
-                // Créer un nouveau range après l'élément <b>
-                const newRange = document.createRange();
-                newRange.setStartAfter(titreElement);
-                newRange.collapse(true);
-            
-                // Sélectionner le nouveau range
-                selection.addRange(newRange);
-
-                // mettre à jour le textarea
-                const showTextarea = document.querySelector('.wysiwyg').innerHTML;
-                const theTextarea = document.getElementById('modLong');
-                theTextarea.value = showTextarea;
-            }
-        }
 
         // ajouter une image à l'endroit du curseur texte
         const insertImage = () => {
@@ -509,6 +419,11 @@ export default function Backoffice() {
         // if(projets.length !== 0)
         {
     if(loggedIn) {
+        localStorage.setItem('nbProjets', projets.length);
+        // On vérifie que l'id du projet existe
+        if(checkProject === false && projectId) {
+            return (<Lost />)
+        }
         // window.history.replaceState({}, document.title, "/backoffice");
             return (
                 <div id="backofficeBox">
@@ -520,7 +435,7 @@ export default function Backoffice() {
                     {/* <input type="file" onChange={handleImageUpload} /> */}
                     {/* <img src="" className="imageHere" alt="uploaded one" /> */}
                     {
-                        projectId ? (<h4 className="saveButton hidden" onClick={majONEProjet}>Enregistrer les modifications</h4>) : (<h4 className="addButton">Ajouter un projet</h4>)
+                        projectId ? (<h4 className="saveButton hidden" onClick={majONEProjet}>Enregistrer les modifications</h4>) : (<h4 className="addButton" onClick={openAddProject}>Ajouter un projet</h4>)
                     }
                     {/* <span className="addProject">Ajouter un projet</span> */}
                     <div className="projectList">
@@ -546,14 +461,14 @@ export default function Backoffice() {
                                         Small desc
                                         <textarea type="text" name="smalldesc" id="modSmall" defaultValue={project.smalldesc} onChange={modifiedContent}></textarea>
                                         Long desc<br />
-                                        <button className="htmlButton" type="button" onClick={makeTitre}>Titre</button>
-                                        <button className="htmlButton" type="button" onClick={makeBold}>Gras</button>
-                                        <button className="htmlButton" type="button" onClick={makeItalic}>Italique</button>
-                                        <button className="htmlButton" type="button" onClick={makeUnderline}>Souligner</button>
-                                        <button className="htmlButton hidden" type="button" onClick={makeParagraph}>Paragraphe</button>
+                                        <button className="htmlButton" type="button" onClick={() => wrapIt('h4')}>Titre</button>
+                                        <button className="htmlButton" type="button" onClick={() => wrapIt('b')}>Gras</button>
+                                        <button className="htmlButton" type="button" onClick={() => wrapIt('i')}>Italique</button>
+                                        <button className="htmlButton" type="button" onClick={() => wrapIt('u')}>Souligner</button>
+                                        <button className="htmlButton hidden" type="button" onClick={() => wrapIt('p')}>Paragraphe</button>
                                         <button className="htmlButton" type="button" onClick={insertImage}>Flèche</button>
                                         <textarea type="text" name="longdesc" id="modLong" className="hidden" defaultValue={project.longdesc.replace(/\n/g, '')}></textarea>
-                                        <div className="wysiwyg" contentEditable="true" onInputCapture={longModifiedContent}></div>
+                                        <div className="wysiwyg" contentEditable="true" spellCheck="true" onInputCapture={longModifiedContent}></div>
                                         {/* {project.images.map((image, index) => (
                                             <input type="text" name={`image${index}`} />
                                         ))} */}
@@ -565,6 +480,7 @@ export default function Backoffice() {
                                     ) : ''
                                 ) : (
                                     <div className="project" key={index}>
+                                        {}
                                     <a href={`./${project.id}`}><h3>{project.titre}{docId.id}</h3></a>
                                 </div>
                                 )

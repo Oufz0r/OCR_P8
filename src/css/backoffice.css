@@ -118,6 +118,9 @@
     margin-bottom: 5px;
 }
 
+
+
+
 .wysiwyg {
     width: 99%;
     margin: 5px;
@@ -127,13 +130,46 @@
     background: white;
     border-radius: 3px;;
     overflow-y: auto;
-    color: black;
+    color: #2f435e;
 }
 
-#backofficeBox .wysiwyg h4:hover {
-    color: black;
+#backofficeBox form .wysiwyg h4:hover {
+    color: #2f435e;
     cursor: auto;
 }
+
+#backofficeBox form .wysiwyg h4:not(:first-child) {
+    margin-top: 20px;
+}
+
+#backofficeBox form .wysiwyg h4 {
+    margin-bottom: 10px;
+    text-transform: initial;
+}
+
+#backofficeBox form .wysiwyg p h4 {
+    font-size: initial;
+}
+
+#backofficeBox form .wysiwyg p {
+    font-size: 14px;
+    margin: 5px;
+    padding: 0;
+}
+
+#backofficeBox form .wysiwyg p img {
+    filter: invert(20%);
+    margin-right: 5px;
+    width: 15px;
+    height: 17px;
+}
+
+#backofficeBox form .wysiwyg * {
+    margin: 0;
+}
+
+
+
 
 .projectList .htmlButton {
     width: fit-content;
@@ -267,7 +303,14 @@
     display: none;
 }
 
+.button {
+    background: #2f435e;
+    padding: 5px 20px;
+    border-radius: 3px;
+}
+
 .button:hover {
+    background-color: #2f435ea9;
     color: #89abd8;
     cursor: pointer;
 }
