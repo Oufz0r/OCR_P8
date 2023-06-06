@@ -380,6 +380,64 @@ export default function Backoffice() {
     }
 
 
+    // Supprimer les balises dans la sélection
+    function removeTags() {
+        // Récupérer la sélection de texte
+        const selection = window.getSelection();
+    
+        // Vérifier s'il y a une sélection de texte
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+        
+            // Extraire le contenu de la sélection
+            const extractedContents = range.extractContents();
+        
+            // Créer un conteneur temporaire
+            const tempContainer = document.createElement('div');
+            tempContainer.appendChild(extractedContents);
+        
+            // Supprimer les balises HTML spécifiques du contenu extrait
+            const cleanedContent = removeSpecificTags(tempContainer.innerHTML);
+        
+            // Créer un fragment de document pour réinsérer le contenu nettoyé
+            const fragment = document.createDocumentFragment();
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = cleanedContent;
+            while (tempDiv.firstChild) {
+                fragment.appendChild(tempDiv.firstChild);
+            }
+        
+            // Insérer le contenu nettoyé dans la sélection
+            range.deleteContents();
+            range.insertNode(fragment);
+        
+            // Effacer la sélection de texte après la suppression des balises
+            selection.removeAllRanges();
+        
+            // Mettre à jour le contenu de la div .wysiwyg
+            const showTextarea = document.querySelector('.wysiwyg').innerHTML;
+            const theTextarea = document.getElementById('modLong');
+            theTextarea.value = showTextarea;
+        
+            // Afficher le bouton d'enregistrement après modification
+            const saveButton = document.querySelector('.saveButton');
+            let checkClass = saveButton.getAttribute('class');
+            if (checkClass.includes('hidden')) {
+                saveButton.setAttribute('class', 'saveButton');
+            }
+        }
+    }
+    
+    function removeSpecificTags(html) {
+        // Supprimer les balises HTML spécifiques du contenu
+        const cleanedContent = html.replace(/<\/?(?:b|u|i|h4)>/g, '');
+        return cleanedContent;
+    }
+    
+
+
+
+
 
         // ajouter une image à l'endroit du curseur texte
         const insertImage = () => {
@@ -468,6 +526,8 @@ export default function Backoffice() {
                                         <button className="htmlButton" type="button" onClick={() => wrapIt('u')}>Souligner</button>
                                         <button className="htmlButton hidden" type="button" onClick={() => wrapIt('p')}>Paragraphe</button>
                                         <button className="htmlButton" type="button" onClick={insertImage}>Flèche</button>
+                                        <button className="htmlButton" type="button" onClick={removeTags}>Eff. balises</button>
+                                        {/* className hidden */}
                                         <textarea type="text" name="longdesc" id="modLong" className="hidden" defaultValue={project.longdesc.replace(/\n/g, '')}></textarea>
                                         <div className="wysiwyg" contentEditable="true" spellCheck="true" onInputCapture={longModifiedContent}></div>
                                         {/* {project.images.map((image, index) => (
