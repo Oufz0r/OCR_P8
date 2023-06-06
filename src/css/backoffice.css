@@ -296,7 +296,8 @@
 }
 
 .projectList .eraseButton:hover {
-    background-color: #944a4ae7;
+    background-color: #2f435ea9;
+    /* background-color: #944a4ae7; */
 }
 
 .hidden {

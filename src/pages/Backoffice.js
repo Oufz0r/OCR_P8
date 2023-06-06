@@ -168,6 +168,8 @@ export default function Backoffice() {
         }
     },[loggedIn, projets, projectId])
 
+
+
     useEffect (() => {
         const passwordMatches = bcrypt.compareSync(enteredPassword, basePassword);
         let emailMatches = false;
@@ -181,6 +183,9 @@ export default function Backoffice() {
             setEnteredPassword('');
             setLoggedIn(true);
             localStorage.setItem('loggedIn', true);
+        } else if((!loggedIn && enteredPassword !== "" && !passwordMatches) || (!loggedIn && enteredEmail !== "" && !emailMatches)) {
+            // affichage d'une alerte pour annoncer un mauvais combo email/password
+            alert('Email et/ou mot de passe incorrect(s).');
         }
     }, [baseEmail, basePassword, enteredEmail, enteredPassword, loggedIn]);
 
@@ -237,9 +242,25 @@ export default function Backoffice() {
         // supprimer un projet dans la base de données
         const deleteProjet = () => {
             if (!eraseStatus) {
+                let timerDel = 5;
                 let eraseButton = document.querySelector('.eraseButton');
-                eraseButton.textContent = "J'en suis sûr !";
+                eraseButton.textContent = `J'en suis sûr ! (${timerDel})`;
                 eraseButton.style.backgroundColor = "#944a4ae7";
+                const alarmAnim = setInterval(() => {
+                    eraseButton.style.backgroundColor = "#c46262e7";
+                    timerDel--;
+                    eraseButton.textContent = `J'en suis sûr ! (${timerDel})`;
+                    setTimeout(() => {
+                        eraseButton.style.backgroundColor = "#944a4ae7";
+                    }, 500);
+                }, 1000);
+                setInterval(() => {
+                    clearInterval(alarmAnim);
+                    eraseButton.style.backgroundColor = "#2f435e";
+                    eraseButton.textContent = "Supprimer le projet";
+                    timerDel = 5;
+                    setEraseStatus(false);
+                }, 5550);
                 setEraseStatus(true);
             } else if (eraseStatus) {
                 const projetRef = doc(db, 'projets', docId.toString());
