@@ -163,7 +163,7 @@ export default function Modale(props) {
                 <div className="modal-inner-box">
                     <div className="modal-img">
                         {/* <img src={props.bground} alt="screen du projet" /> */}
-                        <img src={`/images/${imgList[0]}`} alt="screen du projet" className="imageClick" />
+                        <img src={`https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/${imgList[0]}?alt=media`} alt="screen du projet" className="imageClick" />
 
                         { imgList.length > 1 ? (
                         <div className="tapHere">
