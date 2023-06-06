@@ -84,7 +84,8 @@ export default function Modale(props) {
             if(index >= nbImgFromList){
                 index = 0;
             }
-            imageClick.setAttribute('src', `/images/${imgList[index]}`);
+            // imageClick.setAttribute('src', `/images/${imgList[index]}`);
+            imageClick.setAttribute('src', `https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/${imgList[index]}?alt=media`);
             // console.log('clicked');
     });
         } else {
@@ -152,7 +153,7 @@ export default function Modale(props) {
 
     return (
         <div>
-        <button className="modalBtn" onClick={openModal}>Voir plus <img src="images/arrow.png" alt="une flèche" /></button>
+        <button className="modalBtn" onClick={openModal}>Voir plus <img src="/images/arrow.png" alt="une flèche" /></button>
 
         {isOpen && (
             <div className="modal" tabIndex="-1" role="dialog" aria-modal="true" onKeyDown={handleKeyDown}>
@@ -171,8 +172,8 @@ export default function Modale(props) {
                         ) : "" }
 
                         <div>
-                            <a href={ props.url } target="_blank" rel="noopener noreferrer" className={props.url !== "" ? "" : "hidden"}><img src="images/external-link.png" alt="link icon" /></a>
-                            <a href={ props.ghlink } target="_blank" rel="noopener noreferrer" className={props.ghlink !== "" ? "" : "hidden"}><img src="images/GitHub_Logo_White.png" className="invert" alt="github icon" /></a>
+                            <a href={ props.url } target="_blank" rel="noopener noreferrer" className={props.url !== "" ? "" : "hidden"}><img src="/images/external-link.png" alt="link icon" /></a>
+                            <a href={ props.ghlink } target="_blank" rel="noopener noreferrer" className={props.ghlink !== "" ? "" : "hidden"}><img src="/images/GitHub_Logo_White.png" className="invert" alt="github icon" /></a>
                         </div>
                     </div>
                     <div className="modal-right">

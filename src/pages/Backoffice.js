@@ -233,6 +233,7 @@ export default function Backoffice() {
             });
         };
 
+        
         // supprimer un projet dans la base de données
         const deleteProjet = () => {
             if (!eraseStatus) {
