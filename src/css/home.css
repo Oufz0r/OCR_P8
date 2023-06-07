@@ -1,4 +1,4 @@
-#home {
+#home, #homeBackground {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -12,9 +12,6 @@
 }
 
 #homeBackground {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     background-image: url("../../public/images/backgroundCode.webp");
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,7 +22,6 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    /* background-color: #2f435ede; */
     background-color: #2f435ede;
 }
 
@@ -36,13 +32,11 @@
     align-items: center;
 }
 
-
-
 #reseaux {
     z-index: 101;
     position: fixed;
     top: 65%;
-    left: 0px;
+    left: 0;
     user-select: none;
 }
 
@@ -68,15 +62,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: 25%; */
+    font-family: 'Lobster', cursive;
     position: absolute;
     top: auto;
     left: auto;
-    font-family: 'Lobster', cursive;
-    position: fixed;
     cursor: default;
     user-select: none;
-    /* font-size: 80px; */
     font-size: 4em;
 }
 
@@ -84,15 +75,6 @@
     font-size: 4em;
     font-family: 'Cerebri';
 }
-
-/* .logoReady {
-    background-image: url("../../public/images/logotext.jpg");
-    background-position: right center;
-    background-size: cover;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-} */
 
 #backTop {
     z-index: 9999;
@@ -111,13 +93,11 @@
     filter: invert(100%);
 }
 
-
 section h2 {
     font-size: 40px;
     padding: 50px;
     width: 100%;
     text-align: center;
-    /* font-family: "Roboto"; */
     font-family: "Cerebri";
     text-transform: uppercase;
 }
@@ -126,12 +106,9 @@ section h2 {
     color: #2f435e;
     position: relative;
     width: 90%;
-    /* width: fit-content; */
-    /* height: fit-content; */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     font-family: 'Roboto';
     padding-top: 100px;
@@ -145,17 +122,14 @@ section h2 {
 .separateur {
     background-color: #2f435e;
     font-family: 'Lobster', cursive;
-    /* font-size: 30px; */
     font-size: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* height: 100px; */
     height: 50vh;
 }
 
-/* MES COMPETENCES */
 #competences {
     width: 90%;
     display: grid;
@@ -164,7 +138,6 @@ section h2 {
     grid-auto-rows: minmax(50px, auto);
 }
 
-/* Classes utiles */
 .mrg-top10 {margin-top: 10px;}
 .mrg-top25 {margin-top: 25px;}
 .mrg-top50 {margin-top: 50px;}
@@ -184,8 +157,6 @@ section h2 {
 .w100 {width:100%;}
 
 .p-large {
-    /* width: 43%; */
-    /* width: 100%; */
     text-align: justify;
     margin-bottom: 20px;
     font-size: 18px;
@@ -204,10 +175,6 @@ section h2 {
     align-items: center;
 }
 
-
-
-
-
 .project-Box {
     width: fit-content;
     display: grid;
@@ -217,52 +184,42 @@ section h2 {
     margin-bottom: 50px;
 }
 
-
-
-
-
-
-
-
-
-
-
 @media only screen AND (min-width: 1000px) AND (max-width: 1370px){
     #home #logoCentral {
         font-size: 3em;
     }
-
+    
     #home #logoCentral.logoCentralEnd {
         font-size: 2em;
         font-family: 'Cerebri';
     }
-
+    
     #reseaux {
         display: none;
     }
-
+    
     section h2 {
         padding: 80px 0 50px 0;
         font-size: 30px;
     }
-
+    
     .project-Box {
         grid-gap: 5%;
         width: 90%;
     }
-
+    
     .sec-box {
         width: 100%;
         padding-top: 50px;
         padding-bottom: 50px;
     }
-
+    
     #competences {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 0px;
         width: 100%;
     }
-
+    
     #backTop {
         bottom: 25px;
         right: 25px;
@@ -278,28 +235,22 @@ section h2 {
     }
 
     .w50, .w60, .w70, .w80, .w90, .w100 {width:90%;}
-
 }
-
-
-
-
-
 
 @media only screen and (max-width: 1000px){
     #home #logoCentral {
         font-size: 3em;
     }
-
+    
     #home #logoCentral.logoCentralEnd {
         font-size: 1.2em;
         font-family: 'Cerebri';
     }
-
+    
     #reseaux {
         display: none;
     }
-
+    
     section h2 {
         padding: 80px 0 50px 0;
         font-size: 30px;
@@ -311,19 +262,19 @@ section h2 {
         align-items: center;
         width: 100%;
     }
-
+    
     .sec-box {
         width: 100%;
         padding-top: 50px;
         padding-bottom: 50px;
     }
-
+    
     #competences {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 0px;
         width: 100%;
     }
-
+    
     #backTop {
         bottom: 25px;
         right: 25px;
@@ -339,5 +290,4 @@ section h2 {
     }
 
     .w50, .w60, .w70, .w80, .w90, .w100 {width:90%;}
-
 }
