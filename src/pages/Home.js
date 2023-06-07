@@ -312,6 +312,19 @@ window.addEventListener('scroll', () => {
     if (projetsPosition.top <= window.innerHeight * 0.4 && projetsPosition.bottom >= window.innerHeight * 0.4) {
         // logoCatch.style.color = "#2f435e";
         setTimeout(() => {
+            // charger les images en différé
+            const bgrounds = document.querySelectorAll(".bground");
+            bgrounds.forEach(function(bground) {
+                const imageUrl = bground.dataset.src;
+                if (imageUrl) {
+                    const img = new Image();
+                    img.src = imageUrl;
+                    img.addEventListener("load", function() {
+                        bground.style.backgroundImage = 'url("' + imageUrl + '")';
+                    });
+                }
+            });
+
             const projectCard = document.querySelectorAll(".project");
             let timeLoopCard = 100;
             for(let n=0; n < projectCard.length; n++) {
