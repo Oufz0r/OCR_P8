@@ -55,6 +55,11 @@
     transition: 0.3s;
 }
 
+#reseaux div img {
+    width: 75px;
+    height: 55px;
+}
+
 #reseaux div:hover {
     left: 0;
 }

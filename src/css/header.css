@@ -32,6 +32,7 @@ header h1 {
 
 .login img{
     width: 23px;
+    height: 23px;
     filter: invert(100%);
 }
 
@@ -84,6 +85,7 @@ nav span div {
     /* background-color: #ececec; */
     background-color: #2f435e;
 }
+
 
 nav span .active {
     left: 0%;
