@@ -74,20 +74,31 @@ export default function Modale(props) {
                     }, 300);
                 }, 200);
             }, 10);
-        // Bloquer le défilement de l'arrière-plan lorsque la modale est ouverte
-        document.body.style.overflow = 'hidden';
-        document.addEventListener('keydown', handleKeyDown); // Bloquer la navigation par onglets
+            // Bloquer le défilement de l'arrière-plan lorsque la modale est ouverte
+            document.body.style.overflow = 'hidden';
+            document.addEventListener('keydown', handleKeyDown); // Bloquer la navigation par onglets
 
-        const imageClick = document.querySelector('.imageClick');
-        imageClick.addEventListener('click', (e) => {
-            index = index+1;
-            if(index >= nbImgFromList){
-                index = 0;
-            }
-            // imageClick.setAttribute('src', `/images/${imgList[index]}`);
-            imageClick.setAttribute('src', `https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/${imgList[index]}?alt=media`);
-            // console.log('clicked');
-    });
+            const imageClick = document.querySelector('.imageClick');
+            const arrowPrev = document.getElementById('arrowPrev');
+            const arrowNext = document.getElementById('arrowNext');
+            arrowPrev.addEventListener('click', () => {
+                index = index-1;
+                if(index < 0){
+                    index = nbImgFromList-1;
+                }
+                // imageClick.setAttribute('src', `/images/${imgList[index]}`);
+                imageClick.setAttribute('src', `https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/${imgList[index]}?alt=media`);
+                // console.log('clicked');
+            });
+            arrowNext.addEventListener('click', () => {
+                index = index+1;
+                if(index >= nbImgFromList){
+                    index = 0;
+                }
+                // imageClick.setAttribute('src', `/images/${imgList[index]}`);
+                imageClick.setAttribute('src', `https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/${imgList[index]}?alt=media`);
+                // console.log('clicked');
+            });
         } else {
         // Rétablir le défilement de l'arrière-plan lorsque la modale est fermée
         document.body.style.overflow = 'auto';
@@ -161,16 +172,22 @@ export default function Modale(props) {
                 {/* Contenu de la modale */}
                 <h2>{ props.titre.toLowerCase() }</h2>
                 <div className="modal-inner-box">
-                    <div className="modal-img">
-                        {/* <img src={props.bground} alt="screen du projet" /> */}
-                        <img src={`https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/${imgList[0]}?alt=media`} alt="screen du projet" className="imageClick" />
+                    <div className="modal-left">
+                        <div className="modal-img">
+                            {/* <img src={props.bground} alt="screen du projet" /> */}
+                            <img src={`https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/${imgList[0]}?alt=media`} alt="screen du projet" className="imageClick" />
 
-                        { imgList.length > 1 ? (
-                        <div className="tapHere">
-                            <img src="/images/tap.png" alt="cliquez-ici" />
+                            { imgList.length > 1 ? (
+                                <>
+                                {/* remplacer par des flèches prév, suiv. */}
+                                <img src="/images/prev-next.png" id="arrowPrev" className="prev-next" alt="flèche précédente" />
+                                <img src="/images/prev-next.png" id="arrowNext" className="prev-next" alt="flèche suivante" />
+                                {/* <div className="tapHere">
+                                    <img src="/images/tap.png" alt="cliquez-ici" />
+                                </div> */}
+                            </>
+                            ) : "" }
                         </div>
-                        ) : "" }
-
                         <div>
                             <a href={ props.url } target="_blank" rel="noopener noreferrer" className={props.url !== "" ? "" : "hidden"}><img src="/images/external-link.png" alt="link icon" /></a>
                             <a href={ props.ghlink } target="_blank" rel="noopener noreferrer" className={props.ghlink !== "" ? "" : "hidden"}><img src="/images/GitHub_Logo_White.png" className="invert" alt="github icon" /></a>

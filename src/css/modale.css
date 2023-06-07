@@ -97,28 +97,52 @@
     padding-bottom: 20px;
 }
 
-.modal-content .modal-img {
+.modal-content .modal-left {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
 }
 
-.modal-content .modal-img div {
+.modal-content .modal-left .modal-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.modal-content .modal-left .prev-next {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    filter: invert(50%);
+}
+
+.modal-content .modal-left #arrowPrev {
+    left: 10px;
+    transform: rotate(180deg);
+}
+
+.modal-content .modal-left #arrowNext {
+    right: 10px;
+}
+
+.modal-content .modal-left div {
     display: flex;
     flex-direction: row;
     margin-top: 10px;
 }
 
-.modal-content .modal-img div a:nth-of-type(1) img {
+.modal-content .modal-left div a:nth-of-type(1) img {
     width: 20px;
 }
 
-.modal-content .modal-img div a:nth-of-type(2) img {
+.modal-content .modal-left div a:nth-of-type(2) img {
     width: 48px;
 }
 
-.modal-content .modal-img div a img:hover {
+.modal-content .modal-left div a img:hover {
     filter: invert(50%);
 }
 
@@ -280,5 +304,14 @@
     .modal-longdesc img {
         width: 15px;
         height: 17px;
+    }
+
+    .modal-content .modal-left #arrowPrev {
+        left: 0;
+        transform: rotate(180deg);
+    }
+    
+    .modal-content .modal-left #arrowNext {
+        right: 0;
     }
 }
