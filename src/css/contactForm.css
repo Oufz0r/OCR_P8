@@ -60,7 +60,11 @@ textarea {
 }
 
 form *:focus {
-    outline: none;
+    /* outline: none; */
+    transition: 0.1s;
+    outline:1px solid #2f435e;
+    box-shadow:0 0 10px #2f435e;
+    /* #9ecaed */
 }
 
 

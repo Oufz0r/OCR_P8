@@ -175,6 +175,7 @@
     width: fit-content;
     padding: 5px 15px;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .projectList .htmlButton {
@@ -288,6 +289,7 @@
     background-color: #2f435e;
     color: white;
     border: none;
+    cursor: pointer;
 }
 
 #loginForm button:hover {

@@ -184,6 +184,14 @@ section h2 {
     margin-bottom: 50px;
 }
 
+
+
+
+
+
+
+
+
 @media only screen AND (min-width: 1000px) AND (max-width: 1370px){
     #home #logoCentral {
         font-size: 3em;
@@ -236,6 +244,14 @@ section h2 {
 
     .w50, .w60, .w70, .w80, .w90, .w100 {width:90%;}
 }
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 1000px){
     #home #logoCentral {
