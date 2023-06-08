@@ -430,7 +430,7 @@ window.addEventListener('scroll', () => {
                 <section id="apropos" className="sec-box mrg-bot100">
                     <h2>À propos</h2>
 
-                    <img src='http://s693680073.onlinehome.fr/vUpload/FILES/1685019987311_type_jpg2692724.jpg' className='photoMe' alt='Damien Pernin' />
+                    <img src='https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/photoMe.jpg?alt=media' className='photoMe' alt='Damien Pernin' />
 
                     <p className="p-large w70">Je m'appelle Damien Pernin, passionné par le monde numérique depuis <span id="monAge"></span> ans. Ce que j'aime, voir des maquettes et des idées prendre vie sur mes navigateurs, découvrir et acquiérir de nouvelles compétences et créer des petits jeux. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
 
