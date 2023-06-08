@@ -188,6 +188,8 @@ export default function Modale(props) {
                             </>
                             ) : "" }
                         </div>
+                        {/* <br /> */}
+                        {/* <hr /> */}
                         <div>
                             <a href={ props.url } target="_blank" rel="noopener noreferrer" className={props.url !== "" ? "" : "hidden"}><img src="/images/external-link.png" alt="link icon" /></a>
                             <a href={ props.ghlink } target="_blank" rel="noopener noreferrer" className={props.ghlink !== "" ? "" : "hidden"}><img src="/images/GitHub_Logo_White.png" className="invert" alt="github icon" /></a>
