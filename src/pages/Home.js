@@ -33,6 +33,7 @@ export default function Home(props) {
         let spans = document.querySelectorAll("nav span");
         const logoCatch = document.querySelector("header h1 span");
         const logoCentral = document.querySelector("#logoCentral");
+        const photoMe = document.querySelector(".photoMe");
         const backTop = document.querySelector("#backTop");
         
         // const logoH1 = document.querySelector("header h1");
@@ -115,6 +116,7 @@ export default function Home(props) {
                     }, 80);
                 }, 480);
             }, 4500);
+
 
         // animation au lancement de la page
         function logoRoll() {
@@ -223,7 +225,7 @@ export default function Home(props) {
                 backTop.style.display = "inline";
                 backTop.style.filter = "invert(80%)";
                 let valueOpa = 1-((window.scrollY)/400);
-                logoCentral.style.opacity = `${valueOpa}`;                
+                logoCentral.style.opacity = `${valueOpa}`;
             } else {
               // L'utilisateur est en haut de la page
                 backTop.style.display = "none";
@@ -287,7 +289,7 @@ window.addEventListener('scroll', () => {
     // A PROPOS
     const aPropos = document.querySelector('#apropos');
     const aProposPosition = aPropos.getBoundingClientRect();
-    if (aProposPosition.top <= window.innerHeight * 0.2 && aProposPosition.bottom >= window.innerHeight * 0.2) {
+    if (aProposPosition.top <= window.innerHeight * -0.1 && aProposPosition.bottom >= window.innerHeight * -0.1) {
         if(skillStatus === 0) {
             skillGrow();
             skillStatus = 1;
@@ -302,8 +304,9 @@ window.addEventListener('scroll', () => {
         underDiv.setAttribute('class', 'active');
     }
     // console.log("TOP:" + aProposPosition.top + " / BOTTOM: " + aProposPosition.bottom + " / INNER: " + window.innerHeight);
-    if (aProposPosition.top <= window.innerHeight * 0 && aProposPosition.bottom >= window.innerHeight * 0) {
+    if (aProposPosition.top <= window.innerHeight * 0.5 && aProposPosition.bottom >= window.innerHeight * 0.5) {
         // logoCatch.style.color = "#2f435e";
+        photoMe.style.opacity = "1";
     }
     // PROJETS
     const projets = document.querySelector('#projets');
@@ -426,6 +429,8 @@ window.addEventListener('scroll', () => {
 
                 <section id="apropos" className="sec-box mrg-bot100">
                     <h2>À propos</h2>
+
+                    <img src='http://s693680073.onlinehome.fr/vUpload/FILES/1685019987311_type_jpg2692724.jpg' className='photoMe' alt='Damien Pernin' />
 
                     <p className="p-large w70">Je m'appelle Damien Pernin, passionné par le monde numérique depuis <span id="monAge"></span> ans. Ce que j'aime, voir des maquettes et des idées prendre vie sur mes navigateurs, découvrir et acquiérir de nouvelles compétences et créer des petits jeux. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
 
