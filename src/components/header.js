@@ -9,12 +9,12 @@ export default function Header() {
         const header = document.querySelector("header");
         const nav = document.querySelector("nav");
         const navLinks = document.querySelectorAll("nav span, nav a");
-        const login = document.querySelector(".login");
+        // const login = document.querySelector(".login");
 
 
-        login.addEventListener('click', () => {
-            window.location.href = '/backoffice/';
-        })
+        // login.addEventListener('click', () => {
+        //     window.location.href = '/backoffice/';
+        // })
 
 
         window.addEventListener('scroll', function() {
@@ -31,13 +31,15 @@ export default function Header() {
                 logoCatch.style.color = "#2f435e";
                 logoH1.style.top = "5px";
                 for(let i=0; i<navLinks.length; i++)
-                {navLinks[i].style.color = "#2f435e";
-                navLinks[3].style.filter = "invert(80%)";}
+                {
+                    navLinks[i].style.color = "#2f435e";
+                    // navLinks[3].style.filter = "invert(80%)";
+                }
             } else if (aProposPosition.top > window.innerHeight * 0.1  && window.innerWidth > 1000) {
                 for(let n=0; n < spans.length; n++) {
                     let underDiv = spans[n].querySelector("div");
                     underDiv.removeAttribute('class', '');
-                    navLinks[3].style.filter = "invert(0%)";
+                    // navLinks[3].style.filter = "invert(0%)";
                 }
                 nav.style.top = "60px";
                 header.style.backgroundColor = "";
@@ -56,13 +58,15 @@ export default function Header() {
                 logoCatch.style.color = "#2f435e";
                 // logoH1.style.top = "5px";
                 for(let i=0; i<navLinks.length; i++)
-                {navLinks[i].style.color = "#2f435e";
-                navLinks[3].style.filter = "invert(80%)";}
+                {
+                    navLinks[i].style.color = "#2f435e";
+                    // navLinks[3].style.filter = "invert(80%)";
+                }
             } else if(aProposPosition.top > window.innerHeight * 0.2 && window.innerWidth <= 1000) {
                 for(let n=0; n < spans.length; n++) {
                     let underDiv = spans[n].querySelector("div");
                     underDiv.removeAttribute('class', '');
-                    navLinks[3].style.filter = "invert(0%)";
+                    // navLinks[3].style.filter = "invert(0%)";
                 }
                 // nav.style.top = "60px";
                 header.style.backgroundColor = "";
@@ -110,7 +114,7 @@ export default function Header() {
                     <span className="scrollApropos">à propos<div /></span>
                     <span className="scrollProjets">mes projets<div /></span>
                     <span className="scrollContact">contact<div /></span>
-                    <span className="login"><img src="/images/user.png" alt="user icon" /><div /></span>
+                    {/* <span className="login"><img src="/images/user.png" alt="user icon" /><div /></span> */}
                     {/* <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">curriculum vitæ</a><div /></span> */}
                 </nav>
             </header>
