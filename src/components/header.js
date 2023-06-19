@@ -9,12 +9,12 @@ export default function Header() {
         const header = document.querySelector("header");
         const nav = document.querySelector("nav");
         const navLinks = document.querySelectorAll("nav span, nav a");
-        const login = document.querySelector(".login");
+        // const login = document.querySelector(".login");
 
 
-        login.addEventListener('click', () => {
-            window.location.href = '/backoffice/';
-        })
+        // login.addEventListener('click', () => {
+        //     window.location.href = '/backoffice/';
+        // })
 
 
         window.addEventListener('scroll', function() {
