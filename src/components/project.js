@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Modale from '../components/modale';
 
 export default function Project(props) {
