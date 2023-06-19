@@ -110,7 +110,7 @@ export default function Header() {
                     <span className="scrollApropos">à propos<div /></span>
                     <span className="scrollProjets">mes projets<div /></span>
                     <span className="scrollContact">contact<div /></span>
-                    <span className="login"><img src="/images/user.png" alt="user icon" /><div /></span>
+                    {/* <span className="login"><img src="/images/user.png" alt="user icon" /><div /></span> */}
                     {/* <span><a href="http://s693680073.onlinehome.fr/1CV/index.html" target="_blank" rel="noreferrer">curriculum vitæ</a><div /></span> */}
                 </nav>
             </header>
