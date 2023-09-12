@@ -1,9 +1,16 @@
+import { doc } from "firebase/firestore";
+
 export default function Lost() {
     let Oups = "Oups! La page que<BR>vous demandez n'existe pas.";
     let Oups1 = Oups.split("<BR>")[0];
     let Oups2 = Oups.split("<BR>")[1];
     let brOups = '';
     if(window.screen.width <= 1440){brOups=<br />;}
+
+    if(location.href != '/') {
+        const htmlCore = document.getElementsByTagName("html");
+        htmlCore.style.backgroundColor = '#2f435e';
+    }
 
     return (
         <div className="box404">
