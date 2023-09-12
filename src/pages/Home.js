@@ -432,9 +432,9 @@ window.addEventListener('scroll', () => {
 
                     <img src='https://firebasestorage.googleapis.com/v0/b/portfolio-19aed.appspot.com/o/photoMe.jpg?alt=media' className='photoMe' alt='Damien Pernin' />
 
-                    <p className="p-large w70">Je m'appelle Damien Pernin, passionné par le monde numérique depuis <span id="monAge"></span> ans. Ce que j'aime, voir des maquettes et des idées prendre vie sur mes navigateurs, découvrir et acquiérir de nouvelles compétences. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
+                    <p className="p-large w70">Je m'appelle Damien Pernin, j'ai <span id="monAge"></span> ans et suis passionné par le monde numérique depuis mes 12 ans. Ce que j'aime, voir des maquettes et des idées prendre vie sur mon écran, découvrir et acquiérir de nouvelles compétences. Doté d'une patience inébranlable, d'une grande capacité d'adaptation, mon autonomie viendra embellir le tout.</p>
 
-                    <p className="p-large w70">Étudier des langages, découvrir des nouveautés et voir l'évolution du monde numérique comme la Réalité Virtuelle, voilà ce qui me passionne. Je mettrai à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
+                    <p className="p-large w70">Étudier les langages et voir l'évolution du monde numérique comme la Réalité Virtuelle, voilà ce qui me passionne. Je mettrai à votre disposition toutes mes compétences, mes connaissances et espère en acquérir d'autres dans mes futurs collaborations avec vous.</p>
 
                     <div className="w70 mrg-top100">
                         <h3>Mes compétences</h3>
@@ -442,7 +442,7 @@ window.addEventListener('scroll', () => {
                             <div id="competences" className="mrg-top25 centrer-row">
                                 <Skillbar name="html" color="A" skill="100" />
                                 <Skillbar name="css" color="B" skill="95" />
-                                <Skillbar name="javascript" color="C" skill="90" />
+                                <Skillbar name="javascript" color="C" skill="95" />
                                 <Skillbar name="react" color="D" skill="70" />
                                 <Skillbar name="nodejs" color="E" skill="65" />
                                 <Skillbar name="mongodb" color="F" skill="60" />
