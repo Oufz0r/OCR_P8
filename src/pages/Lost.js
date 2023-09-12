@@ -8,7 +8,7 @@ export default function Lost() {
     if(window.screen.width <= 1440){brOups=<br />;}
 
     if(window.location.href !== 'https://damien-pernin.netlify.app/') {
-        const htmlCore = document.getElementsByTagName("html");
+        const htmlCore = document.getElementsByTagName("html")[0];
         htmlCore.style.backgroundColor = '#2f435e';
     }
 
