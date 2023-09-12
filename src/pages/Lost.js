@@ -1,4 +1,4 @@
-import { doc } from "firebase/firestore";
+// import { doc } from "firebase/firestore";
 
 export default function Lost() {
     let Oups = "Oups! La page que<BR>vous demandez n'existe pas.";
