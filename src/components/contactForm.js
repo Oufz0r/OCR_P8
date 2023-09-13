@@ -20,7 +20,7 @@ export default function Form() {
             {/* <fieldset> */}
                 {/* <legend>Nom</legend> */}
                 {/* <label htmlFor="name">Nom</label> <br /> */}
-                <input type="text" id="name" name="name" placeholder="Nom" required />
+                <input type="text" id="name" name="name" placeholder="Nom Prénom" required />
             {/* </fieldset> */}
         </p>
         <p>
