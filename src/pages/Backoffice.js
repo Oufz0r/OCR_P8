@@ -236,7 +236,7 @@ export default function Backoffice() {
                 console.log('Problème de mise à jour : ', error);
                 alert('Problème de mise à jour, consultez la console.');
             });
-        };
+    };
 
         
         // supprimer un projet dans la base de données
