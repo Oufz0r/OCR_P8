@@ -440,18 +440,18 @@ window.addEventListener('scroll', () => {
                         <h3>Mes compétences</h3>
                         <center>
                             <div id="competences" className="mrg-top25 centrer-row">
-                                <Skillbar name="html" color="A" skill="100" />
-                                <Skillbar name="css" color="B" skill="95" />
-                                <Skillbar name="javascript" color="C" skill="95" />
+                                <Skillbar name="html" color="A" skill="95" />
+                                <Skillbar name="css" color="B" skill="90" />
+                                <Skillbar name="javascript" color="C" skill="90" />
                                 <Skillbar name="react" color="D" skill="70" />
-                                <Skillbar name="nodejs" color="E" skill="65" />
+                                <Skillbar name="nodejs" color="E" skill="60" />
                                 <Skillbar name="mongodb" color="F" skill="60" />
-                                <Skillbar name="php" color="G" skill="65" />
-                                <Skillbar name="mysql" color="H" skill="70" />
+                                <Skillbar name="php" color="G" skill="50" />
+                                <Skillbar name="mysql" color="H" skill="50" />
                                 <Skillbar name="vscode" color="B" skill="90" />
                                 <Skillbar name="firestore" color="A" skill="60" />
-                                <Skillbar name="netlify" color="D" skill="70" />
-                                <Skillbar name="vue" color="C" skill="65" />
+                                <Skillbar name="netlify" color="D" skill="60" />
+                                {/* <Skillbar name="vue" color="C" skill="35" /> */}
                                 {/* <Skillbar name="photoshop" color="H" skill="70" /> */}
                                 {/* <div id="php">
                                     <div data-skill="30">php</div>
